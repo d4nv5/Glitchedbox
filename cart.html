@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - Glitched Box</title>
+    <meta name="description" content="Revisa tu carrito de compras en Glitched Box">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="cart-styles.css">
+</head>
+<body>
+    <!-- NAVBAR (MISMO QUE PRODUCT PAGE) -->
+    <header class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <!-- Logo -->
+                <a href="/" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L4 6V14L12 18L20 14V6L12 2Z" fill="white"/>
+                        <path d="M12 18L4 22V24L12 20L20 24V22L12 18Z" fill="white" opacity="0.6"/>
+                    </svg>
+                    <span class="logo-text">GLITCHED<br>BOX</span>
+                </a>
+
+                <!-- Desktop Actions -->
+                <div class="navbar-actions">
+                    <button class="nav-icon-btn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 10C12.7614 10 15 7.76142 15 5C15 2.23858 12.7614 0 10 0C7.23858 0 5 2.23858 5 5C5 7.76142 7.23858 10 10 10ZM10 12.5C6.66667 12.5 0 14.175 0 17.5V20H20V17.5C20 14.175 13.3333 12.5 10 12.5Z" fill="currentColor"/>
+                        </svg>
+                        <span>Iniciar sesión</span>
+                    </button>
+                    
+                    <button class="nav-icon-btn nav-favorite-button">
+                        <svg class="nav-heart" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="nav-heart-icon" d="M10 18.35L8.55 17.03C3.4 12.36 0 9.27 0 5.5C0 2.41 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.08C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.41 20 5.5C20 9.27 16.6 12.36 11.45 17.03L10 18.35Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <span>Favoritos</span>
+                    </button>
+                    
+                    <button class="nav-icon-btn cart-btn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 16C4.9 16 4.01 16.9 4.01 18C4.01 19.1 4.9 20 6 20C7.1 20 8 19.1 8 18C8 16.9 7.1 16 6 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 14.1 4.9 15 6 15H18V13H6.42C6.28 13 6.17 12.89 6.17 12.75L6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.48C19.96 3.34 20 3.17 20 3C20 2.45 19.55 2 19 2H4.21L3.27 0H0ZM16 16C14.9 16 14.01 16.9 14.01 18C14.01 19.1 14.9 20 16 20C17.1 20 18 19.1 18 18C18 16.9 17.1 16 16 16Z" fill="currentColor"/>
+                        </svg>
+                        <span>Carrito</span>
+                        <span class="cart-badge show" id="cartBadge">2</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- BREADCRUMBS -->
+    <section class="breadcrumbs">
+        <div class="container">
+            <div class="breadcrumbs-list">
+                <a href="#" class="breadcrumb-link">Inicio</a>
+                <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L5 5L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span class="breadcrumb-current">Carrito</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CART SECTION -->
+    <main class="cart-section">
+        <div class="container">
+            <h1 class="cart-title">Carrito</h1>
+
+            <div class="cart-layout">
+                <!-- CART ITEMS -->
+                <div class="cart-items">
+                    <!-- Free Shipping Alert -->
+                    <div class="free-shipping-alert">
+                        ¡Has calificado para recibir envío gratuito!
+                    </div>
+
+                    <!-- Cart Item 1 -->
+                    <div class="cart-item">
+                        <div class="cart-item-image">
+                            <img src="https://cdn.prod.website-files.com/697ede50720ea849f52717f1/697ee38a6c744cda21fa8519_reaper_plasma_card_300x300.webp" alt="Reaper Plasma">
+                        </div>
+                        <div class="cart-item-info">
+                            <h3 class="cart-item-name">Reaper</h3>
+                            <div class="cart-item-details">
+                                <span>Versión: Plasma</span>
+                                <span>Tamaño: 4.3 in</span>
+                            </div>
+                            <div class="cart-item-price">$1,600 MXN</div>
+                        </div>
+                        <div class="cart-item-actions">
+                            <button class="cart-item-remove" aria-label="Eliminar del carrito">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 2V0H15V2H20V4H18V19C18 19.5304 17.7893 20.0391 17.4142 20.4142C17.0391 20.7893 16.5304 21 16 21H4C3.46957 21 2.96086 20.7893 2.58579 20.4142C2.21071 20.0391 2 19.5304 2 19V4H0V2H5ZM4 4V19H16V4H4ZM7 7H9V16H7V7ZM11 7H13V16H11V7Z" fill="currentColor"/>
+                                </svg>
+                            </button>
+                            <button class="cart-item-wishlist">Mover a la lista de deseos</button>
+                        </div>
+                    </div>
+
+                    <!-- Cart Item 2 -->
+                    <div class="cart-item">
+                        <div class="cart-item-image">
+                            <img src="https://cdn.prod.website-files.com/697ede50720ea849f52717f1/697ee38bbaaec7f1666d3cb9_reaper_espiritu_card_300x300.webp" alt="Reaper Espíritu">
+                        </div>
+                        <div class="cart-item-info">
+                            <h3 class="cart-item-name">Reaper</h3>
+                            <div class="cart-item-details">
+                                <span>Color o variante: Espíritu</span>
+                                <span>Tamaño: 4.3 in</span>
+                            </div>
+                            <div class="cart-item-price">$1,600 MXN</div>
+                        </div>
+                        <div class="cart-item-actions">
+                            <button class="cart-item-remove" aria-label="Eliminar del carrito">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 2V0H15V2H20V4H18V19C18 19.5304 17.7893 20.0391 17.4142 20.4142C17.0391 20.7893 16.5304 21 16 21H4C3.46957 21 2.96086 20.7893 2.58579 20.4142C2.21071 20.0391 2 19.5304 2 19V4H0V2H5ZM4 4V19H16V4H4ZM7 7H9V16H7V7ZM11 7H13V16H11V7Z" fill="currentColor"/>
+                                </svg>
+                            </button>
+                            <button class="cart-item-wishlist">Mover a la lista de deseos</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ORDER SUMMARY -->
+                <div class="order-summary">
+                    <h2 class="summary-title">Resumen del pedido</h2>
+                    
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span class="summary-value" id="subtotal">$3,200.00 MXN</span>
+                    </div>
+
+                    <div class="summary-section">
+                        <div class="summary-label">Tarifas estimadas</div>
+                        <div class="summary-row">
+                            <span>Enviar a domicilio</span>
+                            <span class="summary-free">Gratis</span>
+                        </div>
+                    </div>
+
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span class="summary-total-value" id="total">$3,200.00 MXN</span>
+                    </div>
+
+                    <div class="summary-note">
+                        El total del pedido incluye impuestos. Tiempo de entrega de 3 a 7 días.
+                    </div>
+
+                    <button class="checkout-btn">Proceder al proceso de pago</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- NEWSLETTER (MISMO QUE PRODUCT PAGE) -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-box">
+                <h2 class="newsletter-title">Suscríbete a nuestro boletín</h2>
+                <p class="newsletter-text">Entérate antes que nadie de nuestras novedades, promos exclusivas y todo lo que está por venir.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" class="newsletter-input" placeholder="Escribe tu correo electrónico" required>
+                    <button type="submit" class="newsletter-btn">Suscribirse</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (MISMO QUE PRODUCT PAGE) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-col-large">
+                    <div class="footer-logo">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L4 6V14L12 18L20 14V6L12 2Z" fill="white"/>
+                            <path d="M12 18L4 22V24L12 20L20 24V22L12 18Z" fill="white" opacity="0.6"/>
+                        </svg>
+                        <span class="footer-logo-text">GLITCHED<br>BOX</span>
+                    </div>
+                    <p class="footer-description">Glitched Box es una marca mexicana de art toys inspirada en ilustraciones originales. Cada figura representa un personaje que llegó a nuestro mundo por error a través de una "glitch". El estilo mezcla lo kawaii con lo oscuro, creando una estética única y coleccionable.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.971h-1.513c-1.491 0-1.956.93-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Quiénes somos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Nuestra historia</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Ayuda</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Seguimiento de pedido</a></li>
+                        <li><a href="#">Envíos y devoluciones</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#">Política de privacidad</a></li>
+                        <li><a href="#">Política de envío</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Contacto</h4>
+                    <a href="#" class="footer-contact-btn">Contáctanos</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2019 – 2025 Glitched Box. Todos los derechos reservados. Información exclusiva de Glitched Box</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4L4 12L5.41 13.41L11 7.83V20H13V7.83L18.59 13.41L20 12L12 4Z" fill="currentColor"/>
+        </svg>
+    </button>
+
+    <!-- Scripts -->
+    <script src="cart-script.js"></script>
+</body>
+</html>
