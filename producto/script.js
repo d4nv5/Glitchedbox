@@ -57,7 +57,7 @@ const state = {
             'images/gallina_roja_2.webp',
             'images/gallina_roja_3.webp'
         ],
-        roja: [
+        rosa: [
             'images/gallina_rosa_1.webp',
             'images/gallina_rosa_2.webp',
             'images/gallina_rosa_3.webp'
@@ -133,6 +133,10 @@ function loadVariantImages(variant) {
 // COLOR VARIANT SELECTION
 // ========================================
 function selectVariant(variantColor) {
+
+    console.log("variantColor:", JSON.stringify(variantColor));
+console.log("available variants:", Object.keys(state.variantImages));
+
     // Update state
     state.currentVariant = variantColor;
     state.currentImageIndex = 0;
