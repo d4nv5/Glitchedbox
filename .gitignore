@@ -1,0 +1,63 @@
+########################
+# CONFIGURACIÓN / SECRETOS
+########################
+.env
+.env.*
+config.php
+config/*.php
+!config/config.example.php
+
+########################
+# BASE DE DATOS / DUMPS
+########################
+*.sql
+*.dump
+*.gz
+
+########################
+# SUBIDAS DE USUARIOS
+########################
+uploads/
+storage/
+public/uploads/
+public/storage/
+
+########################
+# SESIONES, CACHE, LOGS
+########################
+sessions/
+cache/
+logs/
+tmp/
+
+########################
+# DEPENDENCIAS
+########################
+/vendor/
+
+########################
+# IDE / SISTEMA
+########################
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+########################
+# BUILD / TEMP
+########################
+node_modules/
+dist/
+build/
+
+########################
+# TESTING LOCAL
+########################
+phpunit.xml
+phpunit.xml.dist
+coverage/
+
+########################
+# SERVIDOR
+########################
+.htaccess
