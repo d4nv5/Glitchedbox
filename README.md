@@ -1,3 +1,7 @@
+## Armar Build
+npm run build:zip
+
+
 # 🛒 Glitched Box - Página del Carrito
 
 Código completo y responsive de la página del carrito, exportado de Webflow.
@@ -386,3 +390,5 @@ Agrega inputs para cambiar cantidad:
 ---
 
 **Creado desde Webflow** | Febrero 2026
+
+

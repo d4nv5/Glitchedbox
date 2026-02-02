@@ -1,0 +1,17 @@
+{
+  "name": "glitchedbox",
+  "version": "1.0.0",
+  "description": "Código completo y responsive de la página del carrito, exportado de Webflow.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:zip": "node scripts/build-zip.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "archiver": "^7.0.1",
+    "fast-glob": "^3.3.3"
+  }
+}
