@@ -174,7 +174,7 @@ $producto = $result->fetch_assoc();
           <img src='./assets/img/products/{$p['imagen']}' alt='{$p['nombre']}' style='width:100%; height:250px; object-fit:cover;'>
           <button style='position:absolute; top:10px; right:10px; background:#1c1c1f; color:white; border:none; border-radius:5px; padding:5px 10px; cursor:pointer;'>Ver más</button>
           <div style='padding:15px;'>
-            <h4 style='margin:0;'>{$p['nombre']}</h4>
+            <h4 style='margin:0;color:#000;'>{$p['nombre']}</h4>
             <p style='margin:5px 0; color:#f94c10; font-weight:bold;'>$".number_format($p['precio'],2)."</p>
             <p style='color:#555; font-size:14px;'>{$p['descripcion_corta']}</p>
             <button style='background:#1c1c1f; color:white; border:none; border-radius:5px; padding:8px 10px; cursor:pointer;'>🛒</button>

@@ -405,7 +405,7 @@
   <div class="circle"></div>
   <div class="hero-content">
       <div class="floating">
-            <img src="/assets/img/products/kitsune_rojo_1.png" style="height: 300px;" alt="Kitsune"></img>
+            <img src="assets/img/products/kitsune_rojo_1.png" style="height: 300px;" alt="Kitsune"></img>
       </div>
     <h1>Descubre la colección completa</h1>
     <p>El Kitsune se ha fragmentado en tres formas: Rojo, Azul y Morado.  Cada uno con su propia energía... y su propia historia. Explora la colección completa y elige tu Kitsune.</p>

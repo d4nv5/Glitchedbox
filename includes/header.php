@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
   <!-- 🔹 Open Graph / Facebook / WhatsApp -->
 <meta property="og:title" content="Glitched Box — Art Toys con historia">
 <meta property="og:description" content="Figuras coleccionables únicas inspiradas en ilustraciones originales. Cada personaje es una mezcla entre lo kawaii y lo oscuro.">
@@ -25,7 +25,7 @@
 <meta name="twitter:image" content="https://glitchedbox.com/assets/img/preview.jpg">
 
 <!-- 🔹 Favicon -->
-<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
 
 <!-- 🔹 SEO básico -->
 <meta name="description" content="Glitched Box es una marca mexicana de art toys inspirada en ilustraciones originales. Figuras únicas que combinan arte, diseño y coleccionismo.">
@@ -350,7 +350,7 @@
     <div class="nav-container">
       <!-- Logo -->
       <a href="/" class="nav-logo">
-        <img src="/assets/img/logo.svg" alt="Glitched Box">
+        <img src="assets/img/logo.svg" alt="Glitched Box">
       </a>
 
       <!-- Botón Hamburguesa -->
