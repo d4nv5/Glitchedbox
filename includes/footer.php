@@ -15,7 +15,7 @@
   <!-- === Footer Info === -->
   <section class="footer-info">
     <div class="footer-col">
-      <img src="/assets/img/logo.svg" alt="Logo Glitched Box" class="footer-logo" />
+      <img src="assets/img/logo.svg" alt="Logo Glitched Box" class="footer-logo" />
       <p class="small">
         Glitched Box es una marca mexicana de art toys inspirada en ilustraciones originales. 
         Cada figura representa un personaje que llegó a nuestro mundo por error a través de una "glitch". 

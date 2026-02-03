@@ -5,7 +5,7 @@
   .hero {
   position: relative;
   height: 100vh;
-  background: url('./assets/img/hero.png') no-repeat center top;
+  background: url('assets/img/hero.png') no-repeat center top;
   background-size: contain; /* En escritorio: imagen completa */
   background-color: #000; /* Fondo de relleno donde no haya imagen */
   display: flex;
@@ -27,8 +27,8 @@
 
     .hero-content {
       background: linear-gradient(0deg, rgba(0, 0, 0, 1) 72%, rgba(255, 255, 255, 0) 100%);
-      position: absolute;
-      bottom: 0;
+      /*position: absolute;
+      bottom: 0;*/
       width: 100%;
       padding: 111px 30px;
     }
@@ -402,7 +402,6 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div class="circle"></div>
   <div class="hero-content">
       <div class="floating">
             <img src="assets/img/products/kitsune_rojo_1.png" style="height: 300px;" alt="Kitsune"></img>
@@ -410,7 +409,7 @@
     <h1>Descubre la colección completa</h1>
     <p>El Kitsune se ha fragmentado en tres formas: Rojo, Azul y Morado.  Cada uno con su propia energía... y su propia historia. Explora la colección completa y elige tu Kitsune.</p>
     <a href="#productos">Ver Colección</a>
-    <a href="#productos" class="btn-white"><img src="/assets/img/ico/cart.ico" style="vertical-align: middle;"></img> Agregar al Carrito</a>
+    <a href="#productos" class="btn-white"><img src="assets/img/ico/cart.ico" style="vertical-align: middle;"></img> Agregar al Carrito</a>
   </div>
 </section>
 
@@ -440,7 +439,7 @@
                 <p>$'.$row["precio"].' MXN</p>
                 <small>'.$row["descripcion_corta"].'</small>
               </div>
-              <button><img src="/assets/img/ico/cart.ico" style="vertical-align: middle;"></img></button>
+              <button><img src="assets/img/ico/cart.ico" style="vertical-align: middle;"></img></button>
             </div>
           </div>
           ';
