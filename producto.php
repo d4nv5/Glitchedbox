@@ -110,8 +110,19 @@ $producto = $result->fetch_assoc();
 
     <!-- BOTONES -->
     <div style="display:flex; gap:10px; margin-bottom:20px;">
-      <button style="flex:1; padding:12px; border:none; border-radius:5px; cursor:pointer;">🛒 Agregar al carrito</button>
-      <button style="flex:1;background: none;color:white;padding:12px;border: 1px solid;border-radius:5px;cursor:pointer;">Comprar ahora</button>
+      <button id="addToCartBtn"
+              class="add-to-cart-btn"
+              data-product-id="<?php echo $producto['id']; ?>"
+              data-product-name="<?php echo htmlspecialchars($producto['nombre'], ENT_QUOTES); ?>"
+              data-product-price="<?php echo $producto['descuento'] > 0 ? ($producto['precio'] - $producto['descuento']) : $producto['precio']; ?>"
+              data-product-image="./assets/img/products/<?php echo htmlspecialchars($producto['imagen']); ?>"
+              data-product-variant=""
+              data-product-quantity="1"
+              onclick="addToCartWithOptions()"
+              style="flex:1; padding:12px; border:none; border-radius:5px; cursor:pointer; background:white; color:black; font-weight:bold;">
+        🛒 Agregar al carrito
+      </button>
+      <button onclick="buyNow()" style="flex:1;background: none;color:white;padding:12px;border: 1px solid;border-radius:5px;cursor:pointer;">Comprar ahora</button>
     </div>
 
     <!-- ENVÍOS -->
@@ -169,15 +180,24 @@ $producto = $result->fetch_assoc();
       <?php
       $rel = $conn->query("SELECT * FROM productos WHERE id != $id AND activo = 1 ORDER BY RAND() LIMIT 4");
       while ($p = $rel->fetch_assoc()) {
+        $precioFinal = $p['descuento'] > 0 ? ($p['precio'] - $p['descuento']) : $p['precio'];
         echo "
         <div style='width:250px; background:white; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); overflow:hidden; position:relative;'>
           <img src='./assets/img/products/{$p['imagen']}' alt='{$p['nombre']}' style='width:100%; height:250px; object-fit:cover;'>
-          <button style='position:absolute; top:10px; right:10px; background:#1c1c1f; color:white; border:none; border-radius:5px; padding:5px 10px; cursor:pointer;'>Ver más</button>
+          <a href='producto.php?id={$p['id']}' style='position:absolute; top:10px; right:10px; background:#1c1c1f; color:white; border:none; border-radius:5px; padding:5px 10px; cursor:pointer; text-decoration:none;'>Ver mas</a>
           <div style='padding:15px;'>
             <h4 style='margin:0;color:#000;'>{$p['nombre']}</h4>
             <p style='margin:5px 0; color:#f94c10; font-weight:bold;'>$".number_format($p['precio'],2)."</p>
             <p style='color:#555; font-size:14px;'>{$p['descripcion_corta']}</p>
-            <button style='background:#1c1c1f; color:white; border:none; border-radius:5px; padding:8px 10px; cursor:pointer;'>🛒</button>
+            <button class='add-to-cart-btn'
+                    data-product-id='{$p['id']}'
+                    data-product-name='".htmlspecialchars($p['nombre'], ENT_QUOTES)."'
+                    data-product-price='{$precioFinal}'
+                    data-product-image='./assets/img/products/{$p['imagen']}'
+                    onclick='addToCartFromButton(this)'
+                    style='background:#1c1c1f; color:white; border:none; border-radius:5px; padding:8px 10px; cursor:pointer;'>
+              🛒
+            </button>
           </div>
         </div>";
       }
@@ -244,4 +264,41 @@ function nextImage() {
     if (currentImageIndex > maxImages) currentImageIndex = 1;
     updateMainImage();
 }
+
+// ---- CARRITO ----
+function addToCartWithOptions() {
+    const btn = document.getElementById('addToCartBtn');
+    const quantity = parseInt(document.getElementById('cantidad').value) || 1;
+
+    // Actualizar la imagen basada en el color seleccionado
+    const productName = "<?php echo strtolower(str_replace(' ', '_', $producto['nombre'])); ?>";
+    const imagePath = `./assets/img/products/${productName}_${currentColor}_1.png`;
+
+    const productData = {
+        id: btn.dataset.productId,
+        name: btn.dataset.productName,
+        price: parseFloat(btn.dataset.productPrice),
+        image: imagePath,
+        variant: currentColor.charAt(0).toUpperCase() + currentColor.slice(1), // Capitalizar
+        quantity: quantity
+    };
+
+    CartManager.addToCart(productData);
+}
+
+function buyNow() {
+    addToCartWithOptions();
+    window.location.href = 'carrito.php';
+}
+
+// Actualizar el boton cuando cambia el color
+const originalSelectColor = selectColor;
+selectColor = function(color) {
+    originalSelectColor(color);
+    // Actualizar data attribute del boton
+    const btn = document.getElementById('addToCartBtn');
+    if (btn) {
+        btn.dataset.productVariant = color;
+    }
+};
 </script>
