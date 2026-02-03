@@ -270,11 +270,10 @@ function updateSummary(totals) {
     }
 }
 
-function updateQuantity(button, delta) {
+async function updateQuantity(button, delta) {
     const cartItem = button.closest('.cart-item');
     const itemId = cartItem.dataset.itemId;
     const variant = cartItem.dataset.variant;
-    const stock = parseInt(cartItem.dataset.stock) || 99;
 
     const cart = CartManager.getCart();
     const item = cart.find(i => i.id === itemId && (i.variant || '') === variant);
@@ -288,14 +287,15 @@ function updateQuantity(button, delta) {
             return;
         }
 
-        // Validar maximo (stock)
-        if (newQuantity > stock) {
-            CartManager.showNotification(`Solo hay ${stock} unidades disponibles`, 'warning');
-            return;
-        }
+        // Deshabilitar botones mientras se valida
+        const buttons = cartItem.querySelectorAll('.qty-btn-minus, .qty-btn-plus');
+        buttons.forEach(btn => {
+            btn.disabled = true;
+            btn.style.opacity = '0.5';
+        });
 
-        CartManager.updateQuantity(itemId, variant, newQuantity);
-        renderCartPage();
+        // Usar la validacion de stock del servidor
+        await CartManager.updateQuantity(itemId, variant, newQuantity, renderCartPage);
     }
 }
 

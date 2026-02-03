@@ -268,10 +268,14 @@ function nextImage() {
 }
 
 // ---- CARRITO ----
-function addToCartWithOptions() {
+async function addToCartWithOptions() {
     const btn = document.getElementById('addToCartBtn');
     const quantity = parseInt(document.getElementById('cantidad').value) || 1;
-    const stock = parseInt(btn.dataset.productStock) || 99;
+
+    // Deshabilitar boton mientras se procesa
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+    btn.textContent = 'Agregando...';
 
     // Actualizar la imagen basada en el color seleccionado
     const productName = "<?php echo strtolower(str_replace(' ', '_', $producto['nombre'])); ?>";
@@ -282,17 +286,38 @@ function addToCartWithOptions() {
         name: btn.dataset.productName,
         price: parseFloat(btn.dataset.productPrice),
         image: imagePath,
-        variant: currentColor.charAt(0).toUpperCase() + currentColor.slice(1), // Capitalizar
-        quantity: quantity,
-        stock: stock
+        variant: currentColor.charAt(0).toUpperCase() + currentColor.slice(1),
+        quantity: quantity
     };
 
-    CartManager.addToCart(productData);
+    await CartManager.addToCart(productData);
+
+    // Rehabilitar boton
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.innerHTML = '🛒 Agregar al carrito';
 }
 
-function buyNow() {
-    addToCartWithOptions();
-    window.location.href = 'carrito.php';
+async function buyNow() {
+    const btn = document.getElementById('addToCartBtn');
+    const quantity = parseInt(document.getElementById('cantidad').value) || 1;
+
+    const productName = "<?php echo strtolower(str_replace(' ', '_', $producto['nombre'])); ?>";
+    const imagePath = `./assets/img/products/${productName}_${currentColor}_1.png`;
+
+    const productData = {
+        id: btn.dataset.productId,
+        name: btn.dataset.productName,
+        price: parseFloat(btn.dataset.productPrice),
+        image: imagePath,
+        variant: currentColor.charAt(0).toUpperCase() + currentColor.slice(1),
+        quantity: quantity
+    };
+
+    const added = await CartManager.addToCart(productData);
+    if (added) {
+        window.location.href = 'carrito.php';
+    }
 }
 
 // Actualizar el boton cuando cambia el color
