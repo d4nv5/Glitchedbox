@@ -362,12 +362,31 @@
 
       <!-- Enlaces -->
       <div class="nav-links" id="nav-links">
-        <a href="login.php">Iniciar Sesión</a>
+        <a href="login.php">Iniciar Sesion</a>
         <a href="favoritos.php">Favoritos</a>
-        <a href="carrito.php">🛒 Carrito</a>
+        <a href="carrito.php" class="cart-link" style="position: relative;">
+          🛒 Carrito
+          <span class="cart-badge" id="cartBadge" style="
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: #8b5cf6;
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 10px;
+            min-width: 18px;
+            text-align: center;
+            display: none;
+          "></span>
+        </a>
       </div>
     </div>
   </nav>
+
+  <!-- Script del carrito -->
+  <script src="assets/js/cart.js"></script>
 
   <script>
     const menuToggle = document.getElementById('menu-toggle');

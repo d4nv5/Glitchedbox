@@ -439,7 +439,14 @@
                 <p>$'.$row["precio"].' MXN</p>
                 <small>'.$row["descripcion_corta"].'</small>
               </div>
-              <button><img src="assets/img/ico/cart.ico" style="vertical-align: middle;"></img></button>
+              <button class="add-to-cart-btn"
+                      data-product-id="'.$row["id"].'"
+                      data-product-name="'.htmlspecialchars($row["nombre"], ENT_QUOTES).'"
+                      data-product-price="'.$row["precio"].'"
+                      data-product-image="./assets/img/products/'.$row["imagen"].'"
+                      onclick="addToCartFromButton(this)">
+                <img src="assets/img/ico/cart.ico" style="vertical-align: middle;">
+              </button>
             </div>
           </div>
           ';
