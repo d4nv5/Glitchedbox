@@ -58,20 +58,14 @@ const CartManager = {
     },
 
     /**
-     * Agregar un producto al carrito con validacion de stock en tiempo real
-     * @param {Object} product - Objeto con id, name, price, image, variant, quantity
+     * Agregar un producto al carrito con validacion de stock
+     * Usa el stock pasado como parametro (del HTML) si esta disponible
+     * Solo consulta el servidor si no tiene stock o si el producto ya esta en carrito
+     * @param {Object} product - Objeto con id, name, price, image, variant, quantity, stock (opcional)
      */
     addToCart: async function(product) {
         const productId = String(product.id);
         const quantityToAdd = product.quantity || 1;
-
-        // Consultar stock actual desde el servidor
-        const stockActual = await this.fetchStock(productId);
-
-        if (stockActual === 0) {
-            this.showNotification('Producto sin stock disponible', 'warning');
-            return false;
-        }
 
         const cart = this.getCart();
 
@@ -79,6 +73,25 @@ const CartManager = {
         const existingIndex = cart.findIndex(item =>
             item.id === productId && (item.variant || '') === (product.variant || '')
         );
+
+        // Determinar el stock a usar
+        let stockActual;
+
+        if (existingIndex !== -1) {
+            // Producto ya en carrito: usar stock guardado
+            stockActual = cart[existingIndex].stock;
+        } else if (product.stock && product.stock > 0) {
+            // Stock viene del HTML (data-product-stock)
+            stockActual = parseInt(product.stock);
+        } else {
+            // Sin stock disponible: consultar servidor
+            stockActual = await this.fetchStock(productId);
+        }
+
+        if (!stockActual || stockActual === 0) {
+            this.showNotification('Producto sin stock disponible', 'warning');
+            return false;
+        }
 
         let cantidadEnCarrito = 0;
         if (existingIndex !== -1) {
@@ -100,7 +113,6 @@ const CartManager = {
 
         if (existingIndex !== -1) {
             cart[existingIndex].quantity = cantidadTotal;
-            cart[existingIndex].stock = stockActual;
         } else {
             cart.push({
                 id: productId,
@@ -298,14 +310,15 @@ const CartManager = {
  * Funcion global para agregar al carrito desde botones
  * @param {HTMLElement} button - El boton que disparo el evento
  */
-async function addToCartFromButton(button) {
+function addToCartFromButton(button) {
     const productData = {
         id: button.dataset.productId,
         name: button.dataset.productName,
         price: button.dataset.productPrice,
         image: button.dataset.productImage,
         variant: button.dataset.productVariant || '',
-        quantity: parseInt(button.dataset.productQuantity) || 1
+        quantity: parseInt(button.dataset.productQuantity) || 1,
+        stock: parseInt(button.dataset.productStock) || 0
     };
 
     if (!productData.id || !productData.name || !productData.price) {
@@ -313,16 +326,8 @@ async function addToCartFromButton(button) {
         return false;
     }
 
-    // Deshabilitar boton mientras se procesa
-    button.disabled = true;
-    button.style.opacity = '0.6';
-
-    await CartManager.addToCart(productData);
-
-    // Rehabilitar boton
-    button.disabled = false;
-    button.style.opacity = '1';
-
+    // Agregar al carrito (usa stock del HTML, instantaneo)
+    CartManager.addToCart(productData);
     return true;
 }
 
