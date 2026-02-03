@@ -129,34 +129,32 @@ const CartManager = {
     },
 
     /**
-     * Actualizar la cantidad de un producto con validacion de stock
+     * Actualizar la cantidad de un producto (usa stock local, sin consultar servidor)
      * @param {string} productId - ID del producto
      * @param {string} variant - Variante del producto
      * @param {number} quantity - Nueva cantidad
      * @param {function} callback - Funcion a llamar despues de actualizar (opcional)
      */
-    updateQuantity: async function(productId, variant = '', quantity, callback = null) {
+    updateQuantity: function(productId, variant = '', quantity, callback = null) {
         if (quantity <= 0) {
             this.removeFromCart(productId, variant);
             if (callback) callback();
             return true;
         }
 
-        // Consultar stock actual desde el servidor
-        const stockActual = await this.fetchStock(productId);
-
-        if (quantity > stockActual) {
-            this.showNotification(`Solo hay ${stockActual} unidades disponibles`, 'warning');
-            // Ajustar al maximo disponible
-            quantity = stockActual;
-        }
-
         const cart = this.getCart();
         const item = cart.find(i => i.id === productId && (i.variant || '') === variant);
 
         if (item) {
-            item.quantity = quantity;
-            item.stock = stockActual; // Actualizar stock guardado
+            // Usar stock guardado localmente (ya se valido al agregar)
+            const stock = item.stock || 99;
+
+            if (quantity > stock) {
+                this.showNotification(`Solo hay ${stock} unidades disponibles`, 'warning');
+                item.quantity = stock;
+            } else {
+                item.quantity = quantity;
+            }
             this.saveCart(cart);
         }
 

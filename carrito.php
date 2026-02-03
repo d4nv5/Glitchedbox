@@ -270,7 +270,7 @@ function updateSummary(totals) {
     }
 }
 
-async function updateQuantity(button, delta) {
+function updateQuantity(button, delta) {
     const cartItem = button.closest('.cart-item');
     const itemId = cartItem.dataset.itemId;
     const variant = cartItem.dataset.variant;
@@ -287,15 +287,9 @@ async function updateQuantity(button, delta) {
             return;
         }
 
-        // Deshabilitar botones mientras se valida
-        const buttons = cartItem.querySelectorAll('.qty-btn-minus, .qty-btn-plus');
-        buttons.forEach(btn => {
-            btn.disabled = true;
-            btn.style.opacity = '0.5';
-        });
-
-        // Usar la validacion de stock del servidor
-        await CartManager.updateQuantity(itemId, variant, newQuantity, renderCartPage);
+        // Usar validacion de stock local (instantaneo)
+        CartManager.updateQuantity(itemId, variant, newQuantity);
+        renderCartPage();
     }
 }
 
