@@ -37,10 +37,12 @@ const CartManager = {
 
     /**
      * Agregar un producto al carrito
-     * @param {Object} product - Objeto con id, name, price, image, variant (opcional), quantity (opcional)
+     * @param {Object} product - Objeto con id, name, price, image, variant, quantity, stock
      */
     addToCart: function(product) {
         const cart = this.getCart();
+        const stock = parseInt(product.stock) || 99;
+        const quantityToAdd = product.quantity || 1;
 
         // Buscar si ya existe el producto con la misma variante
         const existingIndex = cart.findIndex(item =>
@@ -48,17 +50,31 @@ const CartManager = {
         );
 
         if (existingIndex !== -1) {
-            // Incrementar cantidad
-            cart[existingIndex].quantity += (product.quantity || 1);
+            // Validar stock antes de incrementar
+            const newQuantity = cart[existingIndex].quantity + quantityToAdd;
+            if (newQuantity > stock) {
+                this.showNotification(`Solo hay ${stock} unidades disponibles`, 'warning');
+                cart[existingIndex].quantity = stock;
+            } else {
+                cart[existingIndex].quantity = newQuantity;
+            }
+            // Actualizar stock por si cambio
+            cart[existingIndex].stock = stock;
         } else {
-            // Agregar nuevo item
+            // Validar stock para nuevo item
+            const finalQuantity = quantityToAdd > stock ? stock : quantityToAdd;
+            if (quantityToAdd > stock) {
+                this.showNotification(`Solo hay ${stock} unidades disponibles`, 'warning');
+            }
+            // Agregar nuevo item con stock
             cart.push({
                 id: String(product.id),
                 name: product.name,
                 price: parseFloat(product.price),
                 image: product.image,
                 variant: product.variant || '',
-                quantity: product.quantity || 1
+                quantity: finalQuantity,
+                stock: stock
             });
         }
 
@@ -88,7 +104,14 @@ const CartManager = {
             if (quantity <= 0) {
                 return this.removeFromCart(productId, variant);
             }
-            item.quantity = quantity;
+            // Validar stock
+            const stock = item.stock || 99;
+            if (quantity > stock) {
+                this.showNotification(`Solo hay ${stock} unidades disponibles`, 'warning');
+                item.quantity = stock;
+            } else {
+                item.quantity = quantity;
+            }
             this.saveCart(cart);
         }
         return true;
@@ -149,23 +172,31 @@ const CartManager = {
 
     /**
      * Mostrar notificacion de producto agregado
+     * @param {string} message - Mensaje a mostrar
+     * @param {string} type - Tipo de notificacion: 'success' o 'warning'
      */
-    showNotification: function(message) {
+    showNotification: function(message, type = 'success') {
         // Remover notificacion existente si hay
         const existing = document.querySelector('.cart-notification');
         if (existing) {
             existing.remove();
         }
 
+        const isWarning = type === 'warning';
+        const iconColor = isWarning ? '#f59e0b' : '#10b981';
+        const iconPath = isWarning
+            ? 'M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM11 15H9V13H11V15ZM11 11H9V5H11V11Z'
+            : 'M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM8 15L3 10L4.41 8.59L8 12.17L15.59 4.58L17 6L8 15Z';
+
         // Crear notificacion
         const notification = document.createElement('div');
         notification.className = 'cart-notification';
         notification.innerHTML = `
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM8 15L3 10L4.41 8.59L8 12.17L15.59 4.58L17 6L8 15Z" fill="#10b981"/>
+                <path d="${iconPath}" fill="${iconColor}"/>
             </svg>
             <span>${message}</span>
-            <a href="carrito.php">Ver carrito</a>
+            ${!isWarning ? '<a href="carrito.php">Ver carrito</a>' : ''}
         `;
 
         // Estilos
@@ -245,7 +276,8 @@ function addToCartFromButton(button) {
         price: button.dataset.productPrice,
         image: button.dataset.productImage,
         variant: button.dataset.productVariant || '',
-        quantity: parseInt(button.dataset.productQuantity) || 1
+        quantity: parseInt(button.dataset.productQuantity) || 1,
+        stock: parseInt(button.dataset.productStock) || 99
     };
 
     if (!productData.id || !productData.name || !productData.price) {

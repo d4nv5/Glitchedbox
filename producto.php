@@ -118,6 +118,7 @@ $producto = $result->fetch_assoc();
               data-product-image="./assets/img/products/<?php echo htmlspecialchars($producto['imagen']); ?>"
               data-product-variant=""
               data-product-quantity="1"
+              data-product-stock="<?php echo $producto['stock'] ?? 99; ?>"
               onclick="addToCartWithOptions()"
               style="flex:1; padding:12px; border:none; border-radius:5px; cursor:pointer; background:white; color:black; font-weight:bold;">
         🛒 Agregar al carrito
@@ -194,6 +195,7 @@ $producto = $result->fetch_assoc();
                     data-product-name='".htmlspecialchars($p['nombre'], ENT_QUOTES)."'
                     data-product-price='{$precioFinal}'
                     data-product-image='./assets/img/products/{$p['imagen']}'
+                    data-product-stock='".($p['stock'] ?? 99)."'
                     onclick='addToCartFromButton(this)'
                     style='background:#1c1c1f; color:white; border:none; border-radius:5px; padding:8px 10px; cursor:pointer;'>
               🛒
@@ -269,6 +271,7 @@ function nextImage() {
 function addToCartWithOptions() {
     const btn = document.getElementById('addToCartBtn');
     const quantity = parseInt(document.getElementById('cantidad').value) || 1;
+    const stock = parseInt(btn.dataset.productStock) || 99;
 
     // Actualizar la imagen basada en el color seleccionado
     const productName = "<?php echo strtolower(str_replace(' ', '_', $producto['nombre'])); ?>";
@@ -280,7 +283,8 @@ function addToCartWithOptions() {
         price: parseFloat(btn.dataset.productPrice),
         image: imagePath,
         variant: currentColor.charAt(0).toUpperCase() + currentColor.slice(1), // Capitalizar
-        quantity: quantity
+        quantity: quantity,
+        stock: stock
     };
 
     CartManager.addToCart(productData);
