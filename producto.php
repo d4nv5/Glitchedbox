@@ -50,26 +50,15 @@ $producto = $result->fetch_assoc();
         <?php
         $colores = array_map('trim', explode(',', $producto['color']));
         foreach ($colores as $c) {
-            $nombreArchivo = strtolower(str_replace(' ', '_', $producto['nombre'])) . "_" . strtolower($c) . "_1.png"; // primera vista por color
-            echo "<img src='./assets/img/products/$nombreArchivo' alt='$c'
+            $nombreArchivo = strtolower(str_replace(' ', '_', $producto['nombre'])) . "_" . strtolower($c) . ".webp"; // primera vista por color
+            echo "<img src='./assets/img/products/thumbnails/$nombreArchivo' alt='$c'
                       onclick=\"selectColor('$c')\"> ";
         }
         ?>
     </div>
 </div>
 
-    <!-- MINIATURAS DE COLORES -->
-    <div id="thumbnails" style="display:flex; gap:10px; flex-wrap:wrap;">
-      <?php
-      $colores = array_map('trim', explode(',', $producto['color']));
-      foreach ($colores as $c) {
-        $nombreArchivo = strtolower(str_replace(' ', '_', $producto['nombre'])) . "_" . strtolower($c) . ".jpg";
-        echo "<img src='./assets/img/products/$nombreArchivo' alt='$c'
-                  onclick=\"changeImage('$nombreArchivo')\"
-                  style='width:70px; height:70px; object-fit:cover; cursor:pointer; border-radius:5px; border:2px solid #ccc;'> ";
-      }
-      ?>
-    </div>
+    
   </div>
 
   <!-- INFORMACIÓN -->
@@ -246,7 +235,7 @@ let maxImages = 3; // número máximo de vistas (puede variar según producto)
 
 function updateMainImage() {
     let name = "<?php echo strtolower(str_replace(' ', '_', $producto['nombre'])); ?>";
-    document.getElementById('mainImage').src = `./assets/img/products/${name}_${currentColor}_${currentImageIndex}.png`;
+    document.getElementById('mainImage').src = `./assets/img/products/${name}_${currentColor}_${currentImageIndex}.webp`;
 }
 
 function selectColor(color) {
@@ -279,7 +268,7 @@ async function addToCartWithOptions() {
 
     // Actualizar la imagen basada en el color seleccionado
     const productName = "<?php echo strtolower(str_replace(' ', '_', $producto['nombre'])); ?>";
-    const imagePath = `./assets/img/products/${productName}_${currentColor}_1.png`;
+    const imagePath = `./assets/img/products/${productName}_${currentColor}_1.webp`;
 
     const productData = {
         id: btn.dataset.productId,
@@ -303,7 +292,7 @@ async function buyNow() {
     const quantity = parseInt(document.getElementById('cantidad').value) || 1;
 
     const productName = "<?php echo strtolower(str_replace(' ', '_', $producto['nombre'])); ?>";
-    const imagePath = `./assets/img/products/${productName}_${currentColor}_1.png`;
+    const imagePath = `./assets/img/products/${productName}_${currentColor}_1.webp`;
 
     const productData = {
         id: btn.dataset.productId,
