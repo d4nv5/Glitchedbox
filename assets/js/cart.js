@@ -1,12 +1,14 @@
 /**
  * GLITCHED BOX - Cart Manager
  * Sistema de carrito de compras con localStorage
+ * Validacion de stock en tiempo real contra la BD
  */
 
 const CartManager = {
     STORAGE_KEY: 'glitchedbox_cart',
     FREE_SHIPPING_THRESHOLD: 2500,
     SHIPPING_COST: 150,
+    API_URL: 'api/get-stock.php',
 
     /**
      * Obtener el carrito desde localStorage
@@ -36,29 +38,90 @@ const CartManager = {
     },
 
     /**
-     * Agregar un producto al carrito
-     * @param {Object} product - Objeto con id, name, price, image, variant (opcional), quantity (opcional)
+     * Consultar stock en tiempo real desde el servidor
+     * @param {string|number} productId - ID del producto
+     * @returns {Promise<number>} - Stock disponible
      */
-    addToCart: function(product) {
+    fetchStock: async function(productId) {
+        try {
+            const response = await fetch(`${this.API_URL}?id=${productId}`);
+            const data = await response.json();
+            if (data.success) {
+                return data.stock;
+            }
+            console.error('Error al obtener stock:', data.error);
+            return 0;
+        } catch (e) {
+            console.error('Error de red al consultar stock:', e);
+            return 0;
+        }
+    },
+
+    /**
+     * Agregar un producto al carrito con validacion de stock
+     * Usa el stock pasado como parametro (del HTML) si esta disponible
+     * Solo consulta el servidor si no tiene stock o si el producto ya esta en carrito
+     * @param {Object} product - Objeto con id, name, price, image, variant, quantity, stock (opcional)
+     */
+    addToCart: async function(product) {
+        const productId = String(product.id);
+        const quantityToAdd = product.quantity || 1;
+
         const cart = this.getCart();
 
         // Buscar si ya existe el producto con la misma variante
         const existingIndex = cart.findIndex(item =>
-            item.id === product.id && (item.variant || '') === (product.variant || '')
+            item.id === productId && (item.variant || '') === (product.variant || '')
         );
 
+        // Determinar el stock a usar
+        let stockActual;
+
         if (existingIndex !== -1) {
-            // Incrementar cantidad
-            cart[existingIndex].quantity += (product.quantity || 1);
+            // Producto ya en carrito: usar stock guardado
+            stockActual = cart[existingIndex].stock;
+        } else if (product.stock && product.stock > 0) {
+            // Stock viene del HTML (data-product-stock)
+            stockActual = parseInt(product.stock);
         } else {
-            // Agregar nuevo item
+            // Sin stock disponible: consultar servidor
+            stockActual = await this.fetchStock(productId);
+        }
+
+        if (!stockActual || stockActual === 0) {
+            this.showNotification('Producto sin stock disponible', 'warning');
+            return false;
+        }
+
+        let cantidadEnCarrito = 0;
+        if (existingIndex !== -1) {
+            cantidadEnCarrito = cart[existingIndex].quantity;
+        }
+
+        const cantidadTotal = cantidadEnCarrito + quantityToAdd;
+
+        // Validar que no exceda el stock
+        if (cantidadTotal > stockActual) {
+            const disponible = stockActual - cantidadEnCarrito;
+            if (disponible <= 0) {
+                this.showNotification(`Ya tienes el maximo disponible (${stockActual}) en tu carrito`, 'warning');
+                return false;
+            }
+            this.showNotification(`Solo puedes agregar ${disponible} unidades mas (stock: ${stockActual})`, 'warning');
+            return false;
+        }
+
+        if (existingIndex !== -1) {
+            cart[existingIndex].quantity = cantidadTotal;
+        } else {
             cart.push({
-                id: String(product.id),
+                id: productId,
                 name: product.name,
                 price: parseFloat(product.price),
                 image: product.image,
                 variant: product.variant || '',
-                quantity: product.quantity || 1
+                quantity: quantityToAdd,
+                stock: stockActual
             });
         }
 
@@ -78,19 +141,36 @@ const CartManager = {
     },
 
     /**
-     * Actualizar la cantidad de un producto
+     * Actualizar la cantidad de un producto (usa stock local, sin consultar servidor)
+     * @param {string} productId - ID del producto
+     * @param {string} variant - Variante del producto
+     * @param {number} quantity - Nueva cantidad
+     * @param {function} callback - Funcion a llamar despues de actualizar (opcional)
      */
-    updateQuantity: function(productId, variant = '', quantity) {
+    updateQuantity: function(productId, variant = '', quantity, callback = null) {
+        if (quantity <= 0) {
+            this.removeFromCart(productId, variant);
+            if (callback) callback();
+            return true;
+        }
+
         const cart = this.getCart();
         const item = cart.find(i => i.id === productId && (i.variant || '') === variant);
 
         if (item) {
-            if (quantity <= 0) {
-                return this.removeFromCart(productId, variant);
+            // Usar stock guardado localmente (ya se valido al agregar)
+            const stock = item.stock || 99;
+
+            if (quantity > stock) {
+                this.showNotification(`Solo hay ${stock} unidades disponibles`, 'warning');
+                item.quantity = stock;
+            } else {
+                item.quantity = quantity;
             }
-            item.quantity = quantity;
             this.saveCart(cart);
         }
+
+        if (callback) callback();
         return true;
     },
 
@@ -148,27 +228,32 @@ const CartManager = {
     },
 
     /**
-     * Mostrar notificacion de producto agregado
+     * Mostrar notificacion
+     * @param {string} message - Mensaje a mostrar
+     * @param {string} type - Tipo: 'success' o 'warning'
      */
-    showNotification: function(message) {
-        // Remover notificacion existente si hay
+    showNotification: function(message, type = 'success') {
         const existing = document.querySelector('.cart-notification');
         if (existing) {
             existing.remove();
         }
 
-        // Crear notificacion
+        const isWarning = type === 'warning';
+        const iconColor = isWarning ? '#f59e0b' : '#10b981';
+        const iconPath = isWarning
+            ? 'M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM11 15H9V13H11V15ZM11 11H9V5H11V11Z'
+            : 'M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM8 15L3 10L4.41 8.59L8 12.17L15.59 4.58L17 6L8 15Z';
+
         const notification = document.createElement('div');
         notification.className = 'cart-notification';
         notification.innerHTML = `
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM8 15L3 10L4.41 8.59L8 12.17L15.59 4.58L17 6L8 15Z" fill="#10b981"/>
+                <path d="${iconPath}" fill="${iconColor}"/>
             </svg>
             <span>${message}</span>
-            <a href="carrito.php">Ver carrito</a>
+            ${!isWarning ? '<a href="carrito.php">Ver carrito</a>' : ''}
         `;
 
-        // Estilos
         notification.style.cssText = `
             position: fixed;
             bottom: 20px;
@@ -186,39 +271,27 @@ const CartManager = {
             border: 1px solid #333;
         `;
 
-        // Estilos del link
         const link = notification.querySelector('a');
-        link.style.cssText = `
-            color: #8b5cf6;
-            text-decoration: none;
-            font-weight: 600;
-            margin-left: 8px;
-        `;
+        if (link) {
+            link.style.cssText = `
+                color: #8b5cf6;
+                text-decoration: none;
+                font-weight: 600;
+                margin-left: 8px;
+            `;
+        }
 
-        // Agregar animacion CSS si no existe
         if (!document.querySelector('#cart-notification-styles')) {
             const style = document.createElement('style');
             style.id = 'cart-notification-styles';
             style.textContent = `
                 @keyframes slideInUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(20px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
                 }
                 @keyframes slideOutDown {
-                    from {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                    to {
-                        opacity: 0;
-                        transform: translateY(20px);
-                    }
+                    from { opacity: 1; transform: translateY(0); }
+                    to { opacity: 0; transform: translateY(20px); }
                 }
             `;
             document.head.appendChild(style);
@@ -226,7 +299,6 @@ const CartManager = {
 
         document.body.appendChild(notification);
 
-        // Auto-remover despues de 4 segundos
         setTimeout(() => {
             notification.style.animation = 'slideOutDown 0.3s ease forwards';
             setTimeout(() => notification.remove(), 300);
@@ -245,7 +317,8 @@ function addToCartFromButton(button) {
         price: button.dataset.productPrice,
         image: button.dataset.productImage,
         variant: button.dataset.productVariant || '',
-        quantity: parseInt(button.dataset.productQuantity) || 1
+        quantity: parseInt(button.dataset.productQuantity) || 1,
+        stock: parseInt(button.dataset.productStock) || 0
     };
 
     if (!productData.id || !productData.name || !productData.price) {
@@ -253,6 +326,7 @@ function addToCartFromButton(button) {
         return false;
     }
 
+    // Agregar al carrito (usa stock del HTML, instantaneo)
     CartManager.addToCart(productData);
     return true;
 }

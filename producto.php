@@ -50,26 +50,15 @@ $producto = $result->fetch_assoc();
         <?php
         $colores = array_map('trim', explode(',', $producto['color']));
         foreach ($colores as $c) {
-            $nombreArchivo = strtolower(str_replace(' ', '_', $producto['nombre'])) . "_" . strtolower($c) . "_1.png"; // primera vista por color
-            echo "<img src='./assets/img/products/$nombreArchivo' alt='$c'
+            $nombreArchivo = strtolower(str_replace(' ', '_', $producto['nombre'])) . "_" . strtolower($c) . ".webp"; // primera vista por color
+            echo "<img src='./assets/img/products/thumbnails/$nombreArchivo' alt='$c'
                       onclick=\"selectColor('$c')\"> ";
         }
         ?>
     </div>
 </div>
 
-    <!-- MINIATURAS DE COLORES -->
-    <div id="thumbnails" style="display:flex; gap:10px; flex-wrap:wrap;">
-      <?php
-      $colores = array_map('trim', explode(',', $producto['color']));
-      foreach ($colores as $c) {
-        $nombreArchivo = strtolower(str_replace(' ', '_', $producto['nombre'])) . "_" . strtolower($c) . ".jpg";
-        echo "<img src='./assets/img/products/$nombreArchivo' alt='$c'
-                  onclick=\"changeImage('$nombreArchivo')\"
-                  style='width:70px; height:70px; object-fit:cover; cursor:pointer; border-radius:5px; border:2px solid #ccc;'> ";
-      }
-      ?>
-    </div>
+    
   </div>
 
   <!-- INFORMACIÓN -->
@@ -118,6 +107,7 @@ $producto = $result->fetch_assoc();
               data-product-image="./assets/img/products/<?php echo htmlspecialchars($producto['imagen']); ?>"
               data-product-variant=""
               data-product-quantity="1"
+              data-product-stock="<?php echo $producto['stock'] ?? 99; ?>"
               onclick="addToCartWithOptions()"
               style="flex:1; padding:12px; border:none; border-radius:5px; cursor:pointer; background:white; color:black; font-weight:bold;">
         🛒 Agregar al carrito
@@ -194,6 +184,7 @@ $producto = $result->fetch_assoc();
                     data-product-name='".htmlspecialchars($p['nombre'], ENT_QUOTES)."'
                     data-product-price='{$precioFinal}'
                     data-product-image='./assets/img/products/{$p['imagen']}'
+                    data-product-stock='".($p['stock'] ?? 99)."'
                     onclick='addToCartFromButton(this)'
                     style='background:#1c1c1f; color:white; border:none; border-radius:5px; padding:8px 10px; cursor:pointer;'>
               🛒
@@ -244,7 +235,7 @@ let maxImages = 3; // número máximo de vistas (puede variar según producto)
 
 function updateMainImage() {
     let name = "<?php echo strtolower(str_replace(' ', '_', $producto['nombre'])); ?>";
-    document.getElementById('mainImage').src = `./assets/img/products/${name}_${currentColor}_${currentImageIndex}.png`;
+    document.getElementById('mainImage').src = `./assets/img/products/${name}_${currentColor}_${currentImageIndex}.webp`;
 }
 
 function selectColor(color) {
@@ -266,29 +257,56 @@ function nextImage() {
 }
 
 // ---- CARRITO ----
-function addToCartWithOptions() {
+async function addToCartWithOptions() {
     const btn = document.getElementById('addToCartBtn');
     const quantity = parseInt(document.getElementById('cantidad').value) || 1;
 
+    // Deshabilitar boton mientras se procesa
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+    btn.textContent = 'Agregando...';
+
     // Actualizar la imagen basada en el color seleccionado
     const productName = "<?php echo strtolower(str_replace(' ', '_', $producto['nombre'])); ?>";
-    const imagePath = `./assets/img/products/${productName}_${currentColor}_1.png`;
+    const imagePath = `./assets/img/products/${productName}_${currentColor}_1.webp`;
 
     const productData = {
         id: btn.dataset.productId,
         name: btn.dataset.productName,
         price: parseFloat(btn.dataset.productPrice),
         image: imagePath,
-        variant: currentColor.charAt(0).toUpperCase() + currentColor.slice(1), // Capitalizar
+        variant: currentColor.charAt(0).toUpperCase() + currentColor.slice(1),
         quantity: quantity
     };
 
-    CartManager.addToCart(productData);
+    await CartManager.addToCart(productData);
+
+    // Rehabilitar boton
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.innerHTML = '🛒 Agregar al carrito';
 }
 
-function buyNow() {
-    addToCartWithOptions();
-    window.location.href = 'carrito.php';
+async function buyNow() {
+    const btn = document.getElementById('addToCartBtn');
+    const quantity = parseInt(document.getElementById('cantidad').value) || 1;
+
+    const productName = "<?php echo strtolower(str_replace(' ', '_', $producto['nombre'])); ?>";
+    const imagePath = `./assets/img/products/${productName}_${currentColor}_1.webp`;
+
+    const productData = {
+        id: btn.dataset.productId,
+        name: btn.dataset.productName,
+        price: parseFloat(btn.dataset.productPrice),
+        image: imagePath,
+        variant: currentColor.charAt(0).toUpperCase() + currentColor.slice(1),
+        quantity: quantity
+    };
+
+    const added = await CartManager.addToCart(productData);
+    if (added) {
+        window.location.href = 'carrito.php';
+    }
 }
 
 // Actualizar el boton cuando cambia el color

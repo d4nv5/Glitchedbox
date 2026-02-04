@@ -444,6 +444,7 @@
                       data-product-name="'.htmlspecialchars($row["nombre"], ENT_QUOTES).'"
                       data-product-price="'.$row["precio"].'"
                       data-product-image="./assets/img/products/'.$row["imagen"].'"
+                      data-product-stock="'.($row["stock"] ?? 99).'"
                       onclick="addToCartFromButton(this)">
                 <img src="assets/img/ico/cart.ico" style="vertical-align: middle;">
               </button>

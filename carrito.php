@@ -156,7 +156,7 @@ body {
 
 <!-- Cart Item Template -->
 <template id="cartItemTemplate">
-    <div class="cart-item" data-item-id="">
+    <div class="cart-item" data-item-id="" data-stock="">
         <div class="cart-item-image">
             <img src="" alt="">
         </div>
@@ -164,11 +164,12 @@ body {
             <h3 class="cart-item-name"></h3>
             <div class="cart-item-details">
                 <span class="cart-item-variant"></span>
+                <span class="cart-item-stock" style="color: #a0a0a0; font-size: 12px; margin-left: 10px;"></span>
             </div>
             <div class="cart-item-quantity">
-                <button onclick="updateQuantity(this, -1)">-</button>
+                <button class="qty-btn-minus" onclick="updateQuantity(this, -1)">-</button>
                 <span class="quantity-value">1</span>
-                <button onclick="updateQuantity(this, 1)">+</button>
+                <button class="qty-btn-plus" onclick="updateQuantity(this, 1)">+</button>
             </div>
             <div class="cart-item-price"></div>
         </div>
@@ -224,9 +225,11 @@ function renderCartPage() {
     cart.forEach(item => {
         const itemElement = template.content.cloneNode(true);
         const cartItem = itemElement.querySelector('.cart-item');
+        const stock = item.stock || 99;
 
         cartItem.dataset.itemId = item.id;
         cartItem.dataset.variant = item.variant || '';
+        cartItem.dataset.stock = stock;
 
         const img = itemElement.querySelector('.cart-item-image img');
         img.src = item.image;
@@ -234,8 +237,17 @@ function renderCartPage() {
 
         itemElement.querySelector('.cart-item-name').textContent = item.name;
         itemElement.querySelector('.cart-item-variant').textContent = item.variant ? `Version: ${item.variant}` : '';
+        itemElement.querySelector('.cart-item-stock').textContent = `(${stock} disponibles)`;
         itemElement.querySelector('.quantity-value').textContent = item.quantity;
         itemElement.querySelector('.cart-item-price').textContent = `$${(item.price * item.quantity).toLocaleString('es-MX')} MXN`;
+
+        // Deshabilitar boton + si se alcanzo el stock
+        const plusBtn = itemElement.querySelector('.qty-btn-plus');
+        if (item.quantity >= stock) {
+            plusBtn.disabled = true;
+            plusBtn.style.opacity = '0.5';
+            plusBtn.style.cursor = 'not-allowed';
+        }
 
         cartItemsContainer.appendChild(itemElement);
     });
@@ -268,11 +280,14 @@ function updateQuantity(button, delta) {
 
     if (item) {
         const newQuantity = item.quantity + delta;
+
+        // Validar minimo
         if (newQuantity <= 0) {
             removeFromCart(cartItem.querySelector('.cart-item-remove'));
             return;
         }
 
+        // Usar validacion de stock local (instantaneo)
         CartManager.updateQuantity(itemId, variant, newQuantity);
         renderCartPage();
     }
