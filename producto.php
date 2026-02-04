@@ -170,7 +170,7 @@ $producto = $result->fetch_assoc();
 <!-- PRODUCTOS RELACIONADOS -->
 <section style="background:#f8f8f8; padding:50px 0;">
   <div style="max-width:1200px; margin:auto;">
-    <h2 style="text-align:center; margin-bottom:30px;">¡Separados son geniales, juntos son leyenda!</h2>
+    <h2 style="text-align:center; margin-bottom:30px; color:#000;">¡Separados son geniales, juntos son leyenda!</h2>
     <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
       <?php
       $rel = $conn->query("SELECT * FROM productos WHERE id != $id AND activo = 1 ORDER BY RAND() LIMIT 4");
