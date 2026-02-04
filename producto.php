@@ -22,6 +22,39 @@ if ($result->num_rows == 0) {
 $producto = $result->fetch_assoc();
 ?>
 
+<!-- ESTILOS PARA SELECCION DE COLOR -->
+<style>
+.thumbnails img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    filter: grayscale(100%);
+    opacity: 0.5;
+    border: 2px solid transparent;
+}
+.thumbnails img.active {
+    filter: grayscale(0%);
+    opacity: 1;
+    border: 2px solid #39FF14;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+}
+.thumbnails img:hover {
+    filter: grayscale(0%);
+    opacity: 0.8;
+}
+.colorBtn {
+    transition: all 0.3s ease;
+}
+.colorBtn.active {
+    background: #39FF14 !important;
+    color: black !important;
+    font-weight: bold;
+}
+</style>
+
 <!-- BREADCRUMB -->
 <nav style="padding:15px 30px; font-size:14px;">
   <a href="index.php" style="text-decoration:none;">Art Toys</a> >
@@ -56,7 +89,9 @@ $producto = $result->fetch_assoc();
             } else {
                 $nombreArchivo = $nombreBase . "_" . strtolower($c) . ".webp";
             }
+            $colorLower = strtolower($c);
             echo "<img src='./assets/img/products/thumbnails/$nombreArchivo' alt='$c'
+                      data-color='$colorLower'
                       onclick=\"selectColor('$c')\"> ";
         }
         ?>
@@ -88,7 +123,8 @@ $producto = $result->fetch_assoc();
     <div style="margin-bottom:20px;">
       <?php
       foreach ($colores as $c) {
-        echo "<button class='colorBtn' onclick=\"selectColor('$c')\" 
+        $colorLower = strtolower($c);
+        echo "<button class='colorBtn' data-color='$colorLower' onclick=\"selectColor('$c')\"
               style='margin:5px; padding:10px 15px; border:none; border-radius:5px; background:#1c1c1f; color:white; cursor:pointer;'>$c</button>";
       }
       ?>
@@ -251,6 +287,27 @@ function selectColor(color) {
     currentColor = color.toLowerCase();
     currentImageIndex = 1; // reinicia la vista al cambiar color
     updateMainImage();
+    updateColorSelection();
+}
+
+function updateColorSelection() {
+    // Actualizar thumbnails
+    document.querySelectorAll('.thumbnails img').forEach(img => {
+        if (img.dataset.color === currentColor) {
+            img.classList.add('active');
+        } else {
+            img.classList.remove('active');
+        }
+    });
+
+    // Actualizar botones de color
+    document.querySelectorAll('.colorBtn').forEach(btn => {
+        if (btn.dataset.color === currentColor) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
 }
 
 function prevImage() {
@@ -338,4 +395,9 @@ selectColor = function(color) {
         btn.dataset.productVariant = color;
     }
 };
+
+// Inicializar seleccion visual al cargar la pagina
+document.addEventListener('DOMContentLoaded', function() {
+    updateColorSelection();
+});
 </script>
