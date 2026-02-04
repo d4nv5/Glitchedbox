@@ -50,7 +50,12 @@ $producto = $result->fetch_assoc();
         <?php
         $colores = array_map('trim', explode(',', $producto['color']));
         foreach ($colores as $c) {
-            $nombreArchivo = strtolower(str_replace(' ', '_', $producto['nombre'])) . "_" . strtolower($c) . ".webp"; // primera vista por color
+            $nombreBase = strtolower(str_replace(' ', '_', $producto['nombre']));
+            if (strtolower($c) === 'sin variante') {
+                $nombreArchivo = $nombreBase . ".webp";
+            } else {
+                $nombreArchivo = $nombreBase . "_" . strtolower($c) . ".webp";
+            }
             echo "<img src='./assets/img/products/thumbnails/$nombreArchivo' alt='$c'
                       onclick=\"selectColor('$c')\"> ";
         }
@@ -235,7 +240,11 @@ let maxImages = 3; // número máximo de vistas (puede variar según producto)
 
 function updateMainImage() {
     let name = "<?php echo strtolower(str_replace(' ', '_', $producto['nombre'])); ?>";
-    document.getElementById('mainImage').src = `./assets/img/products/${name}_${currentColor}_${currentImageIndex}.webp`;
+    if (currentColor === 'sin variante') {
+        document.getElementById('mainImage').src = `./assets/img/products/${name}_${currentImageIndex}.webp`;
+    } else {
+        document.getElementById('mainImage').src = `./assets/img/products/${name}_${currentColor}_${currentImageIndex}.webp`;
+    }
 }
 
 function selectColor(color) {
@@ -268,7 +277,12 @@ async function addToCartWithOptions() {
 
     // Actualizar la imagen basada en el color seleccionado
     const productName = "<?php echo strtolower(str_replace(' ', '_', $producto['nombre'])); ?>";
-    const imagePath = `./assets/img/products/${productName}_${currentColor}_1.webp`;
+    let imagePath;
+    if (currentColor === 'sin variante') {
+        imagePath = `./assets/img/products/${productName}_1.webp`;
+    } else {
+        imagePath = `./assets/img/products/${productName}_${currentColor}_1.webp`;
+    }
 
     const productData = {
         id: btn.dataset.productId,
@@ -292,7 +306,12 @@ async function buyNow() {
     const quantity = parseInt(document.getElementById('cantidad').value) || 1;
 
     const productName = "<?php echo strtolower(str_replace(' ', '_', $producto['nombre'])); ?>";
-    const imagePath = `./assets/img/products/${productName}_${currentColor}_1.webp`;
+    let imagePath;
+    if (currentColor === 'sin variante') {
+        imagePath = `./assets/img/products/${productName}_1.webp`;
+    } else {
+        imagePath = `./assets/img/products/${productName}_${currentColor}_1.webp`;
+    }
 
     const productData = {
         id: btn.dataset.productId,
