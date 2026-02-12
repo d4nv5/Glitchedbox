@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallinitas Mágicas - Glitched Box</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="gb-core.css">
+    <link rel="stylesheet" href="product-page.css">
+</head>
+<body>
+    <!-- SVG gradient for half stars -->
+    <svg width="0" height="0" style="position:absolute">
+        <defs>
+            <!-- Gradiente para estrellas de las cards -->
+            <linearGradient id="half-star" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="50%" style="stop-color:#fbbf24;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:transparent;stop-opacity:0" />
+            </linearGradient>
+            <!-- Gradiente para estrellas del producto principal -->
+            <linearGradient id="half-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="50%" style="stop-color:#fbbf24;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:transparent;stop-opacity:0" />
+            </linearGradient>
+        
+<!-- ClipPaths para contorno mitad/mitad en estrellas -->
+<clipPath id="clip-left-half">
+    <rect x="0" y="0" width="10" height="20"></rect>
+</clipPath>
+<clipPath id="clip-right-half">
+    <rect x="10" y="0" width="10" height="20"></rect>
+</clipPath>
+        </defs>
+    </svg>
+    <!-- Header / Navigation -->
+  <header class="header">
+    <div class="layout__container">
+      <div class="header-content">
+
+        <!-- Hamburger Menu Toggle (mobile only) -->
+        <button class="hamburger-toggle" id="hamburgerToggle" aria-label="Abrir menú de navegación" type="button">
+          <span class="hamburger-icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+
+        <!-- Logo -->
+        <div class="logo">
+          <a aria-label="Glitched Box (inicio)" href="index.html">
+            <img
+              alt="Glitched Box"
+              class="header-logo-img"
+              data-logo-dark="images/logo_glitchedbox_horizontal.svg"
+              data-logo-light="images/logo_glitchedbox_horizontal_black.svg"
+              decoding="async"
+              id="headerLogo"
+              loading="eager"
+              src="images/logo_glitchedbox_horizontal.svg"
+            />
+          </a>
+        </div>
+
+        <!-- Navegación Primaria -->
+        <nav class="primary-nav" aria-label="Navegación principal">
+        <button aria-label="Tienda" class="icon-button" type="button">
+            <span aria-hidden="true" class="icon-wrap icon-wrap--24">
+              <svg aria-hidden="true" fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 3V1H18V3H2ZM2 19V10H1V7.5L2 2H18L19 7.5V10H18V19H15V10H10V19H2ZM4 17H8V12H4V17ZM3 8H17L16.5 4H3.5L3 8Z" fill="currentColor"></path>
+              </svg>
+            </span>
+            <span>Tienda</span>
+          </button>
+
+          <button aria-label="Colecciones" class="icon-button" type="button">
+            <span aria-hidden="true" class="icon-wrap icon-wrap--24">
+              <svg aria-hidden="true" fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1H9V9H1V1ZM11 1H19V9H11V1ZM1 11H9V19H1V11ZM11 11H19V19H11V11Z" fill="currentColor"/>
+              </svg>
+            </span>
+            <span>Colecciones</span>
+          </button>
+        </nav>
+                
+        <!-- Search Bar (desktop/tablet) -->
+        <div class="header-search">
+          <div class="search-container">
+            <span aria-hidden="true" class="icon-wrap icon-wrap--24 search-icon">
+              <svg aria-hidden="true" fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                <path d="M19 19L14.65 14.65" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+              </svg>
+            </span>
+            <input aria-label="Buscar productos" class="search-input" placeholder="Buscar productos..." type="text"/>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="header-actions">
+
+          <!-- Search (mobile) -->
+          <button aria-label="Abrir búsqueda" class="icon-button search-toggle" id="searchToggle" type="button">
+            <span aria-hidden="true" class="icon-wrap icon-wrap--24">
+              <svg aria-hidden="true" fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                <path d="M19 19L14.65 14.65" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+              </svg>
+            </span>
+            <span>Buscar</span>
+          </button>
+          
+          <button aria-label="Iniciar sesión" class="icon-button" type="button">
+            <span aria-hidden="true" class="icon-wrap icon-wrap--24">
+              <svg aria-hidden="true" fill="currentColor" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 10C12.7614 10 15 7.76142 15 5C15 2.23858 12.7614 0 10 0C7.23858 0 5 2.23858 5 5C5 7.76142 7.23858 10 10 10ZM10 12.5C6.66667 12.5 0 14.175 0 17.5V20H20V17.5C20 14.175 13.3333 12.5 10 12.5Z" fill="currentColor"></path>
+              </svg>
+            </span>
+            <span>Iniciar sesión</span>
+          </button>
+
+          <button aria-label="Favoritos" class="icon-button" type="button">
+            <span aria-hidden="true" class="icon-wrap icon-wrap--24">
+              <svg aria-hidden="true" fill="currentColor" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 18.35L8.55 17.03C3.4 12.36 0 9.27 0 5.5C0 2.41 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.08C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.41 20 5.5C20 9.27 16.6 12.36 11.45 17.03L10 18.35Z" fill="currentColor"></path>
+              </svg>
+            </span>
+            <span>Favoritos</span>
+          </button>
+
+          <button aria-label="Carrito" class="icon-button cart-button" type="button">
+            <span aria-hidden="true" class="icon-wrap icon-wrap--24">
+              <svg aria-hidden="true" fill="currentColor" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 16C4.9 16 4.01 16.9 4.01 18C4.01 19.1 4.9 20 6 20C7.1 20 8 19.1 8 18C8 16.9 7.1 16 6 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 14.1 4.9 15 6 15H18V13H6.42C6.28 13 6.17 12.89 6.17 12.75L6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.48C19.96 3.34 20 3.17 20 3C20 2.45 19.55 2 19 2H4.21L3.27 0H0ZM16 16C14.9 16 14.01 16.9 14.01 18C14.01 19.1 14.9 20 16 20C17.1 20 18 19.1 18 18C18 16.9 17.1 16 16 16Z" fill="currentColor"></path>
+              </svg>
+            </span>
+            <span>Carrito</span>
+            <span class="cart-badge" id="cartBadge">0</span>
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumbs-bar">
+    <div class="layout__container breadcrumbs-bar__inner">
+      <nav aria-label="Breadcrumb" class="breadcrumbs">
+        <a class="breadcrumb-link" href="index.html">Inicio</a>
+        <span class="breadcrumb-sep">›</span>
+        <a class="breadcrumb-link" href="#">Colecciones</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current" aria-current="page">Gallinitas</span>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: var(--size-4);">
+        <!-- Language Selector -->
+        <div class="language-selector" id="languageSelector">
+          <button class="language-toggle" id="languageToggle" aria-label="Cambiar idioma" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M7 2a1 1 0 011 1v1h3a1 1 0 110 2H9.578a18.87 18.87 0 01-1.724 4.78c.29.354.596.696.914 1.026a1 1 0 11-1.44 1.389c-.188-.196-.373-.396-.554-.6a19.098 19.098 0 01-3.107 3.567 1 1 0 01-1.334-1.49 17.087 17.087 0 003.13-3.733 18.992 18.992 0 01-1.487-2.494 1 1 0 111.79-.89c.234.47.489.928.764 1.372.417-.934.752-1.913.997-2.927H3a1 1 0 110-2h3V3a1 1 0 011-1zm6 6a1 1 0 01.894.553l2.991 5.982a.869.869 0 01.02.037l.99 1.98a1 1 0 11-1.79.895L15.383 16h-4.764l-.724 1.447a1 1 0 11-1.788-.894l.99-1.98.019-.038 2.99-5.982A1 1 0 0113 8zm-1.382 6h2.764L13 11.236 11.618 14z" clip-rule="evenodd"/>
+            </svg>
+            <span id="currentLang">ES</span>
+            <svg class="language-toggle-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+          </button>
+          <div class="language-dropdown" role="menu">
+            <button class="language-option active" data-lang="es" role="menuitem">
+              🇲🇽 Español
+            </button>
+            <button class="language-option" data-lang="en" role="menuitem">
+              🇺🇸 English
+            </button>
+          </div>
+        </div>
+
+        <!-- Theme Switch -->
+        <label class="theme-switch" aria-label="Cambiar tema">
+  <input id="themeToggle" type="checkbox" class="theme-switch__checkbox" data-theme-toggle aria-label="Cambiar tema claro/oscuro">
+  <div class="theme-switch__container" aria-hidden="true">
+    <div class="theme-switch__clouds"></div>
+    <div class="theme-switch__stars-container">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none" aria-hidden="true">
+  <path fill-rule="evenodd" clip-rule="evenodd"
+    d="M135.8 3c-.8.9-1.7 1.3-2.8 1.4 1.1.1 2 .5 2.8 1.4.8.9 1.2 1.9 1.2 3.1 0-.8.2-1.5.5-2.1.4-.7.9-1.2 1.5-1.6.6-.4 1.3-.6 2.1-.6-1.1-.1-2.1-.5-2.9-1.4C137.4 2.2 137 1.2 137 0c0 1.2-.4 2.2-1.2 3ZM31 23.4c1.1-.1 2-.5 2.8-1.4.8-.9 1.2-1.8 1.2-3 0 1.2.4 2.1 1.2 3 .8.9 1.7 1.3 2.8 1.4-.7 0-1.4.2-2 .6-.6.4-1.1.9-1.5 1.6-.4.7-.5 1.4-.5 2.1 0-1.2-.4-2.2-1.2-3.1-.8-.9-1.7-1.3-2.8-1.4Z"
+    fill="currentColor"/>
+</svg>
+    </div>
+    <div class="theme-switch__circle-container">
+      <div class="theme-switch__sun-moon-container">
+        <div class="theme-switch__moon">
+          <div class="theme-switch__spot"></div>
+          <div class="theme-switch__spot"></div>
+          <div class="theme-switch__spot"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</label>
+      </div> <!-- Cierre del wrapper de language + theme -->
+    </div>
+  </div>
+
+  <!-- Search Overlay (mobile) -->
+  <div aria-hidden="true" class="search-overlay" id="searchOverlay">
+    <div class="search-overlay__backdrop" data-search-close=""></div>
+
+    <div aria-label="Buscar productos" aria-modal="true" class="search-overlay__panel" role="dialog">
+      <div class="search-overlay__header">
+        <strong class="search-overlay__title">Buscar</strong>
+
+        <button aria-label="Cerrar búsqueda" class="icon-button search-overlay__close" data-search-close="" type="button">
+          <span aria-hidden="true" class="icon-wrap icon-wrap--20">
+            <svg aria-hidden="true" fill="none" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 4L16 16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+              <path d="M16 4L4 16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+            </svg>
+          </span>
+        </button>
+      </div>
+
+      <div class="search-container">
+        <span aria-hidden="true" class="icon-wrap icon-wrap--24 search-icon">
+          <svg aria-hidden="true" fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+            <path d="M19 19L14.65 14.65" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+        </span>
+        <input aria-label="Buscar productos" class="search-input" id="searchInputMobile" placeholder="Buscar productos..." type="text"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu (hamburguesa) -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu__backdrop" data-menu-close=""></div>
+    
+    <div class="mobile-menu__panel">
+      <div class="mobile-menu__header">
+        <span class="mobile-menu__title">Menú</span>
+        <button class="mobile-menu__close" data-menu-close="" aria-label="Cerrar menú" type="button">
+          <span aria-hidden="true" class="icon-wrap icon-wrap--24">
+            <svg aria-hidden="true" fill="none" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 4L16 16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+              <path d="M16 4L4 16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+            </svg>
+          </span>
+        </button>
+      </div>
+
+      <nav class="mobile-menu__nav" aria-label="Navegación móvil">
+        
+        <!-- 1. TIENDA -->
+        <a href="tienda.html" class="mobile-menu__link">
+          <span aria-hidden="true" class="icon-wrap icon-wrap--24">
+            <svg aria-hidden="true" fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 3V1H18V3H2ZM2 19V10H1V7.5L2 2H18L19 7.5V10H18V19H15V10H10V19H2ZM4 17H8V12H4V17ZM3 8H17L16.5 4H3.5L3 8Z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span>Tienda</span>
+        </a>
+
+        <!-- 2. COLECCIONES -->
+        <a href="colecciones.html" class="mobile-menu__link">
+          <span aria-hidden="true" class="icon-wrap icon-wrap--24">
+            <svg aria-hidden="true" fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0H8V8H0V0ZM10 0H18V8H10V0ZM0 10H8V18H0V10ZM10 10H18V18H10V10ZM2 2V6H6V2H2ZM12 2V6H16V2H12ZM2 12V16H6V12H2ZM12 12V16H16V12H12Z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span>Colecciones</span>
+        </a>
+
+        <!-- 3. FAVORITOS -->
+        <a href="favoritos.html" class="mobile-menu__link">
+          <span aria-hidden="true" class="icon-wrap icon-wrap--24">
+            <svg aria-hidden="true" fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 18.35L8.55 17.03C3.4 12.36 0 9.27 0 5.5C0 2.41 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.08C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.41 20 5.5C20 9.27 16.6 12.36 11.45 17.03L10 18.35Z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span>Favoritos</span>
+        </a>
+
+        <!-- 4. INICIAR SESIÓN / MI CUENTA -->
+        <a href="login.html" class="mobile-menu__link">
+          <span aria-hidden="true" class="icon-wrap icon-wrap--24">
+            <svg aria-hidden="true" fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 10C12.7614 10 15 7.76142 15 5C15 2.23858 12.7614 0 10 0C7.23858 0 5 2.23858 5 5C5 7.76142 7.23858 10 10 10ZM10 12.5C6.66667 12.5 0 14.175 0 17.5V20H20V17.5C20 14.175 13.3333 12.5 10 12.5Z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span>Iniciar sesión</span>
+        </a>
+
+        <!-- SEPARADOR -->
+        <div class="mobile-menu__separator"></div>
+
+        <!-- 5. IDIOMA -->
+        <button class="mobile-menu__link" id="mobileLangToggle" type="button">
+          <span aria-hidden="true" class="icon-wrap icon-wrap--24">
+            <svg aria-hidden="true" fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM17 10C17 10.58 16.95 11.14 16.85 11.69L14 10.5V9.5C14 8.67 13.33 8 12.5 8H11V6C11 5.45 10.55 5 10 5H8V3H10C10.55 3 11 2.55 11 2V1.14C14.41 1.67 17 4.53 17 8V10ZM3 10C3 7.81 3.96 5.87 5.46 4.54L7 6.08V7C7 8.1 7.9 9 9 9V11.08C6.39 11.56 4.34 13.65 4 16.28C3.36 14.99 3 13.55 3 12V10Z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span>Idioma: <span id="mobileLangDisplay">Español</span></span>
+        </button>
+
+        <!-- 6. TEMA -->
+        <button class="mobile-menu__link mobile-menu__link--theme" id="mobileThemeToggle" type="button">
+          <span aria-hidden="true" class="icon-wrap icon-wrap--24">
+            <svg aria-hidden="true" fill="currentColor" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg" id="mobileThemeIcon">
+              <!-- Luna (tema oscuro) -->
+              <path class="theme-icon-moon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span>Tema: <span id="mobileThemeDisplay">Oscuro</span></span>
+        </button>
+
+      </nav>
+    </div>
+  </div>
+	
+	<!-- Main Content -->
+    <main class="main-content">
+        <div class="layout__container">
+            <div class="product-page">
+                <div class="product-top">
+                    <!-- Product Images -->
+                    <div class="product-images">
+                    <div class="slider">
+                        <button class="slider-btn prev">‹</button>
+
+                        <div class="slider-track-wrapper">
+                            <div class="slider-track">
+                                <img src="images/gallina_blanca_1.webp" alt="Gallinita Mágica - Vista 1" class="carousel-image active">
+                                <img src="images/gallina_blanca_2.webp" alt="Gallinita Mágica - Vista 2" class="carousel-image">
+                                <img src="images/gallina_blanca_3.webp" alt="Gallinita Mágica - Vista 3" class="carousel-image">
+                            </div>
+                        </div>
+
+                        <button class="slider-btn next">›</button>
+                    </div>
+
+                    <!-- Acordeón: Tiempo de entrega -->
+                    <div class="accordion">
+                      <button class="accordion-header">
+                        <span>Tiempo de entrega</span>
+                        <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </button>
+
+                      <div class="accordion-content">
+                        <p>Los envíos se realizan de lunes a viernes. El tiempo de entrega estimado es de 5 a 7 días hábiles para toda la República Mexicana.</p>
+                        <ul>
+                          <li>Ciudad de México y Área Metropolitana: 2-3 días hábiles</li>
+                          <li>Interior de la República: 5-7 días hábiles</li>
+                          <li>Zonas remotas: 7-10 días hábiles</li>
+                        </ul>
+                        <p><strong>Nota:</strong> Los tiempos de entrega pueden variar dependiendo de la disponibilidad y condiciones de envío.</p>
+                      </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-info">
+
+                    <!-- Título / Corazón / Precio -->
+                    <div class="product-title-price">
+
+                        <!-- Título + estrellas + favorito -->
+                        <div class="product-title-fav">
+                            <h1 class="product-title">Gallinitas Mágicas</h1>
+
+                            
+    <div class="rating-fav">
+    <!-- Estrellas -->
+                                <div class="product-rating product-rating--interactive" data-rating="0">
+                                    <button class="star-button" data-value="1" aria-label="Calificar con 1 estrella">
+                                        <svg class="star-icon" width="32" height="32" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="star-fill" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z"/>
+    <path class="star-stroke star-stroke-left" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-left-half)"/>
+    <path class="star-stroke star-stroke-right" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-right-half)"/>
+        </svg>
+                                    </button>
+                                    <button class="star-button" data-value="2" aria-label="Calificar con 2 estrellas">
+                                        <svg class="star-icon" width="32" height="32" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="star-fill" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z"/>
+    <path class="star-stroke star-stroke-left" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-left-half)"/>
+    <path class="star-stroke star-stroke-right" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-right-half)"/>
+        </svg>
+                                    </button>
+                                    <button class="star-button" data-value="3" aria-label="Calificar con 3 estrellas">
+                                        <svg class="star-icon" width="32" height="32" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="star-fill" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z"/>
+    <path class="star-stroke star-stroke-left" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-left-half)"/>
+    <path class="star-stroke star-stroke-right" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-right-half)"/>
+        </svg>
+                                    </button>
+                                    <button class="star-button" data-value="4" aria-label="Calificar con 4 estrellas">
+                                        <svg class="star-icon" width="32" height="32" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="star-fill" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z"/>
+    <path class="star-stroke star-stroke-left" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-left-half)"/>
+    <path class="star-stroke star-stroke-right" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-right-half)"/>
+        </svg>
+                                    </button>
+                                    <button class="star-button" data-value="5" aria-label="Calificar con 5 estrellas">
+                                        <svg class="star-icon" width="32" height="32" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="star-fill" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z"/>
+    <path class="star-stroke star-stroke-left" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-left-half)"/>
+    <path class="star-stroke star-stroke-right" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-right-half)"/>
+        </svg>
+                                    </button>
+                                    <span class="rating-count">(0)</span>
+                                </div>
+    
+                                <button class="favorite-button" aria-label="Agregar a favoritos">
+                                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5C22 12.27 18.6 15.36 13.45 20.03L12 21.35Z" stroke="currentColor" stroke-width="2" />
+                              />
+                            </svg>
+                        </button>
+  </div>
+</div>
+                   
+                   <!-- Precio -->
+                   <div class="product-price">$150 MXN</div>
+                    </div>
+
+                    <!-- Descripción -->
+                    <div class="product-description-wrapper">
+                        <p class="product-description" id="productDesc">
+                            Directo desde las ferias de pueblo más underground, llegan estas gallinas que no saben si fueron teñidas con pintura, magia o una apuesta perdida. Con colores tan llamativos que podrían ser señal de advertencia en la naturaleza, estas aves son el epítome de lo exótico, lo absurdo y lo cuestionable. ¡No te puedes perder el Lote Deluxe, la colección definitiva de gallinas fuera de control! <button class="desc-toggle" id="descToggle" type="button">...Ver más</button>
+                        </p>
+                    </div>
+                      
+                      <!-- TODO lo que va abajo de la descripción -->
+                      <div class="product-actions">
+
+                     <!-- Variante seleccionada -->
+  
+                    <div class="product-actions">
+
+                    <!-- ROW 1: Texto variante + label piezas + contador -->
+                    <div class="vaq-row">
+                       <div class="selected-variant">
+                       <span class="variant-label">Elige tu versión favorita:</span>
+                       <span class="variant-current" id="currentVariant">Blanca</span>
+                     </div>
+
+                     <div class="qty-block">
+                         <span class="qty-label">Número de piezas</span>
+
+                      <div class="quantity-selector">
+                        <button class="qty-btn" type="button" id="decreaseQty">−</button>
+                        <input type="number" class="quantity-input" id="quantityInput" value="0" min="0" max="99" readonly>
+                        <button class="qty-btn" type="button" id="increaseQty">+</button>
+                       </div>
+                      </div>
+                    </div>
+
+                  <!-- ROW 2: Gallinitas (máx 84x84) -->
+                    <div class="color-variants-gallery">
+                       <div class="variant-item" data-color="blanca">
+                       <img src="images/84X84_blanca.webp" alt="Gallinita Blanca">
+                       <span class="variant-name">Blanca</span>
+                    </div>
+
+                    <div class="variant-item" data-color="amarilla">
+                        <img src="images/84X84_amarilla.webp" alt="Gallinita Amarilla">
+                        <span class="variant-name">Amarilla</span>
+                    </div>
+
+                    <div class="variant-item" data-color="aqua">
+                        <img src="images/84X84_aqua.webp" alt="Gallinita Aqua">
+                        <span class="variant-name">Aqua</span>
+                    </div>
+
+                    <div class="variant-item" data-color="azul">
+                        <img src="images/84X84_azul.webp" alt="Gallinita Azul">
+                        <span class="variant-name">Azul</span>
+                    </div>
+
+                    <div class="variant-item" data-color="cafe">
+                        <img src="images/84X84_cafe.webp" alt="Gallinita Café">
+                        <span class="variant-name">Café</span>
+                    </div>
+
+                    <div class="variant-item" data-color="cafe claro">
+                        <img src="images/84X84_cafe_claro.webp" alt="Gallinita Café claro">
+                        <span class="variant-name">Café claro</span>
+                    </div>
+
+                     <div class="variant-item" data-color="gris">
+                        <img src="images/84X84_gris.webp" alt="Gallinita Gris">
+                      <span class="variant-name">Gris</span>
+                    </div>
+
+                     <div class="variant-item" data-color="mamey">
+                        <img src="images/84X84_mamey.webp" alt="Gallinita Mamey">
+                        <span class="variant-name">Mamey</span>
+                    </div>
+
+                    <div class="variant-item" data-color="dorada">
+                        <img src="images/84X84_dorada.webp" alt="Gallinita Dorada">
+                        <span class="variant-name">Dorada</span>
+                    </div>
+
+                    <div class="variant-item" data-color="roja">
+                        <img src="images/84X84_roja.webp" alt="Gallinita Roja">
+                        <span class="variant-name">Roja</span>
+                    </div>
+
+                    <div class="variant-item" data-color="rosa">
+                        <img src="images/84X84_rosa.webp" alt="Gallinita Rosa">
+                        <span class="variant-name">Rosa</span>
+                    </div>
+
+                    <div class="variant-item" data-color="verde">
+                        <img src="images/84X84_verde.webp" alt="Gallinita Verde">
+                        <span class="variant-name">Verde</span>
+                    </div>
+            </div>
+
+  <!-- ROW 3: Botones -->
+  <div class="action-buttons">
+    <button class="button button-primary" id="addToCartBtn">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 16C4.9 16 4.01 16.9 4.01 18C4.01 19.1 4.9 20 6 20C7.1 20 8 19.1 8 18C8 16.9 7.1 16 6 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 14.1 4.9 15 6 15H18V13H6.42C6.28 13 6.17 12.89 6.17 12.75L6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.48C19.96 3.34 20 3.17 20 3C20 2.45 19.55 2 19 2H4.21L3.27 0H0ZM16 16C14.9 16 14.01 16.9 14.01 18C14.01 19.1 14.9 20 16 20C17.1 20 18 19.1 18 18C18 16.9 17.1 16 16 16Z" fill="currentColor"/>
+      </svg>
+      Agregar al carrito
+    </button>
+    <button class="button button-secondary" id="buyNowBtn">Comprar ahora</button>
+  </div>
+
+</div>
+</div>
+
+                    <!-- Envío gratis -->
+                    <div class="shipping-info">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 8H16V4C16 2.9 15.1 2 14 2H2C0.9 2 0 2.9 0 4V13H2C2 14.66 3.34 16 5 16C6.66 16 8 14.66 8 13H12C12 14.66 13.34 16 15 16C16.66 16 18 14.66 18 13H20V11L18 8ZM5 14.5C4.17 14.5 3.5 13.83 3.5 13C3.5 12.17 4.17 11.5 5 11.5C5.83 11.5 6.5 12.17 6.5 13C6.5 13.83 5.83 14.5 5 14.5ZM16.5 9.5L17.96 12H16V9.5ZM15 14.5C14.17 14.5 13.5 13.83 13.5 13C13.5 12.17 14.17 11.5 15 11.5C15.83 11.5 16.5 12.17 16.5 13C16.5 13.83 15.83 14.5 15 14.5Z" fill="currentColor" />
+                      </svg>
+                      <span>Envío gratis en pedidos mayores a $2,500 MXN</span>
+                    </div>
+
+                    <!-- Acordeón: Tiempo de entrega (solo mobile) -->
+                    <div class="accordion accordion-mobile">
+                      <button class="accordion-header">
+                        <span>Tiempo de entrega</span>
+                        <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </button>
+
+                      <div class="accordion-content">
+                        <p>Los envíos se realizan de lunes a viernes. El tiempo de entrega estimado es de 5 a 7 días hábiles para toda la República Mexicana.</p>
+                        <ul>
+                          <li>Ciudad de México y Área Metropolitana: 2-3 días hábiles</li>
+                          <li>Interior de la República: 5-7 días hábiles</li>
+                          <li>Zonas remotas: 7-10 días hábiles</li>
+                        </ul>
+                        <p><strong>Nota:</strong> Los tiempos de entrega pueden variar dependiendo de la disponibilidad y condiciones de envío.</p>
+                      </div>
+                    </div>
+                </div>
+
+        </div> <!-- container -->
+<!-- =========================
+     PRODUCT DETAILS (TABLA)
+========================= -->
+
+<section class="product-details">
+    <h2 class="details-title">Especificaciones</h2>
+
+    <div class="details-card">
+      <div class="details-head">
+        <div class="details-col-title">Características</div>
+        <div class="details-col-title">Detalles</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Altura:</div>
+        <div class="details-value">4.4 cm</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Ancho:</div>
+        <div class="details-value">3.3 cm</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Profundidad:</div>
+        <div class="details-value">4 cm</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Material:</div>
+        <div class="details-value">Resina ABS</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Distribuido por:</div>
+        <div class="details-value">Glitched Box</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Produccción:</div>
+        <div class="details-value">Impresión 3D</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Pintado a mano:</div>
+        <div class="details-value">Sí</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Colores / Variantes:</div>
+        <div class="details-value">Varios</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Acabado:</div>
+        <div class="details-value">Mate</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Edición:</div>
+        <div class="details-value">Producción continua</div>
+      </div>
+      
+      <div class="details-row">
+        <div class="details-label">Número de serie:</div>
+        <div class="details-value">No aplica</div>
+      </div>
+    </div>
+
+</section>
+
+<!-- =========================
+     PRODUCTS RELATED
+========================= -->
+
+    <div class="related-header">
+        <h2 class="related-title">¡Separados son geniales, juntos son legendarios!</h2>
+        <div class="carousel-indicator">
+            <span id="currentCard">1</span> / <span id="totalCards">6</span>
+        </div>
+    </div>
+
+    <div class="products-grid" id="productsCarousel">
+     <!-- Card 1 -->
+<div class="product-card" data-productid="1" data-product="Reaper">
+
+  <div class="product-card-image">
+    <!-- Imagen inicial (puede ser la de la variante activa) -->
+    <img
+      src="images/reaper_halloween_card_300x300.webp"
+      alt="Reaper"
+    >
+  </div>
+
+  <!-- BOTÓN FLOTANTE (HOVER) ARRIBA DERECHA -->
+  <button
+    class="product-card-button product-card-button--view glitch-text"
+    type="button"
+    data-text="Ver más"
+    aria-label="Ver más"
+  >
+    Ver más
+  </button>
+
+  <div class="product-card-info">
+    <div class="product-card-title-rating">
+      <h3 class="product-card-title">Reaper</h3>
+      <div class="card-rating card-rating--static">
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon empty" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="transparent" stroke="var(--star-gray, #9ca3af)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+</div>
+    </div>
+    <p class="product-card-price">$1,200 MXN</p>
+    <p class="product-card-availability">Disponible en varios colores</p>
+
+    <!-- VARIANTES -->
+    <div class="product-card-variants">
+      <button
+        class="variant-pill is-active"
+        type="button"
+        data-variant="Halloween"
+        data-text="Halloween" style="--variant-color: #ff6b00;" title="Halloween"
+        data-img="images/reaper_halloween_card_300x300.webp"
+      >
+        Halloween
+      </button>
+
+      <button
+        class="variant-pill"
+        type="button"
+        data-variant="Plasma"
+        data-text="Plasma" style="--variant-color: #a855f7;" title="Plasma"
+        data-img="images/reaper_plasma_card_300x300.webp"
+      >
+        Plasma
+      </button>
+
+      <button
+        class="variant-pill"
+        type="button"
+        data-variant="Espíritu"
+        data-text="Espíritu" style="--variant-color: #22d3ee;" title="Espíritu"
+        data-img="images/reaper_espiritu_card_300x300.webp"
+      >
+        Espíritu
+      </button>
+    </div>
+
+    <!-- BOTÓN ABAJO -->
+    <button
+      class="product-card-add glitch-text"
+      type="button"
+      data-text="Agregar al carrito"
+    >
+      Agregar al carrito
+    </button>
+  </div>
+
+</div>
+
+      <!-- Card 2 -->
+<!-- Card 2 -->
+<div class="product-card" data-productid="2" data-product="Arco Torii">
+
+  <div class="product-card-image">
+    <img src="images/torii_rojo_card_300x300.webp" alt="Arco Torii">
+  </div>
+
+  <button
+    class="product-card-button product-card-button--view glitch-text"
+    type="button"
+    data-text="Ver más"
+    aria-label="Ver más"
+  >
+    Ver más
+  </button>
+
+  <div class="product-card-info">
+    <div class="product-card-title-rating">
+      <h3 class="product-card-title">Arco Torii</h3>
+      <div class="card-rating card-rating--static">
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon half" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="url(#half-star)" stroke="var(--star-gray, #9ca3af)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+</div>
+    </div>
+    <p class="product-card-price">$650 MXN</p>
+    <p class="product-card-availability">Disponible en varios colores</p>
+
+    <div class="product-card-variants">
+      <button
+        class="variant-pill is-active"
+        type="button"
+        data-variant="Rojo"
+        data-text="Rojo" style="--variant-color: #dc2626;" title="Rojo"
+        data-img="images/torii_rojo_card_300x300.webp"
+      >Rojo</button>
+
+      <button
+        class="variant-pill"
+        type="button"
+        data-variant="Azul"
+        data-text="Azul" style="--variant-color: #3b82f6;" title="Azul"
+        data-img="images/torii_azul_card_300x300.webp"
+      >Azul</button>
+
+      <button
+        class="variant-pill"
+        type="button"
+        data-variant="Blanco"
+        data-text="Blanco" style="--variant-color: #f5f5f5;" title="Blanco"
+        data-img="images/torii_blanco_card_300x300.webp"
+      >Blanco</button>
+    </div>
+
+    <button class="product-card-add glitch-text" type="button" data-text="Agregar al carrito">
+      Agregar al carrito
+    </button>
+  </div>
+
+</div>
+
+      <!-- Card 3 -->
+<!-- Card 3 -->
+<div class="product-card" data-productid="3" data-product="Doctor Plaga" data-no-variants="true">
+
+  <div class="product-card-image">
+    <img src="images/plaga_card_300x300.webp" alt="Doctor Plaga">
+  </div>
+
+  <button
+    class="product-card-button product-card-button--view glitch-text"
+    type="button"
+    data-text="Ver más"
+    aria-label="Ver más"
+  >
+    Ver más
+  </button>
+
+  <div class="product-card-info">
+    <div class="product-card-title-rating">
+      <h3 class="product-card-title">Doctor Plaga</h3>
+      <div class="card-rating card-rating--static">
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon half" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="url(#half-star)" stroke="var(--star-gray, #9ca3af)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+</div>
+    </div>
+    <p class="product-card-price">$950 MXN</p>
+
+    <!-- ✅ Availability correcto -->
+    <p class="product-card-availability">Edición única</p>
+
+    <button class="product-card-add glitch-text" type="button" data-text="Agregar al carrito">
+      Agregar al carrito
+    </button>
+  </div>
+
+</div>
+
+      <!-- Card 4 -->
+<!-- Card 4 -->
+<div class="product-card" data-productid="4" data-product="Jackalope">
+
+  <div class="product-card-image">
+    <img src="images/jackalope_amarillo_card_300x300.webp" alt="Jackalope">
+  </div>
+
+  <button
+    class="product-card-button product-card-button--view glitch-text"
+    type="button"
+    data-text="Ver más"
+    aria-label="Ver más"
+  >
+    Ver más
+  </button>
+
+  <div class="product-card-info">
+    <div class="product-card-title-rating">
+      <h3 class="product-card-title">Jackalope</h3>
+      <div class="card-rating card-rating--static">
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+</div>
+    </div>
+    <p class="product-card-price">$800 MXN</p>
+    <p class="product-card-availability">Disponible en varios colores</p>
+
+    <div class="product-card-variants">
+      <button
+        class="variant-pill is-active"
+        type="button"
+        data-variant="Amarillo"
+        data-text="Amarillo" style="--variant-color: #eab308;" title="Amarillo"
+        data-img="images/jackalope_amarillo_card_300x300.webp"
+      >Amarillo</button>
+
+      <button
+        class="variant-pill"
+        type="button"
+        data-variant="Morado"
+        data-text="Morado" style="--variant-color: #a855f7;" title="Morado"
+        data-img="images/jackalope_morado_card_300x300.webp"
+      >Morado</button>
+
+      <button
+        class="variant-pill"
+        type="button"
+        data-variant="Rosa"
+        data-text="Rosa" style="--variant-color: #ec4899;" title="Rosa"
+        data-img="images/jackalope_rosa_card_300x300.webp"
+      >Rosa</button>
+    </div>
+
+    <button class="product-card-add glitch-text" type="button" data-text="Agregar al carrito">
+      Agregar al carrito
+    </button>
+  </div>
+
+</div>
+
+</section>    </main>
+
+    <!-- Footer -->
+  <footer class="footer">
+
+    <!-- Newsletter (centrado tipo container) -->
+    <section class="newsletter">
+      <div class="footer-container">
+        <div class="newsletter-content">
+          <div class="newsletter-left">
+            <h2 class="newsletter-title">Suscríbete a nuestro boletín</h2>
+            <p class="newsletter-description">
+              Entérate antes que nadie de nuestras novedades, promos exclusivas y todo lo que está por venir.
+            </p>
+          </div>
+
+          <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Escribe tu correo electrónico" required>
+            <button type="submit" class="newsletter-button">Suscribirse</button>
+          </form>
+          <p class="newsletter-help" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Separador FULL WIDTH -->
+    <div class="footer-separator"></div>
+
+    <!-- Footer Content FULL WIDTH -->
+    <div class="footer-content footer-content--full">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img
+            src="images/logo_glitchedbox_horizontal.svg"
+            alt="Glitched Box"
+            loading="lazy"
+            decoding="async"
+            class="footer-logo-img footer-logo--dark"
+          >
+          <img
+            src="images/logo_glitchedbox_horizontal_black.svg"
+            alt="Glitched Box"
+            loading="lazy"
+            decoding="async"
+            class="footer-logo-img footer-logo--light"
+          >
+        </div>
+
+        <p class="footer-description">
+          Glitched Box es una marca mexicana de art toys inspirada en ilustraciones originales. Cada figura representa un personaje que llegó a nuestro mundo por error a través de un "glitch". El estilo mezcla lo kawaii con lo oscuro, creando una estética única y coleccionable.
+        </p>
+
+        <div class="footer-social">
+          <a href="" class="social-link" aria-label="Facebook">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.971h-1.513c-1.491 0-1.956.93-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+            </svg>
+          </a>
+
+          <a href="https://www.instagram.com/glitchedbox/" class="social-link" aria-label="Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3 class="footer-heading">Quiénes somos</h3>
+        <ul class="footer-links">
+          <li><a href="#">Nuestra historia</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3 class="footer-heading">Ayuda</h3>
+        <ul class="footer-links">
+          <li><a href="#">Seguimiento de pedido</a></li>
+          <li><a href="#">Envíos y devoluciones</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3 class="footer-heading">Legal</h3>
+        <ul class="footer-links">
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Política de envío</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3 class="footer-heading">Contacto</h3>
+        <button class="contact-button">Contáctanos</button>
+      </div>
+    </div>
+
+    <!-- Footer bottom FULL WIDTH -->
+    <div class="footer-bottom">
+      <p>© 2019 - 2025 Glitched Box. Todos los derechos reservados. Información exclusiva de Glitched Box</p>
+    </div>
+
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+    <span class="icon-wrap icon-wrap--24" aria-hidden="true">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 4L4 12L5.41 13.41L11 7.83V20H13V7.83L18.59 13.41L20 12L12 4Z" fill="currentColor"/>
+      </svg>
+    </span>
+  </button>
+
+  <!-- Modal de descripción completa -->
+  <div class="description-modal" id="descriptionModal">
+    <div class="description-modal__content">
+      <div class="description-modal__header">
+        <h2 class="description-modal__title">Descripción completa</h2>
+        <button class="description-modal__close" aria-label="Cerrar descripción" type="button">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="description-modal__text">
+        <p>
+          Directo desde las ferias de pueblo más underground, llegan estas gallinas que no saben si fueron teñidas con pintura, magia o una apuesta perdida. Con colores tan llamativos que podrían ser señal de advertencia en la naturaleza, estas aves son el epítome de lo exótico, lo absurdo y lo cuestionable. ¡No te puedes perder el Lote Deluxe, la colección definitiva de gallinas fuera de control!
+        </p>
+      </div>
+    </div>
+  </div>
+
+<script src="gb-core.js"></script>
+<script src="product-page.js" defer></script>
+</body>
+</html>
