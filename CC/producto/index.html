@@ -10,27 +10,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- SVG gradient for half stars -->
+    <svg width="0" height="0" style="position:absolute">
+        <defs>
+            <!-- Gradiente para estrellas de las cards -->
+            <linearGradient id="half-star" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="50%" style="stop-color:#fbbf24;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:transparent;stop-opacity:0" />
+            </linearGradient>
+            <!-- Gradiente para estrellas del producto principal -->
+            <linearGradient id="half-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="50%" style="stop-color:#fbbf24;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:transparent;stop-opacity:0" />
+            </linearGradient>
+        
+<!-- ClipPaths para contorno mitad/mitad en estrellas -->
+<clipPath id="clip-left-half">
+    <rect x="0" y="0" width="10" height="20"></rect>
+</clipPath>
+<clipPath id="clip-right-half">
+    <rect x="10" y="0" width="10" height="20"></rect>
+</clipPath>
+        </defs>
+    </svg>
     <!-- Header / Navigation -->
     <header class="header">
         <div class="container">
             <div class="header-content">
                 <!-- Logo -->
                 <div class="logo">
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16 2L6 8V14L16 20L26 14V8L16 2Z" fill="white"/>
-                        <path d="M16 20L6 26V32L16 26L26 32V26L16 20Z" fill="white" opacity="0.6"/>
-                    </svg>
-                    <span class="logo-text">GLITCHED<br>BOX</span>
+                    <img
+                        src="images/logo_glitchedbox_horizontal.svg"
+                        alt="Glitched Box"
+						loading="eager"
+						decoding="async"
+						class="header-logo-img"
+                    >                    
                 </div>
 
-                <!-- Navigation -->
-                <nav class="nav-links">
-                    <a href="#" class="nav-link">Inicio</a>
-                    <span class="nav-separator">›</span>
-                    <a href="#" class="nav-link">Colecciones</a>
-                    <span class="nav-separator">›</span>
-                    <a href="#" class="nav-link active">Gallinitas</a>
-                </nav>
+                <!-- Search Bar -->
+                <div class="header-search">
+                    <div class="search-container">
+                        <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M19 19L14.65 14.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <input 
+                            type="text" 
+                            class="search-input" 
+                            placeholder="Buscar productos..."
+                            aria-label="Buscar productos"
+                        >
+                    </div>
+                </div>
 
                 <!-- Actions -->
                 <div class="header-actions">
@@ -58,320 +90,651 @@
         </div>
     </header>
 
-    <!-- Main Content -->
+   <!-- Breadcrumbs -->
+   <div class="breadcrumbs-bar">
+	   <div class="container">
+		<nav class="breadcrumbs" aria-label="Breadcrumb">
+			<a href="index.html" class="breadcrumb-link">Inicio</a>
+				<span class="breadcrumb-sep">›</span>
+				<a href="#" class="breadcrumb-link">Colecciones</a>
+				<span class="breadcrumb-sep">›</span>
+				<span class="breadcrumb-current">Gallinitas</span>
+			</nav>
+		</div>
+	</div>
+	
+	<!-- Main Content -->
     <main class="main-content">
         <div class="container">
             <div class="product-page">
-                <!-- Product Images -->
-                <div class="product-images">
-                    <button class="carousel-button carousel-button-prev" aria-label="Imagen anterior">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                    
-                    <div class="carousel-container">
-                        <div class="carousel-track">
-                            <img src="images/gallina_blanca_1.webp" alt="Gallinita Mágica - Vista 1" class="carousel-image active">
-                            <img src="images/gallina_blanca_2.webp" alt="Gallinita Mágica - Vista 2" class="carousel-image">
-                            <img src="images/gallina_blanca_3.webp" alt="Gallinita Mágica - Vista 3" class="carousel-image">
+                <div class="product-top">
+                    <!-- Product Images -->
+                    <div class="product-images">
+                    <div class="slider">
+                        <button class="slider-btn prev">‹</button>
+
+                        <div class="slider-track-wrapper">
+                            <div class="slider-track">
+                                <img src="images/gallina_blanca_1.webp" alt="Gallinita Mágica - Vista 1" class="carousel-image active">
+                                <img src="images/gallina_blanca_2.webp" alt="Gallinita Mágica - Vista 2" class="carousel-image">
+                                <img src="images/gallina_blanca_3.webp" alt="Gallinita Mágica - Vista 3" class="carousel-image">
+                            </div>
                         </div>
+
+                        <button class="slider-btn next">›</button>
                     </div>
 
-                    <button class="carousel-button carousel-button-next" aria-label="Siguiente imagen">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <!-- Acordeón: Tiempo de entrega -->
+                    <div class="accordion" style="margin-top: 1rem;">
+                      <button class="accordion-header">
+                        <span>Tiempo de entrega</span>
+                        <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                    </button>
+                      </button>
 
-                    <!-- Color Variants Gallery -->
-                    <div class="color-variants-gallery">
-                        <div class="variant-item" data-color="blanca">
-                            <img src="images/84X84_blanca.webp" alt="Gallinita Blanca">
-                            <span class="variant-name">Blanca</span>
-                        </div>
-                        <div class="variant-item" data-color="amarilla">
-                            <img src="images/84X84_amarilla.webp" alt="Gallinita Amarilla">
-                            <span class="variant-name">Amarilla</span>
-                        </div>
-                        <div class="variant-item" data-color="aqua">
-                            <img src="images/84X84_aqua.webp" alt="Gallinita Aqua">
-                            <span class="variant-name">Aqua</span>
-                        </div>
-                        <div class="variant-item" data-color="azul">
-                            <img src="images/84X84_azul.webp" alt="Gallinita Azul">
-                            <span class="variant-name">Azul</span>
-                        </div>
-                        <div class="variant-item" data-color="cafe">
-                            <img src="images/84X84_cafe.webp" alt="Gallinita Café">
-                            <span class="variant-name">Café</span>
-                        </div>
-                        <div class="variant-item" data-color="cafe_claro">
-                            <img src="images/84X84_cafe_claro.webp" alt="Gallinita Café claro">
-                            <span class="variant-name">Café claro</span>
-                        </div>
-                        <div class="variant-item" data-color="gris">
-                            <img src="images/84X84_gris.webp" alt="Gallinita Gris">
-                            <span class="variant-name">Gris</span>
-                        </div>
-                        <div class="variant-item" data-color="mamey">
-                            <img src="images/84X84_mamey.webp" alt="Gallinita Mamey">
-                            <span class="variant-name">Mamey</span>
-                        </div>
-                        <div class="variant-item" data-color="dorada">
-                            <img src="images/84X84_dorada.webp" alt="Gallinita Dorada">
-                            <span class="variant-name">Dorada</span>
-                        </div>
-                        <div class="variant-item" data-color="roja">
-                            <img src="images/84X84_roja.webp" alt="Gallinita Roja">
-                            <span class="variant-name">Roja</span>
-                        </div>
-                        <div class="variant-item" data-color="rosa">
-                            <img src="images/84X84_rosa.webp" alt="Gallinita Rosa">
-                            <span class="variant-name">Rosa</span>
-                        </div>
-                        <div class="variant-item" data-color="verde">
-                            <img src="images/84X84_verde.webp" alt="Gallinita Verde">
-                            <span class="variant-name">Verde</span>
-                        </div>
+                      <div class="accordion-content">
+                        <p>Los envíos se realizan de lunes a viernes. El tiempo de entrega estimado es de 5 a 7 días hábiles para toda la República Mexicana.</p>
+                        <ul>
+                          <li>Ciudad de México y Área Metropolitana: 2-3 días hábiles</li>
+                          <li>Interior de la República: 5-7 días hábiles</li>
+                          <li>Zonas remotas: 7-10 días hábiles</li>
+                        </ul>
+                        <p><strong>Nota:</strong> Los tiempos de entrega pueden variar dependiendo de la disponibilidad y condiciones de envío.</p>
+                      </div>
                     </div>
                 </div>
 
                 <!-- Product Info -->
                 <div class="product-info">
-                    <div class="product-header">
-                        <h1 class="product-title">Gallinitas Mágicas</h1>
-                        <button class="favorite-button" aria-label="Agregar a favoritos">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5C22 12.27 18.6 15.36 13.45 20.03L12 21.35Z" stroke="currentColor" stroke-width="2"/>
+
+                    <!-- Título / Corazón / Precio -->
+                    <div class="product-title-price">
+
+                        <!-- Título + estrellas + favorito -->
+                        <div class="product-title-fav">
+                            <h1 class="product-title">Gallinitas Mágicas</h1>
+
+                            
+  <div class="rating-fav">
+    <!-- Estrellas -->
+                                <div class="product-rating product-rating--interactive" data-rating="0">
+                                    <button class="star-button" data-value="1" aria-label="Calificar con 1 estrella">
+                                        <svg class="star-icon" width="32" height="32" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="star-fill" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z"/>
+    <path class="star-stroke star-stroke-left" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-left-half)"/>
+    <path class="star-stroke star-stroke-right" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-right-half)"/>
+        </svg>
+                                    </button>
+                                    <button class="star-button" data-value="2" aria-label="Calificar con 2 estrellas">
+                                        <svg class="star-icon" width="32" height="32" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="star-fill" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z"/>
+    <path class="star-stroke star-stroke-left" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-left-half)"/>
+    <path class="star-stroke star-stroke-right" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-right-half)"/>
+        </svg>
+                                    </button>
+                                    <button class="star-button" data-value="3" aria-label="Calificar con 3 estrellas">
+                                        <svg class="star-icon" width="32" height="32" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="star-fill" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z"/>
+    <path class="star-stroke star-stroke-left" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-left-half)"/>
+    <path class="star-stroke star-stroke-right" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-right-half)"/>
+        </svg>
+                                    </button>
+                                    <button class="star-button" data-value="4" aria-label="Calificar con 4 estrellas">
+                                        <svg class="star-icon" width="32" height="32" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="star-fill" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z"/>
+    <path class="star-stroke star-stroke-left" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-left-half)"/>
+    <path class="star-stroke star-stroke-right" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-right-half)"/>
+        </svg>
+                                    </button>
+                                    <button class="star-button" data-value="5" aria-label="Calificar con 5 estrellas">
+                                        <svg class="star-icon" width="32" height="32" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="star-fill" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z"/>
+    <path class="star-stroke star-stroke-left" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-left-half)"/>
+    <path class="star-stroke star-stroke-right" d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" clip-path="url(#clip-right-half)"/>
+        </svg>
+                                    </button>
+                                    <span class="rating-count">(0)</span>
+                                </div>
+    
+                                <button class="favorite-button" aria-label="Agregar a favoritos">
+                                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5C22 12.27 18.6 15.36 13.45 20.03L12 21.35Z" stroke="currentColor" stroke-width="2" />
+                              />
                             </svg>
                         </button>
+  </div>
+</div>
+                   
+                   <!-- Precio -->
+                   <div class="product-price">$150 MXN</div>
                     </div>
 
-                    <div class="product-price">$150 MXN</div>
-
+                    <!-- Descripción -->
                     <p class="product-description">
-                        Directo desde las ferias de pueblo más underground, llegan estas gallinas que no saben si fueron teñidas con pintura, magia o una apuesta perdida. Con colores tan llamativos que podrían ser letales en la naturaleza, estas aves son un explosivo de lo exótico, o extraño y lo caótico. ¡Por 10 piezas piezas: te llevás Donas, la colección definitiva de gallinas fuera de control!
+                        Directo desde las ferias de pueblo más underground, llegan estas gallinas que no saben si fueron teñidas con pintura, magia o una apuesta perdida. Con colores tan llamativos que podrían ser señal de advertencia en la naturaleza, estas aves son el epítome de lo exótico, lo absurdo y lo cuestionable. ¡No te puedes perder el Lote Deluxe, la colección definitiva de gallinas fuera de control!
+                      <button class="desc-toggle inline" id="descToggle" type="button">Ver más</button>
                     </p>
+                      
+                      <!-- TODO lo que va abajo de la descripción -->
+                      <div class="product-actions">
 
-                    <!-- Selected Variant Display -->
-                    <div class="selected-variant">
-                        <span class="variant-label">Elige tu versión favorita:</span>
-                        <span class="variant-current" id="currentVariant">Blanca</span>
+                     <!-- Variante seleccionada -->
+  
+                    <div class="product-actions">
+
+                    <!-- ROW 1: Texto variante + label piezas + contador -->
+                    <div class="vaq-row">
+                       <div class="selected-variant">
+                       <span class="variant-label">Elige tu versión favorita:</span>
+                       <span class="variant-current" id="currentVariant">Blanca</span>
+                     </div>
+
+                     <div class="qty-block">
+                         <span class="qty-label">Número de piezas</span>
+
+                      <div class="quantity-selector">
+                        <button class="qty-btn" type="button" id="decreaseQty">−</button>
+                        <input type="number" class="quantity-input" id="quantityInput" value="0" min="0" max="99" readonly>
+                        <button class="qty-btn" type="button" id="increaseQty">+</button>
+                       </div>
+                      </div>
                     </div>
 
-                    <!-- Quantity Selector -->
-                    <div class="quantity-section">
-                        <label class="quantity-label">Número de piezas</label>
-                        <div class="quantity-selector">
-                            <button class="quantity-button quantity-minus" aria-label="Reducir cantidad">−</button>
-                            <input type="number" class="quantity-input" id="quantityInput" value="0" min="0" max="99" readonly>
-                            <button class="quantity-button quantity-plus" aria-label="Aumentar cantidad">+</button>
-                        </div>
+                  <!-- ROW 2: Gallinitas (máx 84x84) -->
+                    <div class="color-variants-gallery">
+                       <div class="variant-item" data-color="blanca">
+                       <img src="images/84X84_blanca.webp" alt="Gallinita Blanca">
+                       <span class="variant-name">Blanca</span>
                     </div>
 
-                    <!-- Action Buttons -->
-                    <div class="action-buttons">
-                        <button class="button button-primary" id="addToCartBtn">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 16C4.9 16 4.01 16.9 4.01 18C4.01 19.1 4.9 20 6 20C7.1 20 8 19.1 8 18C8 16.9 7.1 16 6 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 14.1 4.9 15 6 15H18V13H6.42C6.28 13 6.17 12.89 6.17 12.75L6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.48C19.96 3.34 20 3.17 20 3C20 2.45 19.55 2 19 2H4.21L3.27 0H0ZM16 16C14.9 16 14.01 16.9 14.01 18C14.01 19.1 14.9 20 16 20C17.1 20 18 19.1 18 18C18 16.9 17.1 16 16 16Z" fill="currentColor"/>
-                            </svg>
-                            Agregar al carrito
-                        </button>
-                        <button class="button button-secondary">Comprar ahora</button>
+                    <div class="variant-item" data-color="amarilla">
+                        <img src="images/84X84_amarilla.webp" alt="Gallinita Amarilla">
+                        <span class="variant-name">Amarilla</span>
                     </div>
 
-                    <!-- Shipping Info -->
-                    <div class="shipping-info">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18 8H16V4C16 2.9 15.1 2 14 2H2C0.9 2 0 2.9 0 4V13H2C2 14.66 3.34 16 5 16C6.66 16 8 14.66 8 13H12C12 14.66 13.34 16 15 16C16.66 16 18 14.66 18 13H20V11L18 8ZM5 14.5C4.17 14.5 3.5 13.83 3.5 13C3.5 12.17 4.17 11.5 5 11.5C5.83 11.5 6.5 12.17 6.5 13C6.5 13.83 5.83 14.5 5 14.5ZM16.5 9.5L17.96 12H16V9.5ZM15 14.5C14.17 14.5 13.5 13.83 13.5 13C13.5 12.17 14.17 11.5 15 11.5C15.83 11.5 16.5 12.17 16.5 13C16.5 13.83 15.83 14.5 15 14.5Z" fill="currentColor"/>
-                        </svg>
-                        <span>Envío gratis en pedidos mayores a $2,500 MXN</span>
+                    <div class="variant-item" data-color="aqua">
+                        <img src="images/84X84_aqua.webp" alt="Gallinita Aqua">
+                        <span class="variant-name">Aqua</span>
                     </div>
 
-                    <!-- Delivery Time Accordion -->
-                    <div class="accordion">
-                        <button class="accordion-header">
-                            <span>Tiempo de entrega</span>
-                            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        <div class="accordion-content">
-                            <p>Los envíos se realizan de lunes a viernes. El tiempo de entrega estimado es de 5 a 7 días hábiles para toda la República Mexicana.</p>
-                            <ul>
-                                <li>Ciudad de México y Área Metropolitana: 2-3 días hábiles</li>
-                                <li>Interior de la República: 5-7 días hábiles</li>
-                                <li>Zonas remotas: 7-10 días hábiles</li>
-                            </ul>
-                            <p><strong>Nota:</strong> Los tiempos de entrega pueden variar dependiendo de la disponibilidad y condiciones de envío.</p>
-                        </div>
+                    <div class="variant-item" data-color="azul">
+                        <img src="images/84X84_azul.webp" alt="Gallinita Azul">
+                        <span class="variant-name">Azul</span>
                     </div>
-                </div>
+
+                    <div class="variant-item" data-color="cafe">
+                        <img src="images/84X84_cafe.webp" alt="Gallinita Café">
+                        <span class="variant-name">Café</span>
+                    </div>
+
+                    <div class="variant-item" data-color="cafe claro">
+                        <img src="images/84X84_cafe_claro.webp" alt="Gallinita Café claro">
+                        <span class="variant-name">Café claro</span>
+                    </div>
+
+                     <div class="variant-item" data-color="gris">
+                        <img src="images/84X84_gris.webp" alt="Gallinita Gris">
+                      <span class="variant-name">Gris</span>
+                    </div>
+
+                     <div class="variant-item" data-color="mamey">
+                        <img src="images/84X84_mamey.webp" alt="Gallinita Mamey">
+                        <span class="variant-name">Mamey</span>
+                    </div>
+
+                    <div class="variant-item" data-color="dorada">
+                        <img src="images/84X84_dorada.webp" alt="Gallinita Dorada">
+                        <span class="variant-name">Dorada</span>
+                    </div>
+
+                    <div class="variant-item" data-color="roja">
+                        <img src="images/84X84_roja.webp" alt="Gallinita Roja">
+                        <span class="variant-name">Roja</span>
+                    </div>
+
+                    <div class="variant-item" data-color="rosa">
+                        <img src="images/84X84_rosa.webp" alt="Gallinita Rosa">
+                        <span class="variant-name">Rosa</span>
+                    </div>
+
+                    <div class="variant-item" data-color="verde">
+                        <img src="images/84X84_verde.webp" alt="Gallinita Verde">
+                        <span class="variant-name">Verde</span>
+                    </div>
             </div>
 
-            <!-- Product Specifications -->
-            <div class="product-specifications">
-                <table class="specs-table">
-                    <thead>
-                        <tr>
-                            <th>Características</th>
-                            <th>Detalles</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Altura:</td>
-                            <td>4.4 cm</td>
-                        </tr>
-                        <tr>
-                            <td>Ancho:</td>
-                            <td>3.3 cm</td>
-                        </tr>
-                        <tr>
-                            <td>Profundidad:</td>
-                            <td>4 cm</td>
-                        </tr>
-                        <tr>
-                            <td>Material:</td>
-                            <td>Resina ABS</td>
-                        </tr>
-                        <tr>
-                            <td>Distribuido por:</td>
-                            <td>Glitched Box</td>
-                        </tr>
-                        <tr>
-                            <td>Producción:</td>
-                            <td>Impresión 3D</td>
-                        </tr>
-                        <tr>
-                            <td>Pintado a mano:</td>
-                            <td>Sí</td>
-                        </tr>
-                        <tr>
-                            <td>Colores / Variantes:</td>
-                            <td>Varios</td>
-                        </tr>
-                        <tr>
-                            <td>Acabado</td>
-                            <td>Mate</td>
-                        </tr>
-                        <tr>
-                            <td>Edición:</td>
-                            <td>Producción continua</td>
-                        </tr>
-                        <tr>
-                            <td>Número de serie</td>
-                            <td>No aplica</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+  <!-- ROW 3: Botones -->
+  <div class="action-buttons">
+    <button class="button button-primary" id="addToCartBtn">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 16C4.9 16 4.01 16.9 4.01 18C4.01 19.1 4.9 20 6 20C7.1 20 8 19.1 8 18C8 16.9 7.1 16 6 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 14.1 4.9 15 6 15H18V13H6.42C6.28 13 6.17 12.89 6.17 12.75L6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.48C19.96 3.34 20 3.17 20 3C20 2.45 19.55 2 19 2H4.21L3.27 0H0ZM16 16C14.9 16 14.01 16.9 14.01 18C14.01 19.1 14.9 20 16 20C17.1 20 18 19.1 18 18C18 16.9 17.1 16 16 16Z" fill="currentColor"/>
+      </svg>
+      Agregar al carrito
+    </button>
+    <button class="button button-secondary" id="buyNowBtn">Comprar ahora</button>
+  </div>
 
-            <!-- Related Products -->
-            <section class="related-products">
-                <h2 class="section-title">¡Separados son geniales, juntos son legendarios!</h2>
-                
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-card-image">
-                            <img src="https://placeholder.co/300x300/2a2a2a/ffffff?text=Reaper" alt="Reaper">
-                        </div>
-                        <div class="product-card-info">
-                            <h3 class="product-card-title">Reaper</h3>
-                            <p class="product-card-price">$250 MXN</p>
-                            <p class="product-card-availability">Disponible en varios colores</p>
-                        </div>
-                        <button class="product-card-button" aria-label="Agregar Reaper al carrito">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 16C4.9 16 4.01 16.9 4.01 18C4.01 19.1 4.9 20 6 20C7.1 20 8 19.1 8 18C8 16.9 7.1 16 6 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 14.1 4.9 15 6 15H18V13H6.42C6.28 13 6.17 12.89 6.17 12.75L6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.48C19.96 3.34 20 3.17 20 3C20 2.45 19.55 2 19 2H4.21L3.27 0H0ZM16 16C14.9 16 14.01 16.9 14.01 18C14.01 19.1 14.9 20 16 20C17.1 20 18 19.1 18 18C18 16.9 17.1 16 16 16Z" fill="currentColor"/>
-                            </svg>
-                        </button>
-                        <button class="product-card-view">Ver más</button>
-                    </div>
+  <!-- Envío gratis -->
+  <div class="shipping-info">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18 8H16V4C16 2.9 15.1 2 14 2H2C0.9 2 0 2.9 0 4V13H2C2 14.66 3.34 16 5 16C6.66 16 8 14.66 8 13H12C12 14.66 13.34 16 15 16C16.66 16 18 14.66 18 13H20V11L18 8ZM5 14.5C4.17 14.5 3.5 13.83 3.5 13C3.5 12.17 4.17 11.5 5 11.5C5.83 11.5 6.5 12.17 6.5 13C6.5 13.83 5.83 14.5 5 14.5ZM16.5 9.5L17.96 12H16V9.5ZM15 14.5C14.17 14.5 13.5 13.83 13.5 13C13.5 12.17 14.17 11.5 15 11.5C15.83 11.5 16.5 12.17 16.5 13C16.5 13.83 15.83 14.5 15 14.5Z" fill="currentColor" />
+    </svg>
+    <span><strong>Envío gratis</strong> en pedidos mayores a $2,500 MXN</span>
+  </div>
 
-                    <div class="product-card">
-                        <div class="product-card-image">
-                            <img src="https://placeholder.co/300x300/2a2a2a/ffffff?text=Gallinitas" alt="Gallinitas Mágicas">
-                        </div>
-                        <div class="product-card-info">
-                            <h3 class="product-card-title">Gallinitas Mágicas</h3>
-                            <p class="product-card-price">$250 MXN</p>
-                            <p class="product-card-availability">Disponible en varios colores</p>
-                        </div>
-                        <button class="product-card-button" aria-label="Agregar Gallinitas Mágicas al carrito">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 16C4.9 16 4.01 16.9 4.01 18C4.01 19.1 4.9 20 6 20C7.1 20 8 19.1 8 18C8 16.9 7.1 16 6 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 14.1 4.9 15 6 15H18V13H6.42C6.28 13 6.17 12.89 6.17 12.75L6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.48C19.96 3.34 20 3.17 20 3C20 2.45 19.55 2 19 2H4.21L3.27 0H0ZM16 16C14.9 16 14.01 16.9 14.01 18C14.01 19.1 14.9 20 16 20C17.1 20 18 19.1 18 18C18 16.9 17.1 16 16 16Z" fill="currentColor"/>
-                            </svg>
-                        </button>
-                        <button class="product-card-view">Ver más</button>
-                    </div>
+</div>
 
-                    <div class="product-card">
-                        <div class="product-card-image">
-                            <img src="https://placeholder.co/300x300/2a2a2a/ffffff?text=Doctor+Plaga" alt="Doctor Plaga">
-                        </div>
-                        <div class="product-card-info">
-                            <h3 class="product-card-title">Doctor Plaga</h3>
-                            <p class="product-card-price">$250 MXN</p>
-                            <p class="product-card-availability">Disponible en varios colores</p>
-                        </div>
-                        <button class="product-card-button" aria-label="Agregar Doctor Plaga al carrito">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 16C4.9 16 4.01 16.9 4.01 18C4.01 19.1 4.9 20 6 20C7.1 20 8 19.1 8 18C8 16.9 7.1 16 6 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 14.1 4.9 15 6 15H18V13H6.42C6.28 13 6.17 12.89 6.17 12.75L6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.48C19.96 3.34 20 3.17 20 3C20 2.45 19.55 2 19 2H4.21L3.27 0H0ZM16 16C14.9 16 14.01 16.9 14.01 18C14.01 19.1 14.9 20 16 20C17.1 20 18 19.1 18 18C18 16.9 17.1 16 16 16Z" fill="currentColor"/>
-                            </svg>
-                        </button>
-                        <button class="product-card-view">Ver más</button>
-                    </div>
-
-                    <div class="product-card">
-                        <div class="product-card-image">
-                            <img src="https://placeholder.co/300x300/2a2a2a/ffffff?text=Jackalope" alt="Jackalope">
-                        </div>
-                        <div class="product-card-info">
-                            <h3 class="product-card-title">Jackalope</h3>
-                            <p class="product-card-price">$250 MXN</p>
-                            <p class="product-card-availability">Disponible en varios colores</p>
-                        </div>
-                        <button class="product-card-button" aria-label="Agregar Jackalope al carrito">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 16C4.9 16 4.01 16.9 4.01 18C4.01 19.1 4.9 20 6 20C7.1 20 8 19.1 8 18C8 16.9 7.1 16 6 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 14.1 4.9 15 6 15H18V13H6.42C6.28 13 6.17 12.89 6.17 12.75L6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.48C19.96 3.34 20 3.17 20 3C20 2.45 19.55 2 19 2H4.21L3.27 0H0ZM16 16C14.9 16 14.01 16.9 14.01 18C14.01 19.1 14.9 20 16 20C17.1 20 18 19.1 18 18C18 16.9 17.1 16 16 16Z" fill="currentColor"/>
-                            </svg>
-                        </button>
-                        <button class="product-card-view">Ver más</button>
-                    </div>
                 </div>
-            </section>
-
-            <!-- Newsletter -->
-            <section class="newsletter">
-                <div class="newsletter-content">
-                    <h2 class="newsletter-title">Suscríbete a nuestro boletín</h2>
-                    <p class="newsletter-description">Entérate antes que nadie de nuestras novedades, promos exclusivas y todo lo que está por venir.</p>
-                    <form class="newsletter-form">
-                        <input type="email" class="newsletter-input" placeholder="Escribe tu correo electrónico" required>
-                        <button type="submit" class="newsletter-button">Suscribirse</button>
-                    </form>
                 </div>
-            </section>
-        </div>
-    </main>
+
+        </div> <!-- container -->
+<!-- =========================
+     PRODUCT DETAILS (TABLA)
+========================= -->
+
+<section class="product-details">
+
+    <div class="details-card">
+      <div class="details-head">
+        <div class="details-col-title">Características</div>
+        <div class="details-col-title">Detalles</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Altura:</div>
+        <div class="details-value">4.4 cm</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Ancho:</div>
+        <div class="details-value">3.3 cm</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Profundidad:</div>
+        <div class="details-value">4 cm</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Material:</div>
+        <div class="details-value">Resina ABS</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Distribuido por:</div>
+        <div class="details-value">Glitched Box</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Produccción:</div>
+        <div class="details-value">Impresión 3D</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Pintado a mano:</div>
+        <div class="details-value">Sí</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Colores / Variantes:</div>
+        <div class="details-value">Varios</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Acabado:</div>
+        <div class="details-value">Mate</div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-label">Edición:</div>
+        <div class="details-value">Producción continua</div>
+      </div>
+      
+      <div class="details-row">
+        <div class="details-label">Número de serie:</div>
+        <div class="details-value">No aplica</div>
+      </div>
+    </div>
+
+</section>
+
+<!-- =========================
+     PRODUCTS RELATED
+========================= -->
+
+    <h2 class="related-title">¡Separados son geniales, juntos son legendarios!</h2>
+
+    <div class="products-grid">
+     <!-- Card 1 -->
+<div class="product-card" data-productid="1" data-product="Reaper">
+
+  <div class="product-card-image">
+    <!-- Imagen inicial (puede ser la de la variante activa) -->
+    <img
+      src="images/reaper_halloween_card_300x300.webp"
+      alt="Reaper"
+    >
+  </div>
+
+  <!-- BOTÓN FLOTANTE (HOVER) ARRIBA DERECHA -->
+  <button
+    class="product-card-button product-card-button--view"
+    type="button"
+    data-text="Ver más"
+    aria-label="Ver más"
+  >
+    Ver más
+  </button>
+
+  <div class="product-card-info">
+    <div class="product-card-title-rating">
+      <h3 class="product-card-title">Reaper</h3>
+      <div class="card-rating card-rating--static">
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon empty" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="transparent" stroke="var(--star-gray, #9ca3af)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+</div>
+    </div>
+    <p class="product-card-price">$1,200 MXN</p>
+    <p class="product-card-availability">Disponible en varios colores</p>
+
+    <!-- VARIANTES -->
+    <div class="product-card-variants">
+      <button
+        class="variant-pill is-active"
+        type="button"
+        data-variant="Halloween"
+        data-text="Halloween"
+        data-img="images/reaper_halloween_card_300x300.webp"
+      >
+        Halloween
+      </button>
+
+      <button
+        class="variant-pill"
+        type="button"
+        data-variant="Plasma"
+        data-text="Plasma"
+        data-img="images/reaper_plasma_card_300x300.webp"
+      >
+        Plasma
+      </button>
+
+      <button
+        class="variant-pill"
+        type="button"
+        data-variant="Espíritu"
+        data-text="Espíritu"
+        data-img="images/reaper_espiritu_card_300x300.webp"
+      >
+        Espíritu
+      </button>
+    </div>
+
+    <!-- BOTÓN ABAJO -->
+    <button
+      class="product-card-add"
+      type="button"
+      data-text="Agregar al carrito"
+    >
+      Agregar al carrito
+    </button>
+  </div>
+
+</div>
+
+      <!-- Card 2 -->
+<!-- Card 2 -->
+<div class="product-card" data-productid="2" data-product="Arco Torii">
+
+  <div class="product-card-image">
+    <img src="images/torii_rojo_card_300x300.webp" alt="Arco Torii">
+  </div>
+
+  <button
+    class="product-card-button product-card-button--view"
+    type="button"
+    data-text="Ver más"
+    aria-label="Ver más"
+  >
+    Ver más
+  </button>
+
+  <div class="product-card-info">
+    <div class="product-card-title-rating">
+      <h3 class="product-card-title">Arco Torii</h3>
+      <div class="card-rating card-rating--static">
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon half" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="url(#half-star)" stroke="var(--star-gray, #9ca3af)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+</div>
+    </div>
+    <p class="product-card-price">$650 MXN</p>
+    <p class="product-card-availability">Disponible en varios colores</p>
+
+    <div class="product-card-variants">
+      <button
+        class="variant-pill is-active"
+        type="button"
+        data-variant="Rojo"
+        data-text="Rojo"
+        data-img="images/torii_rojo_card_300x300.webp"
+      >Rojo</button>
+
+      <button
+        class="variant-pill"
+        type="button"
+        data-variant="Azul"
+        data-text="Azul"
+        data-img="images/torii_azul_card_300x300.webp"
+      >Azul</button>
+
+      <button
+        class="variant-pill"
+        type="button"
+        data-variant="Blanco"
+        data-text="Blanco"
+        data-img="images/torii_blanco_card_300x300.webp"
+      >Blanco</button>
+    </div>
+
+    <button class="product-card-add" type="button" data-text="Agregar al carrito">
+      Agregar al carrito
+    </button>
+  </div>
+
+</div>
+
+      <!-- Card 3 -->
+<!-- Card 3 -->
+<div class="product-card" data-productid="3" data-product="Doctor Plaga" data-no-variants="true">
+
+  <div class="product-card-image">
+    <img src="images/plaga_card_300x300.webp" alt="Doctor Plaga">
+  </div>
+
+  <button
+    class="product-card-button product-card-button--view"
+    type="button"
+    data-text="Ver más"
+    aria-label="Ver más"
+  >
+    Ver más
+  </button>
+
+  <div class="product-card-info">
+    <div class="product-card-title-rating">
+      <h3 class="product-card-title">Doctor Plaga</h3>
+      <div class="card-rating card-rating--static">
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon half" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="url(#half-star)" stroke="var(--star-gray, #9ca3af)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+</div>
+    </div>
+    <p class="product-card-price">$950 MXN</p>
+
+    <!-- ✅ Availability correcto -->
+    <p class="product-card-availability">Edición única</p>
+
+    <button class="product-card-add" type="button" data-text="Agregar al carrito">
+      Agregar al carrito
+    </button>
+  </div>
+
+</div>
+
+      <!-- Card 4 -->
+<!-- Card 4 -->
+<div class="product-card" data-productid="4" data-product="Jackalope">
+
+  <div class="product-card-image">
+    <img src="images/jackalope_amarillo_card_300x300.webp" alt="Jackalope">
+  </div>
+
+  <button
+    class="product-card-button product-card-button--view"
+    type="button"
+    data-text="Ver más"
+    aria-label="Ver más"
+  >
+    Ver más
+  </button>
+
+  <div class="product-card-info">
+    <div class="product-card-title-rating">
+      <h3 class="product-card-title">Jackalope</h3>
+      <div class="card-rating card-rating--static">
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<svg class="star-icon filled" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 1L12.5 7.5H19L14 11.5L16 18L10 14L4 18L6 11.5L1 7.5H7.5L10 1Z" fill="var(--star-yellow, #fbbf24)" stroke="var(--star-yellow, #fbbf24)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+</div>
+    </div>
+    <p class="product-card-price">$800 MXN</p>
+    <p class="product-card-availability">Disponible en varios colores</p>
+
+    <div class="product-card-variants">
+      <button
+        class="variant-pill is-active"
+        type="button"
+        data-variant="Amarillo"
+        data-text="Amarillo"
+        data-img="images/jackalope_amarillo_card_300x300.webp"
+      >Amarillo</button>
+
+      <button
+        class="variant-pill"
+        type="button"
+        data-variant="Morado"
+        data-text="Morado"
+        data-img="images/jackalope_morado_card_300x300.webp"
+      >Morado</button>
+
+      <button
+        class="variant-pill"
+        type="button"
+        data-variant="Rosa"
+        data-text="Rosa"
+        data-img="images/jackalope_rosa_card_300x300.webp"
+      >Rosa</button>
+    </div>
+
+    <button class="product-card-add" type="button" data-text="Agregar al carrito">
+      Agregar al carrito
+    </button>
+  </div>
+
+</div>
+
+</section>    </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
+
+             <!-- Newsletter -->
+            <section class="newsletter">
+                <div class="newsletter-content">
+                    
+                    <div class="newsletter-left">                       
+                       <h2 class="newsletter-title">Suscríbete a nuestro boletín</h2>
+                       <p class="newsletter-description">Entérate antes que nadie de nuestras novedades, promos exclusivas y todo lo que está por venir.</p>
+					</div>
+					
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Escribe tu correo electrónico" required>
+                        <button type="submit" class="newsletter-button">Suscribirse</button>
+                    </form>
+
+                  </div> 
+                </div>
+            </section>
+
+             <!-- SEPARADOR FULL WIDTH -->
+            <div class="footer-separator"></div>
+
             <div class="footer-content">
                 <!-- Company Info -->
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 2L6 8V14L16 20L26 14V8L16 2Z" fill="white"/>
-                            <path d="M16 20L6 26V32L16 26L26 32V26L16 20Z" fill="white" opacity="0.6"/>
-                        </svg>
-                        <span class="footer-logo-text">GLITCHED<br>BOX</span>
+                        <img 
+                            src="images/logo_glitchedbox_horizontal.svg"
+                            alt="Glitched Box"
+							loading="lazy"
+							decoding="async"
+                        class="footer-logo-img"
+						>
                     </div>
                     <p class="footer-description">
-                        Glitched Box es una marca mexicana de art toys inspirada en ilustraciones originales. Cada figura representa un personaje de jugo a nuestro mundo kawaii con lo oscuro, creando una estética única y coleccionable.
+                        Glitched Box es una marca mexicana de art toys inspirada en ilustraciones originales. Cada figura representa un personaje que llegó a nuestro mundo por error a través de un "glitch". El estilo mezcla lo kawaii con lo oscuro, creando una estética única y coleccionable.
                     </p>
                     <div class="footer-social">
                         <a href="#" class="social-link" aria-label="Facebook">
@@ -392,8 +755,6 @@
                     <h3 class="footer-heading">Quiénes somos</h3>
                     <ul class="footer-links">
                         <li><a href="#">Nuestra historia</a></li>
-                        <li><a href="#">Seguimiento de pedido</a></li>
-                        <li><a href="#">Envíos y devoluciones</a></li>
                     </ul>
                 </div>
 
