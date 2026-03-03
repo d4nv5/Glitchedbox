@@ -1,0 +1,121 @@
+/* ============================================
+   cart-empty.css — Glitched Box
+   Hereda gb-core.css + home.css
+   ============================================ */
+
+/* background: var(--color-bg) y .btn heredados de gb-core.css */
+
+/* ── Main ───────────────────────────────────────────────────── */
+.cart-empty-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--size-11) var(--size-6);
+  min-height: calc(100dvh - var(--header-h, 72px) - var(--breadcrumbs-h, 36px));
+}
+
+/* ── Contenedor central ─────────────────────────────────────── */
+.cart-empty-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--size-5);
+  max-width: 480px;
+  margin: 0 auto;
+  margin-bottom: var(--size-10);
+}
+
+/* ── Ícono estático sin halo ────────────────────────────────── */
+.cart-empty-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--size-3);
+}
+
+.cart-empty-icon svg {
+  color: var(--color-border-strong);
+}
+
+/* ── Título ─────────────────────────────────────────────────── */
+.cart-empty-title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 800;
+  line-height: var(--lh-110);
+  margin: 0;
+  color: var(--color-text);
+}
+
+/* ── Mensaje ────────────────────────────────────────────────── */
+.cart-empty-message {
+  font-size: var(--t-rg);
+  color: var(--color-text-secondary);
+  line-height: var(--lh-150);
+  margin: 0;
+}
+
+/* ── Botones — usa .btn y .btn--primary de gb-core.css ────────── */
+.cart-empty-actions {
+  display: flex;
+  gap: var(--size-5);
+  margin-top: var(--size-6);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 36rem) {
+  .cart-empty-main {
+    padding: var(--size-9) var(--size-5);
+    align-items: flex-start;
+  }
+
+  .cart-empty-content {
+    margin-bottom: var(--size-8);
+    gap: var(--size-4);
+  }
+
+  .cart-empty-title {
+    font-size: clamp(1.25rem, 6vw, 1.5rem);
+  }
+
+  .cart-empty-actions {
+    flex-direction: column;
+    width: 100%;
+    margin-top: var(--size-5);
+  }
+
+  /* Los .btn ya tienen su propio responsive en home.css */
+  .cart-empty-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ── CTA vacío — idéntico al de favorites ──────────────────── */
+.cart-empty-actions .favorites-empty__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--size-2);
+  padding: var(--size-4) var(--size-7);
+  background: var(--accent-purple);
+  border: 2px solid var(--accent-purple);
+  border-radius: var(--radius-2);
+  color: #fff;
+  font-weight: 700;
+  font-size: var(--t-rg);
+  text-decoration: none;
+  transition:
+    background var(--dur-2) var(--ease-out),
+    transform   var(--dur-1) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.cart-empty-actions .favorites-empty__cta:hover {
+  background: color-mix(in srgb, var(--accent-purple) 85%, white);
+  transform: translateY(-2px);
+}

@@ -1,0 +1,919 @@
+/* ============================================================
+   MY ACCOUNT (scoped)
+   Respeta tokens del gb-core.css
+   ============================================================ */
+
+.page-account{
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* ── Layout principal ──────────────────────────────────────── */
+
+/* Main: flex row, height 100% funciona porque html/body ya tienen height:100% en gb-core */
+.page-account .main-content{
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 100%;
+  overflow: hidden; /* evita scroll horizontal por el box-shadow del sidebar */
+}
+
+/* Sidebar: ancho fijo — layout value 240px declarado como token --sidebar-w */
+.page-account .account-sidebar{
+  width: var(--sidebar-w, 240px);
+  flex-shrink: 0;
+
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  /* El fondo sangra hacia la izquierda fuera del container hasta el borde de pantalla */
+  box-shadow: -100vw 0 0 100vw var(--color-surface);
+
+  padding-top: var(--size-10);
+  padding-bottom: 0;
+}
+
+/* Contenido derecho: crece, padding lateral igual al del layout__container del core en desktop */
+.page-account .account-content-wrap{
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Nav sidebar ───────────────────────────────────────────── */
+
+.page-account .account-nav{
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+  padding: 0;
+  margin: 0;
+}
+
+.page-account .account-link{
+  display: flex;
+  align-items: center;
+  gap: var(--size-3);
+
+  /* padding-left desde el inicio del container */
+  padding: var(--size-4) var(--size-5);
+  padding-left: calc(var(--size-5) - 3px);
+
+  color: var(--color-text-muted);
+  text-decoration: none;
+
+  border-left: 3px solid transparent;
+  border-radius: 0;
+  transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+}
+
+.page-account .account-link:hover,
+.page-account .account-link:focus-visible{
+  background: var(--accent-purple);
+  color: var(--neutral-0);
+  border-left-color: var(--accent-purple);
+  outline: none;
+}
+
+.page-account .account-link.is-active{
+  background: var(--accent-purple-soft);
+  color: var(--color-text);
+  border-left-color: var(--accent-green);
+}
+
+.page-account .account-link--danger{
+  color: var(--color-text-muted);
+}
+.page-account .account-link--danger:hover,
+.page-account .account-link--danger:focus-visible{
+  background: var(--accent-purple);
+  color: var(--neutral-0);
+  border-left-color: var(--accent-purple);
+}
+
+/* ── Contenido derecho ─────────────────────────────────────── */
+
+.page-account .account-content{
+  padding-top: var(--size-7);
+  padding-bottom: var(--size-12);
+  /* padding izquierdo: separa el contenido del sidebar */
+  padding-left: var(--size-9);
+  /* padding derecho: respira del borde derecho del container */
+  padding-right: var(--size-5);
+  min-width: 0;
+}
+
+.page-account .account-header{
+  margin: 0 0 var(--size-8) 0;
+}
+
+.page-account .account-title{
+  font-size: var(--h-lg);
+  line-height: var(--lh-110);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* ── Títulos de sección dentro del contenido ───────────────── */
+
+.page-account .section-title {
+  font-size: var(--t-lg);   /* 18px */
+  font-weight: 600;
+  margin: 0 0 var(--size-2);
+  color: var(--color-text);
+}
+
+.page-account .section-subtitle {
+  font-size: var(--t-rg);   /* 16px */
+  font-weight: 600;
+  margin: 0 0 var(--size-4);
+  color: var(--color-text);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--size-6);
+}
+
+/* ── Botón danger-soft (Eliminar foto) ─────────────────────── */
+.btn--danger-soft {
+  background: rgba(239, 68, 68, 0.10);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: var(--danger, #ef4444);
+  position: relative;
+  overflow: hidden;
+}
+.btn--danger-soft:hover {
+  background: rgba(239, 68, 68, 0.18);
+  border-color: var(--danger, #ef4444);
+}
+
+/* ── Orders card ───────────────────────────────────────────── */
+
+.page-account .orders-card{
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-4);
+  box-shadow: var(--shadow-1, 0 10px 30px rgba(0,0,0,.25));
+  overflow: hidden;
+}
+
+.page-account .orders-table-wrap{
+  overflow-x: auto;
+}
+
+.page-account .orders-table{
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 860px;
+}
+
+.page-account .orders-table thead th{
+  text-align: left;
+  font-size: var(--t-sm);
+  color: var(--color-text);
+  padding: var(--size-6) var(--size-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.page-account .orders-table tbody td{
+  padding: var(--size-6) var(--size-6);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+  color: var(--color-text);
+  font-size: var(--t-rg);
+  vertical-align: middle;
+}
+
+.page-account .orders-table tbody tr:last-child td{
+  border-bottom: 0;
+}
+
+/* ── Thumbs ────────────────────────────────────────────────── */
+
+.page-account .thumbs{
+  display: inline-flex;
+  gap: var(--size-2);
+}
+.page-account .thumb{
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-2);
+  background: color-mix(in srgb, var(--color-text) 18%, transparent);
+  border: 1px solid var(--color-border);
+}
+
+/* ── Status pills ──────────────────────────────────────────── */
+
+/* Token local: azul info para "Enviado" */
+:root {
+  --info:           #3b82f6;       /* azul */
+  --status-info-bg: rgba(59, 130, 246, 0.12);
+  --size-13: 6rem;                 /* 96px — siguiente en la escala de 8 tras --size-12 */
+}
+
+.page-account .status-pill{
+  display: inline-flex;
+  align-items: center;
+  padding: var(--size-2) var(--size-4);
+  border-radius: var(--radius-full);
+  font-size: var(--t-sm);
+  line-height: var(--lh-120);
+  border: 1px solid transparent;
+  font-weight: 600;
+}
+/* Enviado — azul */
+.page-account .status-pill--sent{
+  background: var(--status-info-bg);
+  border-color: color-mix(in srgb, var(--info) 35%, transparent);
+  color: var(--info);
+}
+/* Procesando — amarillo */
+.page-account .status-pill--processing{
+  background: var(--status-warning-bg);
+  border-color: color-mix(in srgb, var(--warning) 35%, transparent);
+  color: var(--warning);
+}
+/* Cancelado — rojo */
+.page-account .status-pill--canceled{
+  background: var(--status-danger-bg);
+  border-color: color-mix(in srgb, var(--danger) 35%, transparent);
+  color: var(--danger);
+}
+/* Entregado — verde */
+.page-account .status-pill--delivered{
+  background: var(--status-success-bg);
+  border-color: color-mix(in srgb, var(--success) 35%, transparent);
+  color: var(--success);
+}
+
+/* ── Link "Ver más" ────────────────────────────────────────── */
+
+.page-account .orders-link{
+  color: var(--color-input-focus);
+  text-decoration: none;
+  font-weight: 600;
+}
+.page-account .orders-link:hover{
+  text-decoration: underline;
+}
+
+/* Cancelar el margin-top del footer que viene del gb-core — en páginas de cuenta no hay espacio entre el main y el footer */
+.page-account ~ .footer,
+.page-account .footer{
+  margin-top: 0;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+/*
+ * BREAKPOINTS — hardcodeados por limitación de CSS custom properties en @media.
+ * Valores de referencia documentados en gb-core.css (sección Layout).
+ *   900px  → --bp-lg (tablet landscape) — sidebar pasa a columna
+ *   901px  → --bp-lg + 1px              — back-btn solo en mobile
+ * Para cambiar: buscar 900px / 901px en este archivo.
+*/
+
+/* ── Responsive: navegación móvil/tablet (< 900px = --bp-lg) ── */
+
+@media (max-width: 900px) {
+
+  /* El container del main es full-width en mobile/tablet
+     para que el sidebar pueda ocupar toda la pantalla */
+  .account-main-container {
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  /* Layout: columna, sin altura mínima */
+  .page-account .main-content {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  /* SIDEBAR: ocupa 100% del main (que en mobile ya es full-width) */
+  .page-account .account-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: none;
+    padding-top: var(--size-6);
+    display: block;
+  }
+
+  /* SIDEBAR: se oculta cuando estamos en la vista de detalle */
+  .page-account .account-sidebar.account-sidebar--hidden {
+    display: none;
+  }
+
+  /* CONTENIDO: oculto por defecto en mobile (pantalla B) */
+  .page-account .account-content-wrap {
+    display: none;
+  }
+
+  /* CONTENIDO: visible cuando está activo */
+  .page-account .account-content-wrap.account-content--visible {
+    display: block;
+    width: 100%;
+  }
+
+  /* Links del sidebar: más grandes y con separador, fáciles de tocar */
+  /* padding-left = margen del layout__container en tablet (var(--size-9) = 48px) */
+  .page-account .account-link {
+    padding: var(--size-5) var(--size-9);
+    padding-right: var(--size-13);
+    border-left: none;
+    border-bottom: 1px solid var(--color-border);
+    border-radius: 0;
+    font-size: var(--t-rg);
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  /* Chevron derecho — empujado al extremo derecho, centrado verticalmente */
+  .page-account .account-link::after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--color-text-muted);
+    border-top: 2px solid var(--color-text-muted);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+    margin-left: auto;
+    align-self: center;
+  }
+
+  .page-account .account-link:hover::after,
+  .page-account .account-link:focus-visible::after {
+    border-color: var(--neutral-0);
+  }
+
+  /* Link activo en mobile: border-bottom verde en lugar del border-left */
+  .page-account .account-link.is-active {
+    border-left: none;
+    border-bottom: 3px solid var(--accent-green);
+    background: var(--accent-purple-soft);
+    color: var(--color-text);
+  }
+
+  /* Título "Mi cuenta" — mismo padding lateral que los links */
+  .page-account .account-nav::before {
+    content: 'Mi cuenta';
+    display: block;
+    font-size: var(--h-md);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+    padding: var(--size-6) var(--size-9) var(--size-5);
+    line-height: var(--lh-110);
+  }
+
+  /* Botón Atrás: inline junto al título, solo visible en mobile */
+  .account-back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-1);
+    transition: color var(--dur-1) var(--ease-out), background var(--dur-1) var(--ease-out);
+  }
+  .account-back-btn:hover {
+    color: var(--accent-purple);
+    background: var(--accent-purple-soft);
+  }
+
+  /* Header: flex row para alinear botón + título */
+  .page-account .account-header {
+    display: flex;
+    align-items: center;
+    gap: var(--size-3);
+    margin-bottom: var(--size-6);
+  }
+
+  /* Título: reducir en tablet (900px) */
+  .page-account .account-title {
+    font-size: var(--h-md); /* 32px — h-md */
+  }
+
+  /* Tablet: padding lateral del contenido = margen del container en tablet */
+  .page-account .account-content {
+    padding-top: var(--size-6);
+    padding-bottom: var(--size-11);
+    padding-left: var(--size-9);   /* = layout__container tablet margin */
+    padding-right: var(--size-9);
+  }
+
+  /* Tabla: scroll horizontal con texto compacto */
+  .page-account .orders-table {
+    min-width: 680px;
+  }
+  .page-account .orders-table thead th,
+  .page-account .orders-table tbody td {
+    padding: var(--size-4) var(--size-5);
+    font-size: var(--t-sm);
+    white-space: nowrap;
+  }
+}
+
+/* Mobile (≤480px) */
+@media (max-width: 480px) {
+  /* Padding lateral = margen mobile del container (var(--size-6) = 24px) */
+  .page-account .account-content {
+    padding-left: var(--size-6);
+    padding-right: var(--size-6);
+  }
+
+  /* Links sidebar */
+  .page-account .account-link {
+    padding: var(--size-5) var(--size-6);
+    padding-right: var(--size-9);
+  }
+  .page-account .account-nav::before {
+    padding: var(--size-6) var(--size-6) var(--size-5);
+  }
+
+  /* Título de sección: h-sm en mobile (24px) */
+  .page-account .account-title {
+    font-size: var(--h-sm); /* 24px */
+  }
+
+  /* Tabla compacta con scroll horizontal */
+  .page-account .orders-table {
+    min-width: 480px;
+  }
+  .page-account .orders-table thead th,
+  .page-account .orders-table tbody td {
+    padding: var(--size-3) var(--size-4);
+    font-size: var(--t-xs, 12px);
+    white-space: nowrap;
+  }
+  .page-account .status-pill {
+    font-size: 10px;
+    padding: 2px var(--size-3);
+  }
+  .page-account .thumb {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+
+
+/* Mobile small (≤480px): padding = margen mobile del container (var(--size-6) = 24px) */
+@media (max-width: 480px) {
+  .page-account .account-link {
+    padding: var(--size-5) var(--size-6);
+    padding-right: var(--size-9);
+  }
+  .page-account .account-nav::before {
+    padding: var(--size-6) var(--size-6) var(--size-5);
+  }
+}
+
+/* Desktop: ocultar botón Atrás siempre */
+@media (min-width: 901px) {
+  .account-back-btn {
+    display: none;
+  }
+}
+
+
+/* ── Fix: respetar atributo [hidden] — sin esto display:flex lo sobreescribe ── */
+[hidden] { display: none !important; }
+
+/* ── Profile rows (edición inline) ──────────────────────────── */
+
+.profile-row {
+  border-bottom: 1px solid var(--color-border);
+}
+.profile-row--last {
+  border-bottom: 0;
+}
+
+.profile-row__view {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: var(--size-5) var(--size-6);
+  gap: var(--size-4);
+}
+
+.profile-row__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-1);
+  min-width: 0;
+}
+
+.profile-row__label {
+  font-size: var(--t-xs, 12px);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.profile-row__value {
+  font-size: var(--t-sm);
+  color: var(--color-text);
+  line-height: var(--lh-140);
+}
+
+.profile-row__btn-edit {
+  flex-shrink: 0;
+  align-self: flex-start;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--t-xs, 12px);
+  font-weight: 600;
+  color: var(--color-input-focus);
+  padding: 2px var(--size-2);
+  border-radius: var(--radius-1);
+  transition: opacity 140ms ease;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+.profile-row__btn-edit:hover { opacity: 0.75; }
+.profile-row__btn-edit--danger { color: var(--danger); }
+
+.profile-row__edit {
+  padding: var(--size-4) var(--size-6) var(--size-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4);
+  border-top: 1px solid var(--color-border);
+  animation: slideDown 180ms ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.profile-row__edit-desc {
+  font-size: var(--t-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.profile-row__input {
+  width: 100%;
+  max-width: 400px;
+  padding: var(--size-3) var(--size-4);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-2);
+  color: var(--color-text);
+  font-size: var(--t-rg);
+  font-family: inherit;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+  outline: none;
+}
+.profile-row__input:focus {
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 0 3px var(--accent-purple-glow);
+}
+
+.profile-row__actions {
+  display: flex;
+  gap: var(--size-3);
+  align-items: center;
+}
+
+.profile-row__btn-save {
+  padding: var(--size-3) var(--size-6);
+  background: var(--color-text);
+  color: var(--color-bg);
+  border: none;
+  border-radius: var(--radius-2);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 140ms ease;
+}
+.profile-row__btn-save:hover { opacity: 0.85; }
+
+.profile-row__btn-cancel {
+  padding: var(--size-3) var(--size-5);
+  background: none;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-2);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background 140ms ease;
+}
+.profile-row__btn-cancel:hover { background: var(--color-surface-2); }
+
+.profile-row--open {
+  background: color-mix(in srgb, var(--color-surface) 60%, var(--accent-purple-soft) 40%);
+}
+
+
+/* ── Foto de perfil ──────────────────────────────────────────── */
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden; /* garantiza que la imagen cargada también sea circular */
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-photo-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--size-6);
+}
+
+.profile-photo-btns {
+  display: flex;
+  gap: var(--size-3);
+}
+
+/* Tablet (481px–900px): igual que desktop — row, botones en línea */
+/* Mobile (≤480px): avatar centrado, botones apilados */
+@media (max-width: 480px) {
+  .profile-photo-wrap {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--size-4);
+  }
+  .profile-photo-btns {
+    flex-direction: column;
+    width: 100%;
+  }
+  .profile-photo-btns button {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* ── Toast ───────────────────────────────────────────────────── */
+#profile-toast {
+  position: fixed;
+  bottom: var(--size-8);
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  background: var(--color-text);
+  color: var(--color-bg);
+  padding: var(--size-3) var(--size-6);
+  border-radius: var(--radius-full);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease, transform 220ms ease;
+  z-index: 999;
+  white-space: nowrap;
+}
+#profile-toast.profile-toast--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── Dirección: formulario grid ──────────────────────────────── */
+.addr-form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-3);
+  max-width: 520px;
+}
+
+.addr-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--size-4) center;
+  padding-right: var(--size-9);
+  cursor: pointer;
+  max-width: 100%;
+}
+
+.addr-form-grid .profile-row__input {
+  max-width: 100%;
+}
+
+/* ── Logout Card ─────────────────────────────────────────────── */
+
+.logout-card-wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 var(--size-8);
+}
+
+.logout-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-4);
+  box-shadow: var(--shadow-1, 0 10px 30px rgba(0,0,0,.25));
+
+  padding: var(--size-10); /* 40px via token */
+  max-width: 526px;
+  width: 100%;
+  gap: 0;
+}
+
+/* Imagen: 446px = 526px card - var(--size-10)*2 padding — layout value intencional */
+.logout-card__portal {
+  width: 446px;
+  height: 446px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Gap 24px entre imagen y título */
+.logout-card__title {
+  font-size: var(--h-md);
+  line-height: var(--lh-110);
+  margin: var(--size-6) 0 0; /* 24px via token */
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+/* Gap 12px entre título y descripción */
+.logout-card__desc {
+  font-size: var(--t-rg);
+  color: var(--color-text-muted);
+  margin: var(--size-3) 0 0; /* 12px via token */
+  line-height: var(--lh-150);
+}
+
+/* Gap 32px entre descripción y botones, gap 12px entre botones */
+.logout-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-3); /* 12px via token */
+  width: 100%;
+  margin-top: var(--size-8); /* 32px via token */
+}
+
+/* Botón base */
+.logout-btn {
+  display: block;
+  width: 100%;
+  padding: var(--size-4) var(--size-6);
+  border-radius: var(--radius-2);
+  font-size: var(--t-rg);
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease, opacity 160ms ease;
+  border: 1px solid transparent;
+}
+
+/* "Seguir navegando" — morado (primario) */
+.logout-btn--primary {
+  background: var(--accent-purple);
+  color: var(--neutral-0);
+  border-color: var(--accent-purple);
+}
+.logout-btn--primary:hover {
+  opacity: 0.88;
+}
+
+/* "Cerrar sesión" — texto rojo en default, fondo rojo en hover */
+.logout-btn--danger {
+  background: transparent;
+  color: var(--danger, #ef4444);
+  border-color: color-mix(in srgb, var(--danger) 35%, transparent);
+}
+.logout-btn--danger:hover {
+  background: color-mix(in srgb, var(--danger) 12%, transparent);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* Glitch effect en logout-btn */
+.logout-btn {
+  position: relative;
+  overflow: hidden;
+}
+.logout-btn .btn__text.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  color: inherit;
+  background: transparent;
+  z-index: 1;
+  text-shadow: -2px -2px 0 currentColor, 2px 2px 0 currentColor;
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+  clip-path: inset(50% 50% 50% 50%);
+}
+.logout-btn:hover .btn__text.glitch-text::after {
+  animation: glitch 0.6s steps(2, end) 1;
+}
+
+@media (max-width: 900px) {
+  .logout-card-wrap {
+    padding: var(--size-6) var(--size-4);
+  }
+  .logout-card {
+    padding: var(--size-6); /* 24px via token */
+  }
+  .logout-card__portal {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* ── Sidebar icons ───────────────────────────────────────────── */
+.account-link__icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+/* ── Preferencias: select inline ─────────────────────────────── */
+.pref-select {
+  max-width: 400px;
+}
+
+
+/* ============================================
+   ESTADO VACÍO — MIS PEDIDOS
+   ============================================ */
+.orders-empty {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--size-5);
+  padding: var(--size-13) var(--size-7);
+  text-align: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-3);
+  background: var(--color-surface);
+}
+
+.orders-empty__icon {
+  color: var(--color-text-secondary);
+  opacity: 0.4;
+}
+
+.orders-empty__title {
+  font-size: var(--h-sm);
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.orders-empty__desc {
+  font-size: var(--t-rg);
+  color: var(--color-text-secondary);
+  max-width: 380px;
+  margin: 0;
+  line-height: var(--lh-160);
+}
+
+.orders-empty__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--size-4) var(--size-8);
+  background: var(--accent-purple);
+  color: var(--neutral-0);
+  font-weight: 700;
+  font-size: var(--t-rg);
+  border-radius: var(--radius-2);
+  text-decoration: none;
+  transition: background var(--dur-2) var(--ease-out), transform var(--dur-1) var(--ease-out);
+}
+
+.orders-empty__cta:hover {
+  background: color-mix(in srgb, var(--accent-purple) 85%, white);
+  transform: translateY(-1px);
+}

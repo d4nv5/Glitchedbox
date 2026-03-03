@@ -1,0 +1,804 @@
+/* ╔═══════════════════════════════════════════════════════════════╗
+   ║  auth.css — Glitched Box                                     ║
+   ║  Cubre: login · register · forgot-password · reset-password  ║
+   ║         change-password · password-confirmation              ║
+   ║  Depende de: gb-core.css (tokens, .top-bar, .field-error,    ║
+   ║              .input-error, .input-ok)                        ║
+   ╚═══════════════════════════════════════════════════════════════╝ */
+
+
+/* ============================================
+   §1  BODY — flex para que main llegue al footer
+   ============================================ */
+body:has(.login-main) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body:has(.login-main) .login-main {
+  flex: 1;
+}
+
+/* Anular margin-top del footer en páginas auth */
+body:has(.login-main) .footer {
+  margin-top: 0;
+}
+
+
+/* ============================================
+   §2  LAYOUT SPLIT (login / register / forgot)
+   ============================================ */
+.login-main {
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.login-split {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 100%;
+  align-items: stretch;
+}
+
+/* ── Lado visual (imagen personaje) ─────────────────────────── */
+.login-visual {
+  position: relative;
+  overflow: hidden;
+  background: var(--neutral-1000);
+}
+
+.login-visual__inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-visual__inner::before { display: none; }
+
+.login-visual__character {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  margin-top: -50px;
+}
+
+/* Tema */
+.login-visual__character--light                          { display: none;  }
+.login-visual__character--dark                           { display: block; }
+:root[data-theme="light"] .login-visual__character--dark { display: none;  }
+:root[data-theme="light"] .login-visual__character--light{ display: block; }
+:root[data-theme="light"] .login-visual                  { background: var(--neutral-0); }
+
+/* ── Lado formulario ─────────────────────────────────────────── */
+.login-form-side {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--size-8) var(--size-8) var(--size-8);
+  padding-top: var(--size-9);
+  background: var(--color-bg);
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 412px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-9);   /* 48px entre bloques principales */
+}
+
+
+/* ============================================
+   §3  ENCABEZADO DEL FORMULARIO
+   ============================================ */
+.login-header  { margin: 0; }
+
+.login-title {
+  font-size: var(--h-sm);   /* 24px — heading/normal */
+  font-weight: 700;
+  line-height: var(--lh-120);
+  color: var(--color-text);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.login-subtitle { display: none; }
+
+/* Bloque superior: título + formulario */
+.login-top-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-6);   /* 24px */
+}
+
+
+/* ============================================
+   §4  FORMULARIO E INPUTS
+   ============================================ */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-3);   /* 8px entre fields */
+}
+
+/* Field wrapper */
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Labels — ocultos por defecto (placeholder cumple función) */
+.login-field__label,
+.login-field__label-row { display: none; }
+
+/* Labels visibles (change-password, confirmación) */
+.change-label {
+  display: block !important;
+  font-size: var(--t-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--size-2);
+}
+
+/* Input base */
+.login-field__input {
+  width: 100%;
+  height: 48px;
+  padding: 0 var(--size-5);
+  background: var(--color-input-bg);
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--radius-1);
+  color: var(--color-text);
+  font-size: var(--t-rg);
+  font-family: inherit;
+  box-sizing: border-box;
+  transition:
+    border-color var(--dur-2) var(--ease-out),
+    box-shadow   var(--dur-2) var(--ease-out);
+}
+
+.login-field__input::placeholder {
+  color: var(--color-input-placeholder);
+}
+
+.login-field__input:focus {
+  outline: none;
+  border-color: var(--color-input-focus);
+  box-shadow: var(--focus-ring);
+}
+
+/* Wrap de contraseña con botón ojo */
+.login-field__password-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+}
+
+.login-field__password-wrap .login-field__input {
+  padding-right: 48px !important;
+  flex: 1;
+  min-width: 0;    /* evita que el input se encoja fuera del flex-parent */
+  width: 100%;
+}
+
+/* Botón ojo */
+.login-field__eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.70);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--size-2);
+  z-index: 3;
+  flex-shrink: 0;
+  line-height: 0;
+  transition: color var(--dur-1) var(--ease-out);
+}
+
+.login-field__eye svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  fill: currentColor;
+  pointer-events: none;
+}
+
+.login-field__eye:hover { color: var(--neutral-0); }
+
+:root[data-theme="light"] .login-field__eye       { color: rgba(0,0,0,0.50); }
+:root[data-theme="light"] .login-field__eye:hover  { color: rgba(0,0,0,0.90); }
+
+/* Ojo — estados show/hide */
+.login-field__eye .eye-icon--hide              { display: none;  }
+.login-field__eye.is-visible .eye-icon--show   { display: none;  }
+.login-field__eye.is-visible .eye-icon--hide   { display: block; }
+
+/* Link "¿olvidaste tu contraseña?" */
+.login-field__forgot {
+  font-size: var(--t-sm);
+  color: var(--color-input-focus);
+  text-decoration: none;
+  transition: opacity var(--dur-1) var(--ease-out);
+}
+
+.login-field__forgot:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+}
+
+
+/* ============================================
+   §5  RECORDAR SESIÓN (toggle)
+   ============================================ */
+.login-remember {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--size-5) 0;
+}
+
+.login-remember .login-field__forgot { display: block; }
+
+.login-remember__label {
+  display: flex;
+  align-items: center;
+  gap: var(--size-3);
+  cursor: pointer;
+  user-select: none;
+}
+
+.login-remember__checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Toggle switch */
+.login-remember__custom {
+  width: 32px;
+  height: 18px;
+  border-radius: var(--radius-full);
+  background: var(--color-border-strong);
+  position: relative;
+  flex-shrink: 0;
+  transition: background var(--dur-2) var(--ease-out);
+}
+
+.login-remember__custom::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-text);
+  transition: transform var(--dur-2) var(--ease-out);
+}
+
+.login-remember__checkbox:checked + .login-remember__custom {
+  background: var(--color-input-focus);
+}
+
+.login-remember__checkbox:checked + .login-remember__custom::after {
+  transform: translateX(14px);
+}
+
+.login-remember__text {
+  font-size: var(--t-sm);
+  color: var(--color-text-secondary);
+}
+
+
+/* ============================================
+   §6  BOTÓN SUBMIT
+   ============================================ */
+.login-submit {
+  margin-top: calc(var(--size-6) - var(--size-3));
+  width: 100%;
+  height: 48px;
+  padding: 0 var(--size-5);
+  border-radius: var(--radius-1);
+  border: none;
+  background: var(--accent-purple);           /* primario — fondo morado sólido */
+  color: #fff;
+  font-size: var(--t-rg);
+  font-weight: 800;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition:
+    background    var(--dur-1) var(--ease-out),
+    box-shadow    var(--dur-1) var(--ease-out),
+    transform     var(--dur-1) var(--ease-out);
+}
+
+/* Glitch overlay */
+.login-submit::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  color: inherit;
+  background: transparent;
+  z-index: 1;
+  text-shadow: -2px -2px 0 currentColor, 2px 2px 0 currentColor;
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+  clip-path: inset(50% 50% 50% 50%);
+}
+
+.login-submit:hover::after {
+  animation: glitch 0.6s steps(2, end) 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .login-submit:hover {
+    background:   color-mix(in srgb, var(--accent-purple) 85%, white);
+    color:        #fff;
+    box-shadow:
+      0 8px 24px rgba(139, 92, 246, 0.45);
+    transform: translateY(-1px);
+  }
+}
+
+.login-submit:active {
+  background:   color-mix(in srgb, var(--accent-purple) 85%, #000 15%);
+  color:        #fff;
+  transform:    translateY(1px);
+  box-shadow:   0 2px 8px rgba(139, 92, 246, 0.3);
+}
+
+.login-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.login-submit.is-cooldown {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+/* ============================================
+   §7  DIVISOR  o
+   ============================================ */
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.login-divider::before,
+.login-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border-strong);
+}
+
+.login-divider__text {
+  font-size: var(--t-sm);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+
+/* ============================================
+   §8  BOTONES SOCIALES (Google / Facebook)
+   ============================================ */
+.login-social-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-3);
+}
+
+.login-social {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-social__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--size-3);
+  width: 100%;
+  height: 48px;
+  padding: 0 var(--size-5);
+  background: var(--accent-purple-soft);
+  border: 1px solid var(--accent-purple-border);
+  border-radius: var(--radius-1);
+  color: var(--color-text);
+  font-size: var(--t-rg);
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: -0.01em;
+  transition:
+    background    var(--dur-2) var(--ease-out),
+    border-color  var(--dur-2) var(--ease-out),
+    color         var(--dur-2) var(--ease-out),
+    transform     var(--dur-1) var(--ease-out);
+}
+
+.login-social__btn:hover {
+  background:   var(--accent-purple);
+  border-color: var(--accent-purple);
+  color:        var(--neutral-0);
+}
+
+/* Iconos en hover — blanco */
+.login-social__btn:hover .icon-google__path { fill: white !important; }
+.login-social__btn:hover .icon-fb__circle   { fill: white !important; }
+.login-social__btn:hover .icon-fb__letter   { fill: var(--accent-purple) !important; }
+
+.login-social__btn:active {
+  background:   color-mix(in srgb, var(--accent-purple) 85%, #000 15%);
+  border-color: var(--accent-purple);
+  color:        var(--neutral-0);
+}
+
+
+/* ============================================
+   §9  LINK REGISTRO / LOGIN
+   ============================================ */
+.login-register-link {
+  text-align: center;
+  font-size: var(--t-sm);
+  color: var(--color-text-secondary);
+}
+
+.login-register-link__accent {
+  color: var(--color-input-focus);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity var(--dur-1) var(--ease-out);
+}
+
+.login-register-link__accent:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+}
+
+
+/* ============================================
+   §10  REGISTER — overrides
+   ============================================ */
+/* Fila nombre + apellidos — cada campo mantiene su ancho completo */
+.register-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--size-3);
+  min-width: 0;
+}
+
+/* Los login-field dentro de la fila NO deben encogerse */
+.register-row .login-field {
+  min-width: 0;
+  width: 100%;
+}
+
+/* El input dentro del login-field siempre ocupa el 100% del campo */
+.register-row .login-field__input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Términos — todo en una sola línea */
+.register-terms {
+  justify-content: flex-start;
+  gap: var(--size-3);
+  padding: var(--size-1) 0 0;
+  flex-direction: column;  /* error debajo del label */
+  align-items: flex-start;
+}
+
+.register-terms .login-remember__label {
+  align-items: center;
+  flex-wrap: nowrap;     /* forzar una línea */
+  white-space: nowrap;   /* no wrap en label */
+}
+
+.register-terms .login-remember__text {
+  white-space: nowrap;   /* "Acepto los términos y condiciones" en una sola línea */
+}
+
+.register-terms .login-field__forgot  { display: inline; font-size: inherit; }
+.register-terms .field-error          { display: block; padding-left: 0; margin-top: var(--size-1); }
+
+@media (max-width: 30rem) {  /* 480px */
+  .register-row { grid-template-columns: 1fr; }
+}
+
+
+/* ============================================
+   §11  FORGOT-PASSWORD — overrides
+   ============================================ */
+.forgot-subtitle {
+  font-size: var(--t-rg);
+  color: var(--color-text-secondary);
+  line-height: var(--lh-150);
+  margin: var(--size-3) 0 0;
+}
+
+.forgot-email-highlight {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.forgot-icon-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: var(--size-5);
+}
+
+/* Logo en forgot/reset */
+.forgot-logo-wrap {
+  margin-bottom: var(--size-9);
+}
+
+.forgot-logo-wrap--center {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.forgot-logo__img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+.forgot-logo--light                           { display: none;  }
+.forgot-logo--dark                            { display: block; }
+:root[data-theme="light"] .forgot-logo--dark  { display: none;  }
+:root[data-theme="light"] .forgot-logo--light { display: block; }
+
+
+/* ============================================
+   §12  RESET-PASSWORD — overrides
+   ============================================ */
+.reset-resend-row {
+  font-size: var(--t-sm);
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin: 0;
+}
+
+.reset-resend-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+  color: var(--color-input-focus);
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity var(--dur-1) var(--ease-out);
+}
+
+.reset-resend-btn:hover    { opacity: 0.75; text-decoration: underline; }
+.reset-resend-btn:disabled { opacity: 0.40; cursor: not-allowed; text-decoration: none; }
+
+
+/* ============================================
+   §13  CHANGE-PASSWORD — layout centrado
+   (change-password.html · password-confirmation.html)
+   ============================================ */
+.change-centered {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--size-10) var(--size-6);
+  min-height: 0;
+}
+
+.change-card {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* Logo centrado */
+.change-logo {
+  margin-bottom: var(--size-9);
+  display: flex;
+  justify-content: center;
+}
+
+.change-logo__img { height: 32px; width: auto; display: block; }
+
+.change-logo--light                            { display: none;  }
+.change-logo--dark                             { display: block; }
+:root[data-theme="light"] .change-logo--dark   { display: none;  }
+:root[data-theme="light"] .change-logo--light  { display: block; }
+
+.change-title {
+  text-align: center;
+  margin-bottom: var(--size-5);
+  white-space: normal !important;
+}
+
+.change-subtitle {
+  text-align: left;
+  width: 100%;
+  margin-bottom: var(--size-3);
+}
+
+.change-requirements {
+  width: 100%;
+  padding-left: 20px;
+  margin-bottom: var(--size-6);
+}
+
+.change-requirements li {
+  font-size: var(--t-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--lh-150);
+  margin-bottom: var(--size-2);
+}
+
+/* Form ocupa ancho completo de la card */
+.change-card .login-form { width: 100%; }
+
+/* Padding extra al footer */
+.change-password .change-centered {
+  padding-bottom: var(--size-11);
+}
+
+
+/* ============================================
+   §14  BARRA DE FORTALEZA DE CONTRASEÑA
+   ============================================ */
+.pw-strength {
+  display: none;
+  flex-direction: column;
+  gap: var(--size-2);
+  margin-top: var(--size-3);
+}
+
+.pw-strength.is-visible { display: flex; }
+
+.pw-strength__track {
+  width: 100%;
+  height: 4px;
+  background: var(--color-input-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.pw-strength__bar {
+  height: 100%;
+  width: 0%;
+  border-radius: var(--radius-full);
+  transition:
+    width            var(--dur-3) var(--ease-out),
+    background-color var(--dur-3) var(--ease-out);
+}
+
+.pw-strength[data-level="weak"]   .pw-strength__bar { width: 33.33%; background: var(--danger);  }
+.pw-strength[data-level="medium"] .pw-strength__bar { width: 66.66%; background: var(--warning); }
+.pw-strength[data-level="strong"] .pw-strength__bar { width: 100%;   background: var(--success); }
+
+.pw-strength__label {
+  font-size: var(--t-sm);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.pw-strength[data-level="weak"]   .pw-strength__label { color: var(--danger);  }
+.pw-strength[data-level="medium"] .pw-strength__label { color: var(--warning); }
+.pw-strength[data-level="strong"] .pw-strength__label { color: var(--success); }
+
+
+/* ============================================
+   §15  PASSWORD-CONFIRMATION — exclusivos
+   ============================================ */
+.confirm-check {
+  margin-bottom: var(--size-6);
+  display: flex;
+  justify-content: center;
+}
+
+.confirm-check svg { display: block; }
+
+.confirm-subtitle {
+  text-align: center;
+  margin-top: var(--size-3);
+}
+
+.confirm-login-btn {
+  width: auto;
+  align-self: center;
+  padding-left: var(--size-8);
+  padding-right: var(--size-8);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--size-9);
+}
+
+/* Padding extra en password-confirmation */
+.password-confirmation .change-centered {
+  padding-bottom: var(--size-11);
+}
+
+
+/* ============================================
+   §16  RESPONSIVE
+   ============================================ */
+/* Tablet: mantiene 2 col, reduce padding */
+@media (max-width: 64rem) {
+  .login-split          { grid-template-columns: 40% 60%; }
+  .login-form-side      { padding: var(--size-7) var(--size-6); padding-top: var(--size-8); }
+  .login-form-container { gap: var(--size-7); }
+}
+
+/* Mobile: columna única, oculta imagen */
+@media (max-width: 53.75rem) {
+  .login-split         { grid-template-columns: 1fr; }
+  .login-visual        { display: none; }
+  .login-form-side     { padding: var(--size-8) var(--size-6); align-items: center; min-height: calc(100vh - 120px); }
+  .login-form-container{ max-width: 440px; width: 100%; gap: var(--size-6); }
+}
+
+/* Mobile pequeño */
+@media (max-width: 36rem) {
+  .login-form-side {
+    padding: var(--size-7) var(--size-5);
+    padding-top: var(--size-8);
+    align-items: flex-start;
+  }
+  .login-form-container { max-width: 100%; }
+  .login-title          { font-size: var(--h-xs); }
+  .login-social__btn    { font-size: var(--t-sm); }
+
+  .change-centered {
+    padding: var(--size-8) var(--size-5);
+    align-items: flex-start;
+  }
+  .change-card { max-width: 100%; }
+}

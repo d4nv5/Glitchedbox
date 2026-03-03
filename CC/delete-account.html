@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eliminar cuenta - Glitched Box</title><link rel="stylesheet" href="gb-core.css" />
+  <link rel="stylesheet" href="my-account.css" />
+  <style>
+    /* ── Layout centrado sin sidebar ─────────────────────────── */
+    .delete-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Botón Salir — reutiliza icon-button del header pero con estilo pill */
+    .delete-header__exit {
+      background: none;
+      border: 1px solid var(--color-border-strong);
+      border-radius: var(--radius-full);
+      padding: var(--size-3) var(--size-5);
+      color: var(--color-text);
+      font-size: var(--t-sm);
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 140ms ease;
+      flex-shrink: 0;
+    }
+    .delete-header__exit:hover {
+      background: var(--color-surface-2);
+    }
+
+    .delete-body {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      /* padding lateral = layout__container del sitio */
+      padding: var(--size-11) var(--size-12);
+    }
+
+    .delete-card {
+      width: 100%;
+      max-width: 560px;
+    }
+
+    /* ── Step 1: razones ─────────────────────────────────────── */
+    #step-reasons {
+      display: flex;
+      flex-direction: column;
+      gap: var(--size-6);
+    }
+
+    .delete-title {
+      font-size: var(--h-lg);
+      font-weight: 700;
+      line-height: var(--lh-110);
+      margin: 0 0 var(--size-2);
+      text-align: center;
+    }
+
+    .delete-subtitle {
+      font-size: var(--t-rg);
+      color: var(--color-text-muted);
+      text-align: center;
+      margin: 0 0 var(--size-4);
+    }
+
+    .reason-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--size-3);
+    }
+
+    .reason-option {
+      display: flex;
+      align-items: center;
+      gap: var(--size-4);
+      padding: var(--size-5) var(--size-6);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-4);
+      cursor: pointer;
+      transition: border-color 140ms ease, background 140ms ease;
+      text-align: left;
+      width: 100%;
+      color: var(--color-text);
+      font-size: var(--t-rg);
+      font-family: inherit;
+    }
+    .reason-option:hover {
+      border-color: var(--color-border-strong);
+      background: var(--color-surface-2);
+    }
+    .reason-option.is-selected {
+      border-color: var(--accent-purple);
+      background: var(--accent-purple-soft);
+    }
+
+    .reason-option__radio {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid var(--color-border-strong);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 140ms ease, background 140ms ease;
+    }
+    .reason-option.is-selected .reason-option__radio {
+      border-color: var(--accent-purple);
+      background: var(--accent-purple);
+    }
+    .reason-option.is-selected .reason-option__radio::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .delete-btn-continue {
+      width: 100%;
+      padding: var(--size-5);
+      background: var(--danger);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-4);
+      font-size: var(--t-rg);
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: opacity 140ms ease;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .delete-btn-continue.is-enabled {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .delete-btn-continue.is-enabled:hover {
+      opacity: 0.88;
+    }
+
+    /* ── Step 2: confirmación final ──────────────────────────── */
+    #step-confirm {
+      display: none;
+      flex-direction: column;
+      gap: var(--size-6);
+      text-align: center;
+    }
+    #step-confirm.is-active {
+      display: flex;
+    }
+
+    .delete-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--status-danger-bg);
+      border: 1px solid var(--status-danger-fg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .delete-warning {
+      background: color-mix(in srgb, var(--danger) 8%, transparent);
+      border: 1px solid var(--status-danger-fg);
+      border-radius: var(--radius-4);
+      padding: var(--size-5) var(--size-6);
+      text-align: left;
+    }
+    .delete-warning p {
+      margin: 0;
+      font-size: var(--t-sm);
+      color: var(--color-text-muted);
+      line-height: var(--lh-150);
+    }
+    .delete-warning p + p {
+      margin-top: var(--size-3);
+    }
+    .delete-warning strong {
+      color: var(--danger);
+    }
+
+    .delete-confirm-actions {
+      display: flex;
+      flex-direction: column;
+      gap: var(--size-3);
+    }
+
+    .delete-btn-final {
+      width: 100%;
+      padding: var(--size-5);
+      background: var(--danger);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-4);
+      font-size: var(--t-rg);
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: opacity 140ms ease;
+    }
+    .delete-btn-final:hover { opacity: 0.88; }
+
+    .delete-btn-back {
+      width: 100%;
+      padding: var(--size-5);
+      background: none;
+      color: var(--color-text);
+      border: 1px solid var(--color-border-strong);
+      border-radius: var(--radius-4);
+      font-size: var(--t-rg);
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 140ms ease;
+    }
+    .delete-btn-back:hover { background: var(--color-surface-2); }
+
+    /* ── Step 3: cuenta eliminada ────────────────────────────── */
+    #step-deleted {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--size-6);
+      text-align: center;
+    }
+    #step-deleted.is-active {
+      display: flex;
+    }
+
+    .deleted-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .deleted-title {
+      font-size: var(--h-md);
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .deleted-desc {
+      font-size: var(--t-rg);
+      color: var(--color-text-muted);
+      margin: 0;
+      max-width: 400px;
+      line-height: var(--lh-150);
+    }
+
+    .deleted-btn-home {
+      padding: var(--size-4) var(--size-8);
+      background: var(--accent-purple);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-full);
+      font-size: var(--t-rg);
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: opacity 140ms ease;
+    }
+    .deleted-btn-home:hover { opacity: 0.85; }
+
+    /* ── Responsive ──────────────────────────────────────────── */
+
+    /* Tablet (481–1024px) */
+    @media (max-width: 64rem) {
+      .delete-body {
+        padding: var(--size-10) var(--size-8);
+        align-items: flex-start;
+        justify-content: center;
+      }
+      .delete-card {
+        max-width: 520px;
+      }
+      .delete-title {
+        font-size: var(--h-md);
+      }
+      .reason-option {
+        padding: var(--size-4) var(--size-5);
+        font-size: var(--t-sm);
+      }
+      .delete-btn-continue,
+      .delete-btn-final,
+      .delete-btn-back {
+        padding: var(--size-4);
+        font-size: var(--t-sm);
+      }
+    }
+
+    /* Mobile (≤480px) */
+    @media (max-width: 30rem) {
+      .delete-body {
+        padding: var(--size-7) var(--size-5);
+        /* en mobile la card ocupa todo el ancho disponible */
+      }
+      .delete-card {
+        max-width: 100%;
+      }
+
+      /* Títulos más compactos */
+      .delete-title {
+        font-size: var(--h-sm);
+        margin-bottom: var(--size-2);
+      }
+      .delete-subtitle {
+        font-size: var(--t-sm);
+        margin-bottom: var(--size-3);
+      }
+
+      /* Opciones de razón: más compactas */
+      #step-reasons {
+        gap: var(--size-5);
+      }
+      .reason-list {
+        gap: var(--size-2);
+      }
+      .reason-option {
+        padding: var(--size-4) var(--size-4);
+        font-size: var(--t-sm);
+        gap: var(--size-3);
+        border-radius: var(--radius-3);
+      }
+      .reason-option__radio {
+        width: 18px;
+        height: 18px;
+      }
+
+      /* Botones full-width más compactos */
+      .delete-btn-continue,
+      .delete-btn-final,
+      .delete-btn-back {
+        padding: var(--size-4);
+        font-size: var(--t-sm);
+        border-radius: var(--radius-3);
+      }
+
+      /* Step 2: warning más legible */
+      .delete-warning {
+        padding: var(--size-4) var(--size-5);
+      }
+      .delete-warning p {
+        font-size: var(--t-xs, 12px);
+        line-height: var(--lh-160);
+      }
+
+      /* Icono de alerta */
+      .delete-icon {
+        width: 56px;
+        height: 56px;
+      }
+
+      /* Step 3: cuenta eliminada */
+      .deleted-icon {
+        width: 64px;
+        height: 64px;
+      }
+      .deleted-title {
+        font-size: var(--t-lg);
+      }
+      .deleted-desc {
+        font-size: var(--t-sm);
+      }
+      .deleted-btn-home {
+        padding: var(--size-4) var(--size-7);
+        font-size: var(--t-sm);
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Gap reducido en steps */
+      #step-confirm,
+      #step-deleted {
+        gap: var(--size-5);
+      }
+    }
+  </style>
+</head>
+<body class="delete-page">
+
+  <!-- Header global del sitio (solo logo + botón Salir) -->
+  <header class="header">
+    <div class="layout__container">
+      <div class="header-content">
+        <div class="logo">
+          <a aria-label="Glitched Box (inicio)" href="index.html">
+            <img alt="Glitched Box" class="header-logo-img"
+              data-logo-dark="images/logo_glitchedbox_horizontal.svg"
+              data-logo-light="images/logo_glitchedbox_horizontal_black.svg"
+              decoding="async" id="headerLogo" loading="eager"
+              src="images/logo_glitchedbox_horizontal.svg" />
+          </a>
+        </div>
+        <div class="header-actions">
+          <button class="delete-header__exit" type="button" onclick="history.back()">Salir</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="delete-body">
+    <div class="delete-card">
+
+      <!-- STEP 1: Razones -->
+      <div id="step-reasons">
+        <div>
+          <h1 class="delete-title">¿Por qué quieres<br>eliminar tu cuenta?</h1>
+          <p class="delete-subtitle">Tu respuesta nos ayuda a mejorar Glitched Box.</p>
+        </div>
+
+        <div class="reason-list" id="reasonList">
+          <button class="reason-option" data-reason="no-uso" type="button">
+            <span class="reason-option__radio"></span>
+            Ya no compro en Glitched Box.
+          </button>
+          <button class="reason-option" data-reason="privacidad" type="button">
+            <span class="reason-option__radio"></span>
+            Preocupaciones de privacidad o seguridad.
+          </button>
+          <button class="reason-option" data-reason="otra-cuenta" type="button">
+            <span class="reason-option__radio"></span>
+            Utilizo otra cuenta.
+          </button>
+          <button class="reason-option" data-reason="experiencia" type="button">
+            <span class="reason-option__radio"></span>
+            Tuve una mala experiencia.
+          </button>
+          <button class="reason-option" data-reason="otro" type="button">
+            <span class="reason-option__radio"></span>
+            Otro motivo.
+          </button>
+        </div>
+
+        <button class="delete-btn-continue" id="btnContinue" type="button">
+          Continuar
+        </button>
+      </div>
+
+      <!-- STEP 2: Confirmación -->
+      <div id="step-confirm">
+        <div class="delete-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M16 3C8.82 3 3 8.82 3 16s5.82 13 13 13 13-5.82 13-13S23.18 3 16 3zm1 19h-2v-2h2v2zm0-4h-2V10h2v8z" fill="#ef4444"/>
+          </svg>
+        </div>
+
+        <div>
+          <h2 class="delete-title" style="font-size: var(--h-md);">Antes de continuar</h2>
+          <p class="delete-subtitle" style="margin:0;">Esta acción es permanente e irreversible.</p>
+        </div>
+
+        <div class="delete-warning">
+          <p><strong>Al eliminar tu cuenta:</strong></p>
+          <p>• Tu historial de pedidos y datos personales serán borrados permanentemente.</p>
+          <p>• No podrás recuperar tus listas de favoritos ni tu carrito guardado.</p>
+          <p>• Se cancelarán todos los pedidos pendientes de procesamiento.</p>
+          <p>• No podrás volver a usar este correo electrónico para registrarte.</p>
+        </div>
+
+        <div class="delete-confirm-actions">
+          <button class="delete-btn-final" id="btnDeleteFinal" type="button">
+            Sí, eliminar mi cuenta
+          </button>
+          <button class="delete-btn-back" id="btnBack" type="button">
+            Cancelar
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Cuenta eliminada -->
+      <div id="step-deleted">
+        <div class="deleted-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <path d="M20 4C11.163 4 4 11.163 4 20s7.163 16 16 16 16-7.163 16-16S28.837 4 20 4zm-2 22l-6-6 1.414-1.414L18 23.172l8.586-8.586L28 16l-10 10z" fill="var(--color-text-muted)"/>
+          </svg>
+        </div>
+
+        <h2 class="deleted-title">Tu cuenta ha sido eliminada</h2>
+        <p class="deleted-desc">
+          Lamentamos verte partir. Todos tus datos han sido eliminados de acuerdo con nuestra política de privacidad. Esperamos verte de nuevo algún día.
+        </p>
+
+        <a href="index.html" class="deleted-btn-home">Ir al inicio</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Theme sync con gb-core
+    const savedTheme = localStorage.getItem('gb_theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    const logo = document.getElementById('headerLogo');
+    if (logo) {
+      logo.src = savedTheme === 'light'
+        ? logo.dataset.logoLight
+        : logo.dataset.logoDark;
+    }
+
+    // Lógica del flujo
+    const reasonList   = document.getElementById('reasonList');
+    const btnContinue  = document.getElementById('btnContinue');
+    const btnBack      = document.getElementById('btnBack');
+    const btnDeleteFinal = document.getElementById('btnDeleteFinal');
+
+    const stepReasons  = document.getElementById('step-reasons');
+    const stepConfirm  = document.getElementById('step-confirm');
+    const stepDeleted  = document.getElementById('step-deleted');
+
+    let selectedReason = null;
+
+    // Selección de razón
+    reasonList.querySelectorAll('.reason-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        reasonList.querySelectorAll('.reason-option').forEach(b => b.classList.remove('is-selected'));
+        btn.classList.add('is-selected');
+        selectedReason = btn.dataset.reason;
+        btnContinue.classList.add('is-enabled');
+      });
+    });
+
+    // Step 1 → Step 2
+    btnContinue.addEventListener('click', () => {
+      if (!selectedReason) return;
+      stepReasons.style.display = 'none';
+      stepConfirm.classList.add('is-active');
+    });
+
+    // Step 2 → Step 1 (cancelar)
+    btnBack.addEventListener('click', () => {
+      stepConfirm.classList.remove('is-active');
+      stepReasons.style.display = 'flex';
+    });
+
+    // Step 2 → Step 3 (eliminar)
+    btnDeleteFinal.addEventListener('click', () => {
+      stepConfirm.classList.remove('is-active');
+      stepDeleted.classList.add('is-active');
+    });
+  </script>
+</body>
+</html>

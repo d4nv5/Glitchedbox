@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¿Cómo quieres continuar? — Glitched Box</title>
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="gb-core.css" />
+  <link rel="stylesheet" href="checkout.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER SIMPLIFICADO — idéntico a checkout.html ===== -->
+  <header class="co-header" style="position:relative;">
+    <div class="co-header__inner">
+
+      <a href="index.html" class="co-header__logo" aria-label="Glitched Box — inicio">
+        <img
+          src="images/logo_glitchedbox_horizontal.svg"
+          alt="Glitched Box"
+          id="checkoutLogo"
+          data-logo-dark="images/logo_glitchedbox_horizontal.svg"
+          data-logo-light="images/logo_glitchedbox_horizontal_black.svg"
+          height="28"
+        />
+      </a>
+
+      <!-- Pago seguro — centrado absolutamente -->
+      <div class="co-header__center" style="position:absolute;left:50%;transform:translateX(-50%);pointer-events:none;">
+        <span class="co-header__label">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0 0 10 1.944 11.954 11.954 0 0 0 17.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 0 0-1.414-1.414L9 10.586 7.707 9.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          Pago seguro
+        </span>
+      </div>
+
+      <div class="co-header__actions">
+        <!-- Solo el theme toggle en el header — Volver va debajo -->
+
+        <!-- Theme toggle -->
+        <label class="theme-switch theme-switch--sm" aria-label="Cambiar tema">
+          <input id="themeToggle" type="checkbox" class="theme-switch__checkbox" data-theme-toggle aria-label="Cambiar tema">
+          <div class="theme-switch__container" aria-hidden="true">
+            <div class="theme-switch__clouds"></div>
+            <div class="theme-switch__stars-container">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M135.8 3c-.8.9-1.7 1.3-2.8 1.4 1.1.1 2 .5 2.8 1.4.8.9 1.2 1.9 1.2 3.1 0-.8.2-1.5.5-2.1.4-.7.9-1.2 1.5-1.6.6-.4 1.3-.6 2.1-.6-1.1-.1-2.1-.5-2.9-1.4C137.4 2.2 137 1.2 137 0c0 1.2-.4 2.2-1.2 3ZM31 23.4c1.1-.1 2-.5 2.8-1.4.8-.9 1.2-1.8 1.2-3 0 1.2.4 2.1 1.2 3 .8.9 1.7 1.3 2.8 1.4-.7 0-1.4.2-2 .6-.6.4-1.1.9-1.5 1.6-.4.7-.5 1.4-.5 2.1 0-1.2-.4-2.2-1.2-3.1-.8-.9-1.7-1.3-2.8-1.4Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="theme-switch__circle-container">
+              <div class="theme-switch__sun-moon-container">
+                <div class="theme-switch__moon">
+                  <div class="theme-switch__spot"></div>
+                  <div class="theme-switch__spot"></div>
+                  <div class="theme-switch__spot"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </label>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Botón Volver al carrito — debajo del header, fora de la barra -->
+  <div class="gc-back-wrap">
+    <a href="cart.html" class="gc-back-btn">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 0 1-1.414 0l-6-6a1 1 0 0 1 0-1.414l6-6a1 1 0 0 1 1.414 1.414L5.414 9H17a1 1 0 1 1 0 2H5.414l4.293 4.293a1 1 0 0 1 0 1.414z" clip-rule="evenodd"/>
+      </svg>
+      <span class="glitch-text" data-text="Volver al carrito">Volver al carrito</span>
+    </a>
+  </div>
+
+  <!-- ===== MAIN ===== -->
+  <main>
+    <div class="gc-split">
+
+      <!-- ── IZQUIERDA: visual + mini resumen ── -->
+      <div class="gc-visual" aria-hidden="true">
+        <div class="gc-visual__inner">
+
+          <div class="gc-visual__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+          </div>
+
+          <h2 class="gc-visual__title">Tu pedido,<br>tu elección</h2>
+          <p class="gc-visual__desc">Compra en segundos como invitado o inicia sesión para guardar tu historial y acceder a promociones exclusivas.</p>
+
+          <!-- Mini resumen del carrito con imágenes -->
+          <div class="gc-cart-preview">
+            <p class="gc-cart-preview__label">Tu carrito</p>
+            <div id="gcCartItems" class="gc-cart-preview__items">
+              <div class="gc-cart-preview__loading">
+                <span style="color:var(--color-text-muted)">Cargando...</span>
+              </div>
+            </div>
+            <div class="gc-cart-preview__total-row">
+              <span class="gc-cart-preview__total-label">Total</span>
+              <span class="gc-cart-preview__total-amount" id="gcCartTotal">—</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── DERECHA: opciones ── -->
+      <div class="gc-options">
+        <div class="gc-options__inner">
+
+          <div>
+            <h1 class="gc-options__heading">¿Cómo quieres continuar?</h1>
+            <p class="gc-options__sub">Elige la opción que mejor se adapte a ti.</p>
+          </div>
+
+          <!-- Opción 1: Con cuenta -->
+          <a href="login.html?redirect=checkout" class="gc-option-card gc-option-card--account">
+            <div class="gc-option-card__header">
+              <div class="gc-option-card__icon-wrap">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2.5c-3.3 0-10 1.7-10 5V22h20v-2.5c0-3.3-6.7-5-10-5z"/>
+                </svg>
+              </div>
+              <span class="gc-option-card__title">Iniciar sesión / Crear cuenta</span>
+              <span class="gc-option-card__badge">Recomendado</span>
+            </div>
+
+            <p class="gc-option-card__desc">Accede a tu cuenta para completar la compra con tus datos guardados.</p>
+
+            <ul class="gc-option-card__perks" aria-label="Ventajas">
+              <li class="gc-option-card__perk">
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M16.7 5.3a1 1 0 0 0-1.4 0L8 12.6 4.7 9.3a1 1 0 0 0-1.4 1.4l4 4a1 1 0 0 0 1.4 0l8-8a1 1 0 0 0 0-1.4z"/>
+                </svg>
+                Tus datos de envío ya están guardados
+              </li>
+              <li class="gc-option-card__perk">
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M16.7 5.3a1 1 0 0 0-1.4 0L8 12.6 4.7 9.3a1 1 0 0 0-1.4 1.4l4 4a1 1 0 0 0 1.4 0l8-8a1 1 0 0 0 0-1.4z"/>
+                </svg>
+                Historial de pedidos en tu cuenta
+              </li>
+              <li class="gc-option-card__perk">
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M16.7 5.3a1 1 0 0 0-1.4 0L8 12.6 4.7 9.3a1 1 0 0 0-1.4 1.4l4 4a1 1 0 0 0 1.4 0l8-8a1 1 0 0 0 0-1.4z"/>
+                </svg>
+                Promociones y descuentos exclusivos
+              </li>
+            </ul>
+
+            <div class="gc-option-card__cta">
+              Continuar con mi cuenta
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 10h12M11 5l5 5-5 5"/>
+              </svg>
+            </div>
+          </a>
+
+          <!-- Divisor -->
+          <div class="gc-divider" aria-hidden="true">o</div>
+
+          <!-- Opción 2: Invitado -->
+          <a href="checkout.html?mode=guest" class="gc-option-card gc-option-card--guest">
+            <div class="gc-option-card__header">
+              <div class="gc-option-card__icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                  <line x1="17" y1="3" x2="22" y2="8"/>
+                  <line x1="22" y1="3" x2="17" y2="8"/>
+                </svg>
+              </div>
+              <span class="gc-option-card__title">Continuar como invitado</span>
+            </div>
+
+            <p class="gc-option-card__desc">Sin registro. Solo necesitas tu email para recibir la confirmación de tu pedido.</p>
+
+            <ul class="gc-option-card__perks" aria-label="Notas">
+              <li class="gc-option-card__perk gc-option-card__perk--ok">
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M16.7 5.3a1 1 0 0 0-1.4 0L8 12.6 4.7 9.3a1 1 0 0 0-1.4 1.4l4 4a1 1 0 0 0 1.4 0l8-8a1 1 0 0 0 0-1.4z"/>
+                </svg>
+                Recibirás confirmación por email
+              </li>
+              <li class="gc-option-card__perk gc-option-card__perk--warn">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75"
+                     stroke-linecap="round" aria-hidden="true">
+                  <circle cx="10" cy="10" r="8"/>
+                  <path d="M10 7v3.5M10 13.5v.5"/>
+                </svg>
+                Ingresarás tus datos de envío manualmente
+              </li>
+              <li class="gc-option-card__perk gc-option-card__perk--warn">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75"
+                     stroke-linecap="round" aria-hidden="true">
+                  <circle cx="10" cy="10" r="8"/>
+                  <path d="M10 7v3.5M10 13.5v.5"/>
+                </svg>
+                Sin historial de pedidos guardado
+              </li>
+            </ul>
+
+            <div class="gc-option-card__cta">
+              Comprar sin registrarme
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 10h12M11 5l5 5-5 5"/>
+              </svg>
+            </div>
+          </a>
+
+          <!-- Sellos de seguridad -->
+          <div class="gc-security">
+            <span class="gc-security__badge">
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0 0 10 1.944 11.954 11.954 0 0 0 17.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 0 0-1.414-1.414L9 10.586 7.707 9.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Compra segura
+            </span>
+            <span class="gc-security__badge">
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0 1 10 0v2a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2zm8-2v2H7V7a3 3 0 0 1 6 0z" clip-rule="evenodd"/>
+              </svg>
+              Datos encriptados
+            </span>
+            <span class="gc-security__badge">
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0 0 16 4H4a2 2 0 0 0-1.997 1.884z"/>
+                <path d="m18 8.118-8 4-8-4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8.118z"/>
+              </svg>
+              Sin spam
+            </span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="gb-core.js" defer></script>
+  <script>
+    // ── Logo dinámico dark/light ─────────────────────────────
+    (function () {
+      const logo = document.getElementById('checkoutLogo');
+      if (!logo) return;
+      function sync() {
+        const t = document.documentElement.getAttribute('data-theme') || 'dark';
+        logo.src = t === 'light' ? logo.dataset.logoLight : logo.dataset.logoDark;
+      }
+      sync();
+      new MutationObserver(sync).observe(
+        document.documentElement,
+        { attributes: true, attributeFilter: ['data-theme'] }
+      );
+    })();
+
+    // ── Mini resumen del carrito ─────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      function fmt(n) {
+        return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' MXN';
+      }
+
+      let cart = [];
+      try { cart = JSON.parse(localStorage.getItem('gb_cart') || '[]'); } catch {}
+
+      const itemsEl = document.getElementById('gcCartItems');
+      const totalEl = document.getElementById('gcCartTotal');
+      if (!itemsEl || !totalEl) return;
+
+      if (!cart.length) {
+        itemsEl.innerHTML = `<div class="gc-cart-preview__row">
+          <span class="gc-cart-preview__name" style="color:var(--color-text-muted);font-style:italic">Carrito vacío</span>
+        </div>`;
+        totalEl.textContent = fmt(0);
+        return;
+      }
+
+      const show      = cart.slice(0, 4);
+      const remaining = cart.length - show.length;
+
+      itemsEl.innerHTML = show.map(item => {
+        const qty = item.quantity || item.qty || 1;
+        const imgHtml = item.image
+          ? `<div class="gc-cart-preview__img-wrap">
+               <img src="${item.image}" alt="${item.name}" class="gc-cart-preview__img" loading="lazy" />
+               <span class="gc-cart-preview__qty-badge">${qty}</span>
+             </div>`
+          : `<div class="gc-cart-preview__img-wrap gc-cart-preview__img-wrap--placeholder">
+               <span class="gc-cart-preview__qty-badge">${qty}</span>
+             </div>`;
+        return `
+        <div class="gc-cart-preview__item">
+          ${imgHtml}
+          <div class="gc-cart-preview__item-info">
+            <span class="gc-cart-preview__name">${item.name}${item.variant && item.variant !== 'default' ? ` <span class="gc-cart-preview__variant">· ${item.variant}</span>` : ''}</span>
+            <span class="gc-cart-preview__price">${fmt(item.price * qty)}</span>
+          </div>
+        </div>`;
+      }).join('') + (remaining > 0 ? `
+        <div class="gc-cart-preview__more">
+          +${remaining} artículo${remaining > 1 ? 's' : ''} más
+        </div>
+      ` : '');
+
+      totalEl.textContent = fmt(
+        cart.reduce((t, i) => t + i.price * i.quantity, 0)
+      );
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cerrar Sesión - Glitched Box</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
+  <link rel="stylesheet" href="gb-core.css" />
+  <link rel="stylesheet" href="my-account.css" />
+</head>
+<body class="page-account">
+
+  <!-- Header / Navigation (CORE) -->
+  <header class="header">
+    <div class="layout__container">
+      <div class="header-content">
+        <button class="hamburger-toggle" id="hamburgerToggle" aria-label="Abrir menú de navegación" type="button">
+          <span class="hamburger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+        <div class="logo">
+          <a aria-label="Glitched Box (inicio)" href="index.html">
+            <img alt="Glitched Box" class="header-logo-img" data-logo-dark="images/logo_glitchedbox_horizontal.svg" data-logo-light="images/logo_glitchedbox_horizontal_black.svg" decoding="async" id="headerLogo" loading="eager" src="images/logo_glitchedbox_horizontal.svg" />
+          </a>
+        </div>
+        <nav class="primary-nav" aria-label="Navegación principal">
+          <a aria-label="Tienda" class="icon-button" href="all-products.html">
+            <span aria-hidden="true" class="icon-wrap icon-wrap--24"><svg aria-hidden="true" fill="currentColor" height="20" viewBox="100 -860 760 760" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M200-800h560q17 0 28.5 11.5T800-760q0 17-11.5 28.5T760-720H200q-17 0-28.5-11.5T160-760q0-17 11.5-28.5T200-800Zm0 640q-17 0-28.5-11.5T160-200v-200h-7q-19 0-31-14.5t-8-33.5l40-200q3-14 14-23t25-9h574q14 0 25 9t14 23l40 200q4 19-8 33.5T807-400h-7v200q0 17-11.5 28.5T760-160q-17 0-28.5-11.5T720-200v-200H560v200q0 17-11.5 28.5T520-160H200Zm40-80h240v-160H240v160Z" fill="currentColor"/></svg></span>
+            <span>Tienda</span>
+          </a>
+          <a aria-label="Colecciones" class="icon-button" href="colecciones.html">
+            <span aria-hidden="true" class="icon-wrap icon-wrap--24"><svg aria-hidden="true" fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M1 1H9V9H1V1ZM11 1H19V9H11V1ZM1 11H9V19H1V11ZM11 11H19V19H11V11Z" fill="currentColor"></path></svg></span>
+            <span>Colecciones</span>
+          </a>
+        </nav>
+        <div class="header-search">
+          <div class="search-container">
+            <span aria-hidden="true" class="icon-wrap icon-wrap--24 search-icon"><svg aria-hidden="true" fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M19 19L14.65 14.65" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span>
+            <input aria-label="Buscar productos" class="search-input" placeholder="Buscar productos..." type="text" />
+          </div>
+        </div>
+        <div class="header-actions">
+          <button aria-label="Abrir búsqueda" class="icon-button search-toggle" id="searchToggle" type="button">
+            <span aria-hidden="true" class="icon-wrap icon-wrap--24"><svg aria-hidden="true" fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M19 19L14.65 14.65" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span>
+            <span>Buscar</span>
+          </button>
+          <a aria-label="Mi cuenta" class="icon-button" href="my-account.html">
+            <span aria-hidden="true" class="icon-wrap icon-wrap--24"><svg aria-hidden="true" fill="currentColor" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M10 10C12.7614 10 15 7.76142 15 5C15 2.23858 12.7614 0 10 0C7.23858 0 5 2.23858 5 5C5 7.76142 7.23858 10 10 10ZM10 12.5C6.66667 12.5 0 14.175 0 17.5V20H20V17.5C20 14.175 13.3333 12.5 10 12.5Z" fill="currentColor"></path></svg></span>
+            <span>Mi cuenta</span>
+          </a>
+          <a aria-label="Favoritos" class="icon-button" href="favorites.html">
+            <span aria-hidden="true" class="icon-wrap icon-wrap--24"><svg aria-hidden="true" fill="currentColor" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M10 18.35L8.55 17.03C3.4 12.36 0 9.27 0 5.5C0 2.41 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.08C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.41 20 5.5C20 9.27 16.6 12.36 11.45 17.03L10 18.35Z" fill="currentColor"></path></svg></span>
+            <span>Favoritos</span>
+          </a>
+          <a aria-label="Carrito" class="icon-button cart-button" href="cart.html">
+            <span aria-hidden="true" class="icon-wrap icon-wrap--24"><svg aria-hidden="true" fill="currentColor" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M6 16C4.9 16 4.01 16.9 4.01 18C4.01 19.1 4.9 20 6 20C7.1 20 8 19.1 8 18C8 16.9 7.1 16 6 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 14.1 4.9 15 6 15H18V13H6.42C6.28 13 6.17 12.89 6.17 12.75L6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.48C19.96 3.34 20 3.17 20 3C20 2.45 19.55 2 19 2H4.21L3.27 0H0ZM16 16C14.9 16 14.01 16.9 14.01 18C14.01 19.1 14.9 20 16 20C17.1 20 18 19.1 18 18C18 16.9 17.1 16 16 16Z" fill="currentColor"></path></svg></span>
+            <span>Carrito</span>
+            <span class="cart-badge" id="cartBadge">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumbs-bar">
+    <div class="layout__container breadcrumbs-bar__inner">
+      <nav aria-label="Breadcrumb" class="breadcrumbs">
+        <a class="breadcrumb-link" href="index.html">Inicio</a>
+        <span class="breadcrumb-sep">›</span>
+        <a class="breadcrumb-link" href="my-account.html">Mi cuenta</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current" aria-current="page">Cerrar Sesión</span>
+      </nav>
+      <div style="display:flex;align-items:center;gap:var(--size-4);">
+        <div class="language-selector" id="languageSelector">
+          <button class="language-toggle" id="languageToggle" aria-label="Cambiar idioma" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7 2a1 1 0 011 1v1h3a1 1 0 110 2H9.578a18.87 18.87 0 01-1.724 4.78c.29.354.596.696.914 1.026a1 1 0 11-1.44 1.389c-.188-.196-.373-.396-.554-.6a19.098 19.098 0 01-3.107 3.567 1 1 0 01-1.334-1.49 17.087 17.087 0 003.13-3.733 18.992 18.992 0 01-1.487-2.494 1 1 0 111.79-.89c.234.47.489.928.764 1.372.417-.934.752-1.913.997-2.927H3a1 1 0 110-2h3V3a1 1 0 011-1zm6 6a1 1 0 01.894.553l2.991 5.982a.869.869 0 01.02.037l.99 1.98a1 1 0 11-1.79.895L15.383 16h-4.764l-.724 1.447a1 1 0 11-1.788-.894l.99-1.98.019-.038 2.99-5.982A1 1 0 0113 8zm-1.382 6h2.764L13 11.236 11.618 14z" clip-rule="evenodd"/></svg>
+            <span id="currentLang">ES</span>
+            <svg class="language-toggle-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </button>
+          <div class="language-dropdown" role="menu">
+            <button class="language-option active" data-lang="es" role="menuitem">
+              <span class="fi fi-mx"></span> Español
+            </button>
+            <button class="language-option" data-lang="en" role="menuitem">
+              <span class="fi fi-us"></span> English
+            </button>
+          </div>
+        </div>
+        <label class="theme-switch" aria-label="Cambiar tema">
+          <input id="themeToggle" type="checkbox" class="theme-switch__checkbox" data-theme-toggle aria-label="Cambiar tema claro/oscuro">
+          <div class="theme-switch__container" aria-hidden="true">
+            <div class="theme-switch__clouds"></div>
+            <div class="theme-switch__stars-container"></div>
+            <div class="theme-switch__circle-container">
+              <div class="theme-switch__sun-moon-container">
+                <div class="theme-switch__moon">
+                  <div class="theme-switch__spot"></div><div class="theme-switch__spot"></div><div class="theme-switch__spot"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Overlay -->
+  <div aria-hidden="true" class="search-overlay" id="searchOverlay">
+    <div class="search-overlay__backdrop" data-search-close=""></div>
+    <div aria-label="Buscar productos" aria-modal="true" class="search-overlay__panel" role="dialog">
+      <div class="search-overlay__header">
+        <strong class="search-overlay__title">Buscar</strong>
+        <button aria-label="Cerrar búsqueda" class="icon-button search-overlay__close" data-search-close="" type="button">
+          <span aria-hidden="true" class="icon-wrap icon-wrap--20"><svg aria-hidden="true" fill="none" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M4 4L16 16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path><path d="M16 4L4 16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg></span>
+        </button>
+      </div>
+      <div class="search-container">
+        <span aria-hidden="true" class="icon-wrap icon-wrap--24 search-icon"><svg aria-hidden="true" fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M19 19L14.65 14.65" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span>
+        <input aria-label="Buscar productos" class="search-input" id="searchInputMobile" placeholder="Buscar productos..." type="text"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu__backdrop" data-menu-close=""></div>
+    <div class="mobile-menu__panel">
+      <div class="mobile-menu__header">
+        <span class="mobile-menu__title">Menú</span>
+        <button class="mobile-menu__close" data-menu-close="" aria-label="Cerrar menú" type="button">
+          <span aria-hidden="true" class="icon-wrap icon-wrap--24"><svg aria-hidden="true" fill="none" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M4 4L16 16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path><path d="M16 4L4 16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg></span>
+        </button>
+      </div>
+      <nav class="mobile-menu__nav" aria-label="Navegación móvil">
+        <a href="all-products.html" class="mobile-menu__link"><span aria-hidden="true" class="icon-wrap icon-wrap--24"><svg aria-hidden="true" fill="currentColor" height="20" viewBox="100 -860 760 760" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M200-800h560q17 0 28.5 11.5T800-760q0 17-11.5 28.5T760-720H200q-17 0-28.5-11.5T160-760q0-17 11.5-28.5T200-800Zm0 640q-17 0-28.5-11.5T160-200v-200h-7q-19 0-31-14.5t-8-33.5l40-200q3-14 14-23t25-9h574q14 0 25 9t14 23l40 200q4 19-8 33.5T807-400h-7v200q0 17-11.5 28.5T760-160q-17 0-28.5-11.5T720-200v-200H560v200q0 17-11.5 28.5T520-160H200Zm40-80h240v-160H240v160Z" fill="currentColor"/></svg></span><span>Tienda</span></a>
+        <a href="colecciones.html" class="mobile-menu__link"><span aria-hidden="true" class="icon-wrap icon-wrap--24"><svg aria-hidden="true" fill="currentColor" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M1 1H9V9H1V1ZM11 1H19V9H11V1ZM1 11H9V19H1V11ZM11 11H19V19H11V11Z" fill="currentColor"/></svg></span><span>Colecciones</span></a>
+        <a href="favorites.html" class="mobile-menu__link"><span aria-hidden="true" class="icon-wrap icon-wrap--24"><svg aria-hidden="true" fill="currentColor" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M10 18.35L8.55 17.03C3.4 12.36 0 9.27 0 5.5C0 2.41 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.08C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.41 20 5.5C20 9.27 16.6 12.36 11.45 17.03L10 18.35Z" fill="currentColor"/></svg></span><span>Favoritos</span></a>
+        <a href="my-account.html" class="mobile-menu__link"><span aria-hidden="true" class="icon-wrap icon-wrap--24"><svg aria-hidden="true" fill="currentColor" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M10 10C12.7614 10 15 7.76142 15 5C15 2.23858 12.7614 0 10 0C7.23858 0 5 2.23858 5 5C5 7.76142 7.23858 10 10 10ZM10 12.5C6.66667 12.5 0 14.175 0 17.5V20H20V17.5C20 14.175 13.3333 12.5 10 12.5Z" fill="currentColor"/></svg></span><span>Mi cuenta</span></a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="layout__container account-main-container">
+  <main class="main-content page-account__main">
+
+    <aside class="account-sidebar" aria-label="Menú de cuenta">
+      <nav class="account-nav">
+        <a href="my-orders.html" class="account-link">Mis Pedidos</a>
+        <a href="my-account.html" class="account-link">Mi Perfil</a>
+        <a href="my-payments.html" class="account-link">Pago</a>
+        <a href="preferences.html" class="account-link">Preferencias</a>
+        <a href="logout.html" class="account-link account-link--danger is-active">Cerrar Sesión</a>
+      </nav>
+    </aside>
+
+    <div class="account-content-wrap">
+      <section class="account-content" aria-label="Contenido de cuenta">
+        <header class="account-header">
+          <h1 class="account-title">Cerrar Sesión</h1>
+        </header>
+
+        <div class="logout-card-wrap">
+          <div class="logout-card">
+            <img
+              src="images/portal_logout.webp"
+              alt="Portal de Glitched Box"
+              class="logout-card__portal"
+              width="446"
+              height="446"
+              loading="eager"
+              decoding="async"
+            />
+            <h2 class="logout-card__title">¿Te vas ya?</h2>
+            <p class="logout-card__desc">
+              Un clic más y te desconectas del universo Glitched...<br>
+              ¿Realmente quieres hacerlo?
+            </p>
+            <div class="logout-card__actions">
+              <a href="index.html" class="logout-btn logout-btn--primary" data-text="Seguir navegando"><span class="btn__text glitch-text" data-text="Seguir navegando">Seguir navegando</span></a>
+              <button type="button" class="logout-btn logout-btn--danger" data-text="Cerrar sesión"><span class="btn__text glitch-text" data-text="Cerrar sesión">Cerrar sesión</span></button>
+            </div>
+          </div>
+        </div>
+
+</section>
+    </div>
+  </main>
+
+    <footer class="footer">
+
+    <!-- Newsletter (centrado tipo container) -->
+    <section class="newsletter">
+      <div class="footer-container">
+        <div class="newsletter-content">
+          <div class="newsletter-left">
+            <h2 class="newsletter-title">Suscríbete a nuestro boletín</h2>
+            <p class="newsletter-description">
+              Entérate antes que nadie de nuestras novedades, promos exclusivas y todo lo que está por venir.
+            </p>
+          </div>
+
+          <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Escribe tu correo electrónico" required>
+            <button type="submit" class="newsletter-button" data-text="Suscribirse">Suscribirse</button>
+          </form>
+          <p class="newsletter-help" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Separador FULL WIDTH -->
+    <div class="footer-separator"></div>
+
+    <!-- Footer Content FULL WIDTH -->
+    <!-- ROW 1: contenido principal -->
+    <div class="footer-content footer-content--full">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="images/logo_glitchedbox_horizontal.svg" alt="Glitched Box" loading="lazy" decoding="async" class="footer-logo-img footer-logo--dark">
+          <img src="images/logo_glitchedbox_horizontal_black.svg" alt="Glitched Box" loading="lazy" decoding="async" class="footer-logo-img footer-logo--light">
+        </div>
+        <p class="footer-description">
+          Glitched Box es una marca mexicana de art toys inspirada en ilustraciones originales. Cada figura representa un personaje que llegó a nuestro mundo por error a través de un "glitch". El estilo mezcla lo kawaii con lo oscuro, creando una estética única y coleccionable.
+        </p>
+      </div>
+
+      <div class="footer-section">
+        <h3 class="footer-heading">Quiénes somos</h3>
+        <ul class="footer-links">
+          <li><a href="about.html">Nuestra historia</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3 class="footer-heading">Ayuda</h3>
+        <ul class="footer-links">
+          <li><a href="seguimiento-pedido.html">Seguimiento de pedido</a></li>
+          <li><a href="envios-devoluciones.html">Envíos y devoluciones</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3 class="footer-heading">Legal</h3>
+        <ul class="footer-links">
+          <li><a href="terms-conditions.html">Términos y condiciones</a></li>
+          <li><a href="privacy-policy.html">Política de privacidad</a></li>
+          <li><a href="shipping-policy.html">Política de envío</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3 class="footer-heading">Contacto</h3>
+        <a class="contact-button" href="contact.html" data-text="Contáctanos">Contáctanos</a>
+      </div>
+    </div>
+
+    <!-- ROW 2: RRSS izquierda · chips derecha -->
+    <div class="footer-bottom-row">
+      <div class="footer-social">
+        <a href="https://www.facebook.com/p/Glitchedbox" class="social-link" aria-label="Facebook">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.971h-1.513c-1.491 0-1.956.93-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/glitchedbox/" class="social-link" aria-label="Instagram">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+      </div>
+      <div class="footer-payment">
+        <span class="footer-pay-chip" aria-label="MercadoPago">
+          <svg class="chip-dark" width="46" height="32" viewBox="3.17 0 46 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="3.67236" y="0.5" width="45" height="31" rx="5.5" fill="#272235"/>
+<rect x="3.67236" y="0.5" width="45" height="31" rx="5.5" stroke="#454545"/>
+<path d="M45.4316 12.5522C45.1716 12.2322 44.7763 12.0728 44.2463 12.0728C43.7162 12.0728 43.3215 12.2327 43.0614 12.5522C42.8009 12.8716 42.6707 13.2492 42.6707 13.6851C42.6707 14.121 42.8009 14.5074 43.0614 14.8229C43.3215 15.1375 43.7167 15.295 44.2463 15.295C44.7758 15.295 45.1716 15.1375 45.4316 14.8229C45.6921 14.5074 45.8219 14.1288 45.8219 13.6851C45.8219 13.2414 45.6921 12.8716 45.4316 12.5522ZM44.7868 14.3856C44.6605 14.5495 44.4798 14.6322 44.2433 14.6322C44.0067 14.6322 43.826 14.5495 43.6988 14.3856C43.5715 14.2217 43.5081 13.9879 43.5081 13.6851C43.5081 13.3823 43.5715 13.1494 43.6988 12.9861C43.826 12.8227 44.0077 12.741 44.2433 12.741C44.4788 12.741 44.66 12.8227 44.7868 12.9861C44.913 13.1494 44.9764 13.3828 44.9764 13.6851C44.9764 13.9874 44.913 14.2217 44.7868 14.3856Z" fill="white"/>
+<path d="M38.7799 12.2848C38.5159 12.1537 38.2139 12.0876 37.874 12.0876C37.3515 12.0876 36.9827 12.2212 36.7676 12.4878C36.6323 12.6585 36.557 12.8767 36.539 13.1418H37.3201C37.339 13.0244 37.3775 12.932 37.4353 12.8635C37.5157 12.771 37.6529 12.7246 37.8461 12.7246C38.0188 12.7246 38.1495 12.748 38.2394 12.7955C38.3282 12.8425 38.3731 12.9286 38.3731 13.0528C38.3731 13.155 38.3152 13.2294 38.1989 13.2783C38.1341 13.3062 38.0263 13.3292 37.8755 13.3478L37.5985 13.381C37.2841 13.4202 37.0456 13.4852 36.8839 13.5762C36.5884 13.743 36.4407 14.0131 36.4407 14.3858C36.4407 14.673 36.532 14.8951 36.7162 15.0516C36.8993 15.2086 37.1324 15.2742 37.4139 15.2869C39.1791 15.3647 39.1597 14.3751 39.1756 14.1696V13.0313C39.1756 12.6659 39.0434 12.4174 38.7799 12.2853V12.2848ZM38.3696 14.0126C38.3641 14.2777 38.2868 14.4602 38.1381 14.5605C37.9888 14.6607 37.8266 14.7106 37.65 14.7106C37.5382 14.7106 37.4433 14.6798 37.3655 14.6201C37.2876 14.56 37.2487 14.4616 37.2487 14.3261C37.2487 14.1745 37.3126 14.0625 37.4398 13.9896C37.5152 13.947 37.639 13.9108 37.8117 13.882L37.9958 13.8482C38.0876 13.8311 38.1595 13.8125 38.2124 13.7929C38.2658 13.7743 38.3172 13.7489 38.3686 13.7171V14.0121L38.3696 14.0126Z" fill="white"/>
+<path d="M34.7542 12.7656C34.9564 12.7656 35.1041 12.8268 35.2004 12.9491C35.2658 13.0391 35.3067 13.1413 35.3227 13.2543H36.1936C36.1462 12.8234 35.9925 12.523 35.7324 12.3528C35.4719 12.183 35.1385 12.0979 34.7308 12.0979C34.2512 12.0979 33.8749 12.2422 33.6024 12.5303C33.3299 12.819 33.1931 13.2225 33.1931 13.7411C33.1931 14.1999 33.3164 14.5746 33.5634 14.8628C33.8105 15.1509 34.1953 15.2952 34.7183 15.2952C35.2414 15.2952 35.6376 15.1225 35.9041 14.7762C36.0713 14.5619 36.1652 14.3344 36.1846 14.0942H35.3167C35.2987 14.2532 35.2483 14.3829 35.164 14.4827C35.0806 14.582 34.9394 14.6323 34.7398 14.6323C34.4588 14.6323 34.2671 14.5066 34.1658 14.2547C34.1099 14.1202 34.0815 13.9426 34.0815 13.721C34.0815 13.4994 34.1099 13.3032 34.1658 13.1619C34.2716 12.8982 34.4678 12.7656 34.7542 12.7656Z" fill="white"/>
+<path d="M32.9315 12.9021C32.971 12.9041 33.0159 12.9075 33.0678 12.9134V12.1038C33.0319 12.1013 33.0084 12.1003 32.9984 12.0989C32.9879 12.0979 32.9755 12.0974 32.96 12.0974C31.1708 12.0974 31.2771 13.6496 31.2771 13.6496V15.2267H32.0891V13.7479C32.0891 13.5053 32.1205 13.3262 32.1819 13.2093C32.2932 13.0024 32.5113 12.8987 32.8357 12.8987C32.8602 12.8987 32.8921 12.9002 32.9315 12.9021Z" fill="white"/>
+<path d="M28.3105 14.9308C28.6239 15.1783 28.9862 15.303 29.3965 15.303C29.8936 15.303 30.2804 15.1558 30.5564 14.8618C30.7056 14.7072 30.7989 14.5541 30.8383 14.4029H29.9769C29.943 14.4509 29.9066 14.4915 29.8661 14.5233C29.7513 14.6157 29.5956 14.6441 29.4125 14.6441C29.2393 14.6441 29.103 14.6187 28.9803 14.5428C28.7776 14.4205 28.6633 14.2141 28.6514 13.9113H30.8977C30.9007 13.6501 30.8922 13.45 30.8708 13.3111C30.8339 13.0743 30.751 12.8659 30.6252 12.6864C30.485 12.4829 30.3068 12.3337 30.0922 12.2388C29.8771 12.1449 29.6356 12.0979 29.3675 12.0979C28.9154 12.0979 28.5481 12.2373 28.2646 12.5166C27.9816 12.7965 27.8394 13.1976 27.8394 13.7215C27.8394 14.2806 27.9966 14.6837 28.3105 14.9317V14.9308ZM28.8864 12.9212C29.0007 12.8062 29.1609 12.7485 29.368 12.7485C29.5582 12.7485 29.7179 12.8028 29.8467 12.9119C29.9749 13.0205 30.0463 13.18 30.0613 13.3889H28.6723C28.7013 13.1922 28.7736 13.0366 28.8869 12.9212H28.8864Z" fill="white"/>
+<path d="M26.7723 13.3967V15.2267H27.5135V13.4138C27.5135 12.6346 27.0364 12.0872 26.2263 12.0872C25.8495 12.0872 25.5236 12.2491 25.3045 12.5083C25.0964 12.2491 24.776 12.0872 24.3822 12.0872C23.5892 12.0872 23.0781 12.658 23.0781 13.4138V15.2267H23.8203V13.3967C23.8203 13.0626 24.0508 12.8317 24.3827 12.8317C24.8718 12.8317 24.9222 13.2294 24.9222 13.3967V15.2267H25.6644V13.3967C25.6644 13.0626 25.9004 12.8317 26.2263 12.8317C26.7154 12.8317 26.7718 13.2294 26.7718 13.3967H26.7723Z" fill="white"/>
+<path d="M41.6111 11.7001L41.6101 12.5528C41.5197 12.4099 41.402 12.2984 41.2567 12.2187C41.112 12.1384 40.9458 12.0978 40.7586 12.0978C40.3529 12.0978 40.03 12.246 39.7874 12.541C39.5449 12.837 39.4236 13.2635 39.4236 13.7791C39.4236 14.2267 39.5469 14.5936 39.7929 14.8793C40.039 15.1645 40.5216 15.2897 40.9503 15.2897C42.445 15.2897 42.4276 14.0335 42.4276 14.0335V11.142C42.4276 11.142 41.6106 11.0564 41.6106 11.7001H41.6111ZM41.4549 14.3926C41.3366 14.5589 41.1624 14.6421 40.9343 14.6421C40.7062 14.6421 40.536 14.5579 40.4237 14.3911C40.3115 14.2233 40.2556 13.9797 40.2556 13.7009C40.2556 13.4416 40.3105 13.2254 40.4208 13.0507C40.5311 12.8761 40.7037 12.7885 40.9398 12.7885C41.0945 12.7885 41.2303 12.8365 41.3475 12.9324C41.5377 13.0914 41.6335 13.377 41.6335 13.7464C41.6335 14.0105 41.5736 14.2263 41.4549 14.3926Z" fill="white"/>
+<path d="M24.794 16.4431C24.1252 16.4123 23.7878 16.5684 23.5677 16.7332C23.2638 16.9607 23.0786 17.2972 23.0786 17.8348V20.5992H23.4719C23.5772 20.5992 23.6825 20.5635 23.7599 20.4935C23.8467 20.4153 23.8901 20.3194 23.8901 20.2069V19.1737C23.9859 19.3357 24.1122 19.4545 24.2719 19.5318C24.4231 19.6008 24.5978 19.6355 24.7965 19.6355C25.1703 19.6355 25.4772 19.4898 25.7153 19.1967C25.9538 18.8959 26.0731 18.5045 26.0731 18.0198C26.0731 17.535 25.9603 17.1896 25.6898 16.8668C25.4712 16.6055 25.1388 16.4583 24.7945 16.4431H24.794ZM25.071 18.712C24.9517 18.8739 24.7885 18.9546 24.5819 18.9546C24.3593 18.9546 24.1881 18.8744 24.0688 18.712C23.9495 18.5657 23.8896 18.3475 23.8896 18.054C23.8896 17.7395 23.945 17.5081 24.0563 17.3618C24.1761 17.2009 24.3433 17.1192 24.5579 17.1192C24.7725 17.1192 24.9517 17.2004 25.071 17.3618C25.1907 17.5237 25.2501 17.7541 25.2501 18.054C25.2501 18.3319 25.1907 18.55 25.071 18.712Z" fill="white"/>
+<path d="M31.7671 16.7284C31.4911 16.5234 31.2091 16.4163 30.7245 16.429C30.2324 16.4422 29.8746 16.5772 29.652 16.8727C29.4294 17.1686 29.3186 17.5551 29.3186 18.0311C29.3186 18.4386 29.4024 18.7668 29.5701 19.0177C29.7383 19.2672 29.9395 19.4384 30.174 19.5299C30.4076 19.6224 30.6442 19.6414 30.8827 19.5881C31.1208 19.5338 31.3104 19.4003 31.4512 19.185V19.3802C31.4352 19.6263 31.3748 19.8107 31.27 19.934C31.1637 20.0563 31.0469 20.1316 30.9177 20.1585C30.7899 20.1849 30.6601 20.1703 30.5319 20.112C30.4026 20.0548 30.3073 19.9716 30.2449 19.8645H29.3895C29.6111 20.5171 30.0088 20.8052 30.7255 20.8561C31.8814 20.9378 32.2497 19.9785 32.2487 19.4609V17.8344C32.2487 17.2968 32.07 16.9524 31.7681 16.7274L31.7671 16.7284ZM31.4272 18.326C31.3958 18.5061 31.3454 18.6391 31.2745 18.7233C31.1263 18.9228 30.8952 18.9938 30.5838 18.937C30.2709 18.8788 30.1146 18.5848 30.1146 18.055C30.1146 17.809 30.1611 17.5898 30.2554 17.3971C30.3492 17.2058 30.5284 17.109 30.7939 17.109C30.989 17.109 31.1378 17.1784 31.2391 17.3164C31.3409 17.4548 31.4058 17.6123 31.4327 17.7894C31.4602 17.966 31.4577 18.145 31.4267 18.3256L31.4272 18.326Z" fill="white"/>
+<path d="M28.6239 16.6476C28.3598 16.517 28.0579 16.4504 27.718 16.4504C27.1955 16.4504 26.8271 16.584 26.6125 16.8511C26.4778 17.0213 26.4019 17.2395 26.384 17.5046H27.165C27.184 17.3877 27.2224 17.2948 27.2798 17.2268C27.3602 17.1343 27.4974 17.0874 27.6906 17.0874C27.8637 17.0874 27.9945 17.1108 28.0838 17.1583C28.1727 17.2052 28.2171 17.2913 28.2171 17.4156C28.2171 17.5173 28.1592 17.5927 28.0429 17.6406C27.978 17.6685 27.8702 17.6915 27.7195 17.7101L27.443 17.7429C27.1286 17.782 26.8895 17.8471 26.7288 17.938C26.4329 18.1049 26.2856 18.3744 26.2856 18.7471C26.2856 19.0343 26.377 19.2564 26.5611 19.4129C26.7443 19.5699 26.9774 19.6355 27.2594 19.6482C29.0241 19.7255 29.0041 18.7364 29.0201 18.5309V17.3926C29.0201 17.0277 28.8889 16.7792 28.6248 16.6471L28.6239 16.6476ZM28.2136 18.3749C28.2086 18.6405 28.1308 18.8225 27.9825 18.9228C27.8338 19.023 27.6711 19.0729 27.4944 19.0729C27.3826 19.0729 27.2883 19.0421 27.2099 18.9824C27.1321 18.9223 27.0932 18.8244 27.0932 18.6889C27.0932 18.5373 27.157 18.4253 27.2843 18.3529C27.3602 18.3103 27.4834 18.2741 27.6561 18.2452L27.8408 18.212C27.9326 18.1949 28.005 18.1768 28.0569 18.1572C28.1103 18.1381 28.1622 18.1127 28.2136 18.0809V18.3759V18.3749Z" fill="white"/>
+<path d="M34.1317 16.4192C33.6027 16.4192 33.2074 16.5787 32.9474 16.8991C32.6869 17.2185 32.5566 17.5957 32.5566 18.0315C32.5566 18.4674 32.6869 18.8534 32.9474 19.1689C33.2074 19.4829 33.6027 19.6404 34.1317 19.6404C34.6608 19.6404 35.0565 19.4829 35.3176 19.1689C35.5776 18.8534 35.7074 18.4747 35.7074 18.0315C35.7074 17.5883 35.5776 17.2185 35.3176 16.8991C35.057 16.5792 34.6618 16.4192 34.1317 16.4192ZM34.6723 18.7311C34.546 18.8954 34.3653 18.9781 34.1297 18.9781C33.8942 18.9781 33.7125 18.8954 33.5853 18.7311C33.4575 18.5672 33.3941 18.3338 33.3941 18.031C33.3941 17.7282 33.4575 17.4954 33.5853 17.332C33.712 17.1686 33.8937 17.0869 34.1297 17.0869C34.3658 17.0869 34.5465 17.1686 34.6723 17.332C34.7985 17.4954 34.8614 17.7282 34.8614 18.031C34.8614 18.3338 34.7985 18.5672 34.6723 18.7311Z" fill="white"/>
+<path d="M20.8622 15.6738C20.8408 13.1418 17.6132 11.1033 13.653 11.1356C9.69324 11.1679 6.50111 13.2587 6.52257 15.7907C6.52307 15.8562 6.52357 16.0372 6.52407 16.0597C6.54702 18.7458 9.37083 20.8987 13.7353 20.863C18.1262 20.8273 20.8872 18.6289 20.8642 15.9423L20.8617 15.6728L20.8622 15.6738ZM13.7303 20.0529C9.92282 20.0842 6.82002 18.174 6.79956 15.7868C6.79856 15.6904 6.80455 15.5955 6.81403 15.5006L6.85795 15.2086C6.86444 15.1772 6.87492 15.1469 6.88241 15.1156C7.03912 15.1601 7.15291 15.1909 7.20781 15.2032C8.95959 15.5945 9.65581 16.0015 9.86243 16.1468C9.99768 16.0284 10.1754 15.9614 10.355 15.9614H10.3555C10.5656 15.9614 10.7628 16.0495 10.903 16.2031C11.1231 16.0641 11.3911 16.0348 11.6626 16.1272C11.8403 16.1869 11.9805 16.298 12.0704 16.4496C12.2515 16.3929 12.4567 16.4061 12.6618 16.4927C13.0566 16.659 13.114 17.0171 13.106 17.244C13.5751 17.2538 13.9534 17.631 13.9529 18.0928C13.9529 18.2028 13.9305 18.3134 13.8875 18.4142C14.0178 18.4782 14.2399 18.5678 14.4365 18.5443C14.6232 18.5213 14.6791 18.4626 14.6921 18.445C14.6936 18.4435 14.6946 18.4416 14.6956 18.4401L14.167 17.8677C14.0747 17.7826 14.0512 17.6956 14.1066 17.6359C14.1296 17.6104 14.162 17.5963 14.1975 17.5963C14.2589 17.5963 14.3113 17.6398 14.3497 17.6716C14.6362 17.9059 14.9795 18.2532 14.983 18.2566L14.9915 18.2659C14.999 18.2747 15.021 18.2924 15.0938 18.3051C15.1183 18.3095 15.1452 18.3119 15.1732 18.3119C15.2266 18.3119 15.3618 18.3031 15.4606 18.2239C15.4786 18.2087 15.4981 18.1906 15.5165 18.1715L15.537 18.1456C15.6268 18.0331 15.5415 17.9186 15.5235 17.8966L14.8802 17.1873C14.8802 17.1873 14.8548 17.1638 14.8333 17.135C14.7634 17.0435 14.7949 16.9833 14.8198 16.9554C14.8438 16.9305 14.8752 16.9178 14.9082 16.9178C14.9656 16.9178 15.019 16.9549 15.0679 16.995C15.2401 17.1364 15.4741 17.3619 15.7002 17.5801L15.8424 17.7181C15.8599 17.7293 15.9453 17.7807 16.064 17.7812C16.1589 17.7812 16.2562 17.7494 16.353 17.6868C16.4873 17.6011 16.5496 17.496 16.5437 17.3663C16.5337 17.2528 16.4374 17.1623 16.4364 17.1614L15.5515 16.2887C15.4601 16.2124 15.4332 16.1199 15.4856 16.0563C15.5081 16.0289 15.5455 16.0147 15.5784 16.0138C15.6358 16.0138 15.6862 16.0509 15.7366 16.0925C15.8939 16.2217 16.2282 16.5152 16.7303 16.9642C16.7593 16.9902 16.7772 17.0058 16.7797 17.0083C16.7797 17.0083 16.8716 17.0704 17.0068 17.0709C17.0961 17.0709 17.186 17.0435 17.2733 16.9892C17.3691 16.9295 17.4245 16.8434 17.4295 16.7475C17.4385 16.5729 17.3137 16.4648 17.3127 16.4638C17.0767 16.2613 15.0574 14.5301 14.5878 14.1837C14.3162 13.9832 14.1655 13.9308 14.0098 13.9112C13.9933 13.9088 13.9759 13.9088 13.9574 13.9083C13.895 13.9083 13.8147 13.9191 13.7488 13.9362C13.5092 14.0003 13.1948 14.2194 12.9727 14.3921C12.6837 14.6166 12.4132 14.8275 12.1492 14.8852C12.0664 14.9033 11.9756 14.9146 11.8817 14.9126C11.6327 14.9121 11.3637 14.8446 11.2125 14.7443C11.1281 14.6886 11.0672 14.622 11.0368 14.5516C10.9584 14.3725 11.0757 14.2287 11.1296 14.1749L11.737 13.5321C11.7415 13.5277 11.7455 13.5238 11.7495 13.5199C11.6621 13.5404 11.5763 13.5634 11.4845 13.5889C11.2639 13.649 11.0408 13.7102 10.8142 13.7102H10.8132C10.7373 13.7102 10.6625 13.7038 10.5896 13.6985L10.5167 13.6931C10.1983 13.673 9.18617 13.4211 8.29381 13.0694C8.29481 13.0684 8.29581 13.0674 8.29681 13.0669L8.54336 12.8815C9.79755 11.9922 11.6212 11.4242 13.656 11.4076C15.7576 11.3905 17.6436 11.9653 18.9158 12.8849L19.1603 13.0713C19.1768 13.0845 19.1913 13.0987 19.2073 13.1119L19.1274 13.1481C18.4222 13.4641 17.7639 13.6182 17.1146 13.6182H17.1116C16.4878 13.6173 15.8669 13.4705 15.267 13.1829C15.1986 13.1515 14.5758 12.8761 13.9469 12.8752C13.931 12.8752 13.914 12.8752 13.898 12.8761C12.8959 12.8977 12.4592 13.3252 11.9965 13.7772L11.3986 14.4083C11.3866 14.4234 11.3811 14.4327 11.3791 14.4381C11.448 14.5144 11.6277 14.5677 11.8223 14.5682C11.9057 14.5682 11.989 14.5589 12.0704 14.5413C12.253 14.5017 12.5031 14.307 12.7451 14.1191L12.7621 14.1059C13.0306 13.8971 13.3081 13.6813 13.5916 13.5938C13.7164 13.5546 13.8366 13.5351 13.9494 13.5351H13.9509C14.0727 13.5351 14.1675 13.5581 14.2359 13.5786C14.3856 13.6221 14.5558 13.719 14.8044 13.9029C15.2106 14.2018 16.634 15.414 17.4615 16.1233C17.9221 15.9242 19.0895 15.4541 20.5258 15.1425C20.5258 15.1425 20.5258 15.1406 20.5268 15.1371C20.5288 15.1474 20.5323 15.1572 20.5343 15.168L20.5767 15.459C20.5827 15.5304 20.5867 15.6023 20.5872 15.6747C20.6077 18.062 17.5378 20.0226 13.7298 20.0539L13.7303 20.0529Z" fill="white"/>
+<path d="M13.096 17.558C13.0172 17.558 12.9323 17.5864 12.8764 17.6055C12.838 17.6182 12.815 17.6265 12.7966 17.6265H12.7846L12.7681 17.6187C12.7561 17.6109 12.7501 17.5996 12.7472 17.5864C12.7307 17.5629 12.7357 17.5262 12.7646 17.4568C12.7661 17.4533 12.8535 17.2132 12.7781 17.0057C12.7412 16.9152 12.6723 16.8326 12.5485 16.7802C12.4647 16.7445 12.3833 16.7274 12.3075 16.7269C12.1408 16.7269 12.034 16.8101 11.9856 16.8605C11.9736 16.8727 11.9571 16.8864 11.9351 16.8864C11.9282 16.8864 11.8992 16.8825 11.8877 16.8477C11.8817 16.8394 11.8772 16.8282 11.8758 16.812C11.8733 16.7773 11.8658 16.725 11.8453 16.6687C11.8069 16.5733 11.7295 16.4701 11.5723 16.4226C11.5079 16.4031 11.444 16.3933 11.3822 16.3933C11.0568 16.3933 10.8801 16.656 10.8731 16.6672L10.8087 16.7656L10.8062 16.7475C10.8062 16.7475 10.8032 16.7494 10.8027 16.7494C10.7892 16.746 10.7873 16.634 10.7873 16.634C10.7843 16.609 10.7783 16.5846 10.7708 16.5611C10.7104 16.3928 10.5482 16.2744 10.3615 16.2744C10.1205 16.2744 9.92384 16.4667 9.92334 16.7044C9.92334 16.7582 9.93482 16.8096 9.95328 16.857C10.0202 17.0097 10.1749 17.1163 10.3545 17.1168C10.4673 17.1168 10.5562 17.0493 10.657 16.9969C10.6844 16.9827 10.7129 16.9808 10.7214 16.9925C10.7294 17.0033 10.7319 17.0155 10.7329 17.0287C10.7383 17.0395 10.7413 17.0517 10.7393 17.0669C10.7294 17.1256 10.7159 17.2523 10.7573 17.3849C10.8017 17.5116 10.8985 17.6407 11.1002 17.7175C11.1511 17.7371 11.202 17.7464 11.2519 17.7468C11.3422 17.7468 11.4311 17.7165 11.5239 17.6524C11.5464 17.6368 11.5633 17.6294 11.5793 17.6304C11.5903 17.6314 11.6072 17.6348 11.6187 17.6475C11.6277 17.6573 11.6312 17.6691 11.6322 17.6808C11.6392 17.697 11.6402 17.7146 11.6372 17.7322C11.6322 17.7649 11.6302 17.8153 11.6457 17.8726C11.6766 17.964 11.754 18.0682 11.9411 18.1426C12.0055 18.1685 12.0664 18.1812 12.1228 18.1812C12.2466 18.1812 12.3314 18.1201 12.3983 18.0594C12.4217 18.0384 12.4427 18.0242 12.4662 18.0242C12.5011 18.0242 12.5151 18.0492 12.5216 18.0741C12.5325 18.0956 12.5345 18.1221 12.535 18.1362C12.5375 18.2037 12.554 18.2669 12.579 18.3256C12.6678 18.5129 12.8619 18.6421 13.088 18.6425C13.398 18.6425 13.6505 18.396 13.651 18.0927C13.651 18.0213 13.636 17.9533 13.6101 17.8907C13.5227 17.6974 13.3256 17.561 13.096 17.558Z" fill="white"/>
+</svg>
+          <svg class="chip-light" width="46" height="32" viewBox="0 0 46 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="45" height="31" rx="5.5" fill="#F5F5F5"/>
+<rect x="0.5" y="0.5" width="45" height="31" rx="5.5" stroke="#D9D9D9"/>
+<path d="M12.0339 11.6804C8.62037 11.6804 5.85376 13.5029 5.85376 15.7512C5.85376 17.9994 8.62081 19.998 12.0339 19.998C15.447 19.998 18.2141 17.999 18.2141 15.7512C18.2141 13.5033 15.447 11.6804 12.0339 11.6804Z" fill="#00BCFF"/>
+<path d="M10.023 14.4926C10.02 14.4989 9.95944 14.563 9.99892 14.615C10.0945 14.7405 10.3897 14.8127 10.6884 14.7437C10.866 14.7026 11.0941 14.5161 11.3147 14.3359C11.5537 14.1404 11.791 13.9444 12.0296 13.8667C12.2822 13.7841 12.444 13.8193 12.5511 13.8527C12.6682 13.8889 12.8063 13.9683 13.0265 14.1381C13.441 14.4587 15.1067 15.9561 15.3949 16.2148C15.6264 16.1069 16.7312 15.6477 18.1312 15.3298C18.0093 14.5612 17.5606 13.8284 16.8716 13.2531C15.9115 13.6681 14.6602 13.9169 13.5129 13.3402C13.5072 13.338 12.8861 13.0354 12.2739 13.0503C11.3638 13.072 10.9695 13.4775 10.5524 13.9069L10.0239 14.4935L10.023 14.4926Z" fill="white"/>
+<path d="M15.326 16.3779C15.3062 16.3598 13.3668 14.6127 12.9273 14.2727C12.6729 14.0763 12.5317 14.0262 12.383 14.0068C12.3058 13.9964 12.1988 14.0113 12.1243 14.0325C11.9199 14.0898 11.6528 14.2736 11.4155 14.4673C11.1699 14.6687 10.9383 14.8584 10.723 14.9081C10.4484 14.9713 10.1129 14.8968 9.95984 14.7902C9.898 14.7473 9.85414 14.6976 9.83309 14.6475C9.77651 14.5125 9.88089 14.4046 9.898 14.3865L10.4331 13.7905C10.4954 13.7268 10.5581 13.6627 10.6221 13.5995C10.4493 13.6225 10.2897 13.6681 10.1344 13.7123C9.94054 13.7683 9.7537 13.8216 9.56511 13.8216C9.48616 13.8216 9.06424 13.7503 8.98398 13.7281C8.49934 13.5918 7.95067 13.4586 7.31559 13.1533C6.55464 13.7363 6.05904 14.4524 5.91211 15.2557C6.02132 15.2855 6.30772 15.3528 6.38184 15.3695C8.10373 15.7637 8.64013 16.1697 8.73749 16.2546C8.84276 16.134 8.99494 16.0577 9.16424 16.0577C9.35503 16.0577 9.52651 16.1566 9.6309 16.3088C9.72958 16.2284 9.86554 16.1598 10.0414 16.1602C10.1212 16.1602 10.2041 16.1756 10.2879 16.2045C10.4822 16.2731 10.5826 16.4063 10.6344 16.5269C10.6993 16.4966 10.7796 16.474 10.8739 16.4745C10.9668 16.4745 11.0633 16.4962 11.1603 16.5395C11.4778 16.6799 11.5269 17.001 11.4984 17.243C11.5212 17.2403 11.544 17.2394 11.5668 17.2394C11.9431 17.2394 12.2493 17.5546 12.2493 17.9425C12.2493 18.0626 12.2194 18.1755 12.1677 18.2744C12.2703 18.3335 12.5313 18.4676 12.7607 18.4378C12.9436 18.4139 13.0133 18.3498 13.0378 18.3132C13.055 18.2884 13.0729 18.259 13.0563 18.2383L12.5703 17.6828C12.5703 17.6828 12.4905 17.6047 12.5168 17.5749C12.544 17.5442 12.5936 17.5885 12.6286 17.6183C12.876 17.8309 13.1778 18.1516 13.1778 18.1516C13.183 18.1552 13.2028 18.1958 13.3146 18.2161C13.4106 18.2337 13.5808 18.2238 13.6988 18.124C13.7282 18.0987 13.758 18.0676 13.7834 18.0351C13.7813 18.0369 13.7795 18.0387 13.7777 18.0396C13.9023 17.8757 13.7637 17.7104 13.7637 17.7104L13.1966 17.0547C13.1966 17.0547 13.1155 16.9775 13.1431 16.9464C13.1677 16.9193 13.2199 16.9599 13.2554 16.9906C13.4348 17.145 13.6887 17.4074 13.9317 17.6526C13.9795 17.6883 14.1931 17.8242 14.476 17.6332C14.6479 17.5171 14.6821 17.3744 14.6773 17.2674C14.6655 17.1252 14.5576 17.0236 14.5576 17.0236L13.783 16.2216C13.783 16.2216 13.701 16.1498 13.7299 16.1132C13.7536 16.0825 13.8067 16.1268 13.8418 16.1566C14.0883 16.3693 14.7567 17.0001 14.7567 17.0001C14.7663 17.0069 14.997 17.1762 15.2825 16.9893C15.3847 16.922 15.4496 16.8208 15.4553 16.703C15.465 16.4989 15.3255 16.3779 15.3255 16.3779H15.326Z" fill="white"/>
+<path d="M11.5683 17.3942C11.4481 17.3928 11.3165 17.4664 11.2994 17.4556C11.2898 17.4493 11.3069 17.3996 11.3178 17.3707C11.3297 17.3423 11.4876 16.8523 11.102 16.6821C10.8069 16.5516 10.6262 16.6983 10.5643 16.7647C10.5481 16.7819 10.5406 16.7805 10.5389 16.7589C10.5327 16.6703 10.4946 16.4319 10.2398 16.3516C9.87574 16.2369 9.64154 16.4983 9.58233 16.5931C9.55557 16.3796 9.38014 16.2138 9.16567 16.2134C8.93234 16.2134 8.74287 16.4075 8.74243 16.6482C8.74243 16.8884 8.93146 17.0835 9.16523 17.0835C9.27882 17.0835 9.38145 17.037 9.45733 16.9621C9.45996 16.9643 9.46084 16.9684 9.45952 16.9765C9.44154 17.0844 9.40909 17.475 9.80689 17.6344C9.96653 17.6981 10.1021 17.6507 10.2143 17.5698C10.2477 17.5455 10.2534 17.5558 10.2485 17.5884C10.2341 17.6891 10.2525 17.904 10.5455 18.0264C10.7683 18.1198 10.9003 18.0246 10.9871 17.9419C11.0248 17.9067 11.0349 17.9126 11.0371 17.9672C11.0477 18.258 11.2823 18.4892 11.5674 18.4897C11.8612 18.4897 12.0994 18.2454 12.0994 17.9433C12.0994 17.6407 11.8617 17.3987 11.5678 17.3955L11.5683 17.3942Z" fill="white"/>
+<path d="M12.0326 11.512C8.5542 11.512 5.73452 13.4166 5.73452 15.7529C5.73452 15.8134 5.73364 15.9801 5.73364 16.0013C5.73364 18.4803 8.19807 20.4875 12.0318 20.4875C15.8655 20.4875 18.3303 18.4803 18.3303 16.0017V15.7529C18.3303 13.4166 15.5107 11.512 12.0326 11.512ZM18.0466 15.2829C16.6777 15.5963 15.6567 16.051 15.401 16.1684C14.8036 15.6315 13.423 14.3956 13.0489 14.1066C12.8353 13.9409 12.6892 13.8537 12.5611 13.8144C12.5037 13.7964 12.4243 13.776 12.3221 13.776C12.2269 13.776 12.1247 13.7937 12.0182 13.8289C11.7765 13.9079 11.5357 14.1048 11.3028 14.2953L11.291 14.3053C11.0739 14.4827 10.8498 14.6665 10.68 14.7053C10.6059 14.7225 10.5296 14.7315 10.4537 14.7315C10.2634 14.7315 10.0928 14.6746 10.0287 14.5906C10.0182 14.5766 10.0252 14.5541 10.0498 14.522L10.0529 14.5175L10.5787 13.9345C10.9906 13.5105 11.3791 13.1105 12.2743 13.0892C12.2892 13.0888 12.3041 13.0883 12.319 13.0883C12.8761 13.0888 13.4331 13.3453 13.4958 13.3755C14.0181 13.6379 14.5576 13.7711 15.0993 13.7715C15.6628 13.7715 16.2444 13.6284 16.8558 13.3389C17.4944 13.8916 17.9176 14.5577 18.0466 15.2833V15.2829ZM12.0335 11.7621C13.88 11.7621 15.5317 12.3071 16.6426 13.1651C16.1058 13.4044 15.594 13.525 15.1001 13.525C14.5949 13.5245 14.0901 13.3995 13.5997 13.1534C13.5738 13.1407 12.9589 12.8422 12.319 12.8418C12.3024 12.8418 12.2853 12.8418 12.2686 12.8422C11.5169 12.8603 11.0932 13.1353 10.8085 13.376C10.5318 13.3832 10.2928 13.4518 10.0801 13.5128C9.89014 13.567 9.72655 13.6139 9.5669 13.6139C9.50112 13.6139 9.3827 13.6076 9.37217 13.6072C9.18884 13.6013 8.26781 13.3687 7.53229 13.0829C8.64061 12.2719 10.2467 11.7617 12.034 11.7617L12.0335 11.7621ZM7.31388 13.2527C8.08184 13.576 9.01384 13.8262 9.30858 13.8456C9.39059 13.851 9.47831 13.8609 9.56603 13.8609C9.76164 13.8609 9.95681 13.8045 10.1454 13.7503C10.2568 13.7182 10.38 13.683 10.5094 13.6577C10.4748 13.6925 10.4401 13.7282 10.4055 13.7639L9.87172 14.3585C9.82962 14.4023 9.73839 14.5188 9.79848 14.6624C9.82216 14.7202 9.87085 14.7758 9.93883 14.8227C10.066 14.9108 10.2941 14.9709 10.5055 14.9709C10.5857 14.9709 10.6621 14.9627 10.7314 14.9465C10.9555 14.895 11.1901 14.7022 11.4388 14.4985C11.637 14.3364 11.9186 14.1305 12.1344 14.07C12.1949 14.0533 12.2686 14.0425 12.3283 14.0425C12.3462 14.0425 12.3629 14.0434 12.3783 14.0456C12.5204 14.0641 12.6581 14.1138 12.9041 14.3039C13.3427 14.643 15.2821 16.3901 15.301 16.4072C15.3023 16.4081 15.426 16.5183 15.4172 16.7007C15.4124 16.8028 15.3576 16.8931 15.262 16.9559C15.1791 17.0101 15.094 17.0376 15.0076 17.0376C14.8778 17.0376 14.7887 16.9748 14.7826 16.9708C14.7756 16.9649 14.1111 16.3372 13.8664 16.1264C13.8273 16.093 13.7896 16.0632 13.7515 16.0632C13.7309 16.0632 13.7129 16.0722 13.7006 16.088C13.662 16.1368 13.705 16.2045 13.7559 16.2487L14.5322 17.0525C14.5322 17.0525 14.6291 17.1455 14.6396 17.2688C14.6458 17.402 14.5839 17.5135 14.4554 17.6002C14.3637 17.6626 14.2712 17.6937 14.1804 17.6937C14.0611 17.6937 13.9773 17.6377 13.9589 17.6246L13.8475 17.5117C13.644 17.3054 13.4339 17.0922 13.28 16.9604C13.2423 16.9283 13.2024 16.8985 13.1642 16.8985C13.1453 16.8985 13.1282 16.9058 13.1151 16.9202C13.0975 16.9401 13.0853 16.9762 13.1291 17.0363C13.1467 17.0611 13.1682 17.0814 13.1682 17.0814L13.7344 17.7366C13.7388 17.7425 13.851 17.8798 13.7471 18.0161L13.7269 18.0423C13.7098 18.0613 13.6918 18.0793 13.6743 18.0947C13.5778 18.1764 13.4488 18.185 13.3975 18.185C13.3699 18.185 13.344 18.1827 13.3208 18.1782C13.2651 18.1678 13.2274 18.152 13.2089 18.1299L13.2019 18.1227C13.1712 18.0897 12.8857 17.7894 12.6493 17.5867C12.6182 17.5596 12.5791 17.5262 12.5392 17.5262C12.5195 17.5262 12.5019 17.5343 12.4879 17.5497C12.4414 17.6025 12.5116 17.6811 12.5414 17.71L13.0243 18.2586C13.0239 18.2636 13.0177 18.2749 13.0063 18.292C12.9888 18.3169 12.9304 18.3769 12.755 18.3995C12.7339 18.4022 12.712 18.4036 12.691 18.4036C12.5103 18.4036 12.3173 18.3132 12.2177 18.2591C12.2629 18.1606 12.2866 18.0522 12.2866 17.9439C12.2866 17.5343 11.9638 17.2015 11.566 17.2011C11.5577 17.2011 11.5484 17.2011 11.5401 17.2015C11.5528 17.0146 11.5274 16.6606 11.1743 16.5048C11.0726 16.4596 10.9713 16.4361 10.873 16.4361C10.7958 16.4361 10.7217 16.4497 10.652 16.4772C10.5787 16.3309 10.4572 16.2244 10.2993 16.1688C10.2116 16.1377 10.1248 16.1219 10.0406 16.1219C9.89365 16.1219 9.75813 16.1666 9.63752 16.2546C9.52173 16.1065 9.34717 16.0189 9.1634 16.0189C9.00244 16.0189 8.84762 16.0853 8.73315 16.2022C8.58271 16.0839 7.98623 15.6938 6.38933 15.3204C6.31302 15.3027 6.13978 15.2517 6.03101 15.2188C6.18056 14.4809 6.63626 13.8068 7.31168 13.2536L7.31388 13.2527ZM10.2761 17.5325L10.259 17.5167H10.2415C10.2274 17.5167 10.2125 17.5226 10.1928 17.537C10.1112 17.5962 10.0336 17.6246 9.95418 17.6246C9.91032 17.6246 9.86558 17.6156 9.82085 17.598C9.45068 17.4494 9.47962 17.09 9.49805 16.9816C9.50068 16.9595 9.49541 16.9428 9.48182 16.931L9.4555 16.9089L9.43094 16.9328C9.35857 17.0046 9.26428 17.0435 9.16516 17.0435C8.95332 17.0435 8.78052 16.866 8.78095 16.6475C8.78095 16.4294 8.95376 16.2519 9.16603 16.2524C9.3577 16.2524 9.52085 16.4005 9.54497 16.5978L9.55813 16.7039L9.61471 16.6141C9.62085 16.6037 9.77655 16.3616 10.0621 16.3621C10.1165 16.3621 10.1726 16.3711 10.2292 16.3892C10.4568 16.4605 10.4954 16.6732 10.5011 16.7617C10.505 16.8132 10.541 16.8159 10.5476 16.8159C10.5673 16.8159 10.5818 16.8033 10.5919 16.792C10.6349 16.7459 10.7283 16.6691 10.8748 16.6691C10.9419 16.6691 11.0129 16.6858 11.0866 16.7184C11.4484 16.8782 11.2844 17.3514 11.2827 17.3564C11.2515 17.435 11.2502 17.4693 11.2796 17.4896L11.2936 17.4964H11.3042C11.3204 17.4964 11.3406 17.4892 11.3743 17.4774C11.4234 17.4598 11.4976 17.4336 11.5673 17.4336C11.8397 17.4368 12.0612 17.6653 12.0612 17.9421C12.0612 18.222 11.8392 18.4496 11.5669 18.4496C11.3006 18.4496 11.084 18.236 11.0743 17.9646C11.0735 17.9412 11.0713 17.8798 11.0204 17.8798C10.9998 17.8798 10.9814 17.8928 10.9607 17.9123C10.902 17.9683 10.8274 18.0247 10.7186 18.0247C10.6691 18.0247 10.6156 18.013 10.559 17.989C10.2779 17.8716 10.2739 17.6729 10.2853 17.593C10.2884 17.5718 10.2893 17.5497 10.2752 17.5321L10.2761 17.5325ZM12.0335 19.7397C8.68885 19.7397 5.9775 17.9538 5.9775 15.7511C5.9775 15.6626 5.98364 15.5746 5.99197 15.4874C6.01872 15.4942 6.28451 15.5592 6.33933 15.5723C7.97044 15.9453 8.50947 16.3332 8.60069 16.4068C8.56999 16.4831 8.55376 16.5653 8.55376 16.6484C8.55376 16.9956 8.82788 17.2783 9.16472 17.2783C9.20244 17.2783 9.24016 17.2747 9.277 17.2674C9.32787 17.523 9.49015 17.7167 9.73795 17.8161C9.81032 17.8445 9.88356 17.8594 9.95593 17.8594C10.0024 17.8594 10.0494 17.8536 10.095 17.8418C10.141 17.9615 10.2436 18.1109 10.4743 18.2071C10.555 18.2405 10.6357 18.2582 10.7142 18.2582C10.7783 18.2582 10.841 18.2464 10.9006 18.2238C11.0112 18.5006 11.2739 18.6844 11.5669 18.6844C11.7612 18.6844 11.9476 18.6031 12.0835 18.4591C12.1997 18.5259 12.4454 18.6465 12.6936 18.6469C12.7256 18.6469 12.7554 18.6447 12.7861 18.6411C13.0326 18.609 13.1471 18.5097 13.1997 18.4325C13.2094 18.4189 13.2177 18.4045 13.2252 18.3896C13.2831 18.4067 13.3471 18.4207 13.4208 18.4212C13.5554 18.4212 13.6844 18.3738 13.8151 18.2762C13.9436 18.1809 14.0348 18.0441 14.048 17.9276C14.048 17.9263 14.048 17.9245 14.0484 17.9227C14.0918 17.9317 14.1361 17.9362 14.1804 17.9362C14.319 17.9362 14.4554 17.8919 14.5857 17.8039C14.837 17.6346 14.8804 17.4128 14.8765 17.2679C14.9207 17.2774 14.9655 17.2823 15.0102 17.2823C15.14 17.2823 15.2681 17.2422 15.3896 17.1622C15.5453 17.0597 15.6392 16.9026 15.6536 16.7202C15.6628 16.596 15.633 16.4705 15.5699 16.363C15.99 16.1765 16.9505 15.8157 18.0817 15.5534C18.0865 15.6193 18.0891 15.6857 18.0891 15.7525C18.0891 17.9552 15.3778 19.7411 12.0335 19.7411V19.7397Z" fill="#0A0080"/>
+<path d="M39.9231 12.8173C39.6946 12.522 39.3472 12.3748 38.8814 12.3748C38.4157 12.3748 38.0687 12.5224 37.8402 12.8173C37.6113 13.1121 37.4968 13.4607 37.4968 13.8631C37.4968 14.2654 37.6113 14.6221 37.8402 14.9134C38.0687 15.2037 38.4161 15.3491 38.8814 15.3491C39.3468 15.3491 39.6946 15.2037 39.9231 14.9134C40.152 14.6221 40.2661 14.2726 40.2661 13.8631C40.2661 13.4535 40.152 13.1121 39.9231 12.8173ZM39.3564 14.5097C39.2455 14.661 39.0867 14.7373 38.8788 14.7373C38.6709 14.7373 38.5122 14.661 38.4003 14.5097C38.2885 14.3584 38.2328 14.1426 38.2328 13.8631C38.2328 13.5836 38.2885 13.3686 38.4003 13.2178C38.5122 13.067 38.6718 12.9916 38.8788 12.9916C39.0858 12.9916 39.245 13.067 39.3564 13.2178C39.4674 13.3686 39.5231 13.584 39.5231 13.8631C39.5231 14.1421 39.4674 14.3584 39.3564 14.5097Z" fill="#0A0080"/>
+<path d="M34.0776 12.5702C33.8456 12.4491 33.5803 12.3882 33.2816 12.3882C32.8224 12.3882 32.4983 12.5115 32.3092 12.7576C32.1904 12.9151 32.1242 13.1165 32.1084 13.3613H32.7948C32.8114 13.2529 32.8452 13.1676 32.8961 13.1043C32.9667 13.019 33.0873 12.9761 33.257 12.9761C33.4088 12.9761 33.5237 12.9978 33.6026 13.0416C33.6807 13.0849 33.7202 13.1644 33.7202 13.2791C33.7202 13.3735 33.6693 13.4421 33.5671 13.4873C33.5101 13.513 33.4154 13.5342 33.2829 13.5514L33.0395 13.5821C32.7632 13.6182 32.5535 13.6783 32.4114 13.7623C32.1518 13.9162 32.022 14.1655 32.022 14.5096C32.022 14.7746 32.1022 14.9796 32.2641 15.1241C32.425 15.2691 32.6299 15.3296 32.8772 15.3413C34.4285 15.4131 34.4114 14.4996 34.4254 14.31V13.2592C34.4254 12.9219 34.3092 12.6925 34.0776 12.5706V12.5702ZM33.7171 14.165C33.7123 14.4098 33.6443 14.5782 33.5136 14.6708C33.3825 14.7633 33.2399 14.8094 33.0847 14.8094C32.9864 14.8094 32.9031 14.781 32.8347 14.7259C32.7663 14.6703 32.732 14.5796 32.732 14.4545C32.732 14.3145 32.7882 14.2111 32.9 14.1438C32.9663 14.1045 33.075 14.0711 33.2268 14.0445L33.3886 14.0133C33.4693 13.9975 33.5325 13.9804 33.579 13.9623C33.6259 13.9451 33.6711 13.9217 33.7162 13.8923V14.1646L33.7171 14.165Z" fill="#0A0080"/>
+<path d="M30.5399 13.0141C30.7175 13.0141 30.8473 13.0705 30.932 13.1834C30.9894 13.2665 31.0254 13.3609 31.0394 13.4652H31.8048C31.7631 13.0674 31.628 12.7901 31.3995 12.633C31.1706 12.4763 30.8776 12.3977 30.5193 12.3977C30.0978 12.3977 29.7671 12.5309 29.5276 12.7969C29.2881 13.0633 29.168 13.4358 29.168 13.9145C29.168 14.338 29.2763 14.6839 29.4934 14.9499C29.7105 15.2158 30.0487 15.3491 30.5083 15.3491C30.9679 15.3491 31.3162 15.1897 31.5504 14.87C31.6973 14.6722 31.7798 14.4622 31.7969 14.2405H31.0342C31.0184 14.3872 30.9741 14.5069 30.9 14.599C30.8267 14.6907 30.7026 14.7372 30.5272 14.7372C30.2802 14.7372 30.1118 14.6211 30.0228 14.3886C29.9737 14.2644 29.9487 14.1005 29.9487 13.896C29.9487 13.6914 29.9737 13.5103 30.0228 13.3798C30.1158 13.1364 30.2881 13.0141 30.5399 13.0141Z" fill="#0A0080"/>
+<path d="M28.9626 12.3977C27.3903 12.3977 27.4837 13.8305 27.4837 13.8305V15.2863H28.1973V13.9212C28.1973 13.6973 28.2249 13.532 28.2789 13.4241C28.3767 13.2331 28.5683 13.1373 28.8534 13.1373C28.8749 13.1373 28.903 13.1387 28.9376 13.1405C28.9723 13.1423 29.0118 13.1455 29.0574 13.1509V12.4036C29.0258 12.4013 29.0052 12.4004 28.9964 12.3991C28.9872 12.3982 28.9762 12.3977 28.9626 12.3977Z" fill="#0A0080"/>
+<path d="M26.9118 12.9404C26.7886 12.7526 26.632 12.6149 26.4434 12.5273C26.2544 12.4406 26.0421 12.3972 25.8066 12.3972C25.4092 12.3972 25.0864 12.5259 24.8373 12.7837C24.5886 13.042 24.4636 13.4123 24.4636 13.8959C24.4636 14.412 24.6018 14.7841 24.8776 15.0131C25.1531 15.2415 25.4715 15.3567 25.832 15.3567C26.2688 15.3567 26.6088 15.2208 26.8513 14.9494C26.9824 14.8067 27.0644 14.6654 27.0991 14.5258H26.3421C26.3123 14.5701 26.2803 14.6076 26.2447 14.6369C26.1439 14.7223 26.007 14.7484 25.8461 14.7484C25.6939 14.7484 25.5741 14.725 25.4662 14.655C25.2882 14.5421 25.1877 14.3515 25.1772 14.072H27.1513C27.1539 13.8309 27.1465 13.6462 27.1276 13.518C27.0952 13.2994 27.0223 13.1071 26.9118 12.9413V12.9404ZM25.1947 13.5898C25.2202 13.4082 25.2838 13.2646 25.3833 13.1581C25.4838 13.052 25.6246 12.9987 25.8066 12.9987C25.9737 12.9987 26.114 13.0488 26.2272 13.1495C26.3399 13.2497 26.4026 13.397 26.4158 13.5898H25.1952H25.1947Z" fill="#0A0080"/>
+<path d="M23.0462 12.3879C22.715 12.3879 22.4286 12.5374 22.2361 12.7767C22.0532 12.5374 21.7716 12.3879 21.4256 12.3879C20.7287 12.3879 20.2795 12.9149 20.2795 13.6125V15.286H20.9317V13.5967C20.9317 13.2883 21.1343 13.0752 21.426 13.0752C21.8558 13.0752 21.9001 13.4423 21.9001 13.5967V15.286H22.5523V13.5967C22.5523 13.2883 22.7598 13.0752 23.0462 13.0752C23.476 13.0752 23.5255 13.4423 23.5255 13.5967V15.286H24.1768V13.6125C24.1768 12.8932 23.7575 12.3879 23.0457 12.3879H23.0462Z" fill="#0A0080"/>
+<path d="M36.5656 12.0307L36.5648 12.8177C36.4854 12.6859 36.3819 12.5829 36.2542 12.5093C36.1271 12.4353 35.981 12.3978 35.8165 12.3978C35.46 12.3978 35.1762 12.5346 34.963 12.8069C34.7499 13.0801 34.6433 13.4738 34.6433 13.9498C34.6433 14.3629 34.7516 14.7016 34.9679 14.9653C35.1841 15.2286 35.6082 15.3442 35.985 15.3442C37.2985 15.3442 37.2832 14.1846 37.2832 14.1846V11.5155C37.2832 11.5155 36.5652 11.4364 36.5652 12.0307H36.5656ZM36.4284 14.516C36.3244 14.6695 36.1714 14.7463 35.9709 14.7463C35.7705 14.7463 35.6209 14.6686 35.5222 14.5147C35.4236 14.3598 35.3744 14.1349 35.3744 13.8775C35.3744 13.6382 35.4227 13.4386 35.5196 13.2774C35.6165 13.1162 35.7683 13.0354 35.9757 13.0354C36.1117 13.0354 36.231 13.0796 36.3341 13.1681C36.5012 13.3149 36.5854 13.5786 36.5854 13.9195C36.5854 14.1634 36.5327 14.3625 36.4284 14.516Z" fill="#0A0080"/>
+<path d="M21.787 16.4089C21.1993 16.3804 20.9028 16.5245 20.7094 16.6767C20.4423 16.8866 20.2795 17.1973 20.2795 17.6936V20.2453H20.6251C20.7177 20.2453 20.8102 20.2123 20.8782 20.1477C20.9545 20.0755 20.9927 19.987 20.9927 19.8831V18.9295C21.0769 19.0789 21.1879 19.1886 21.3282 19.26C21.4611 19.3237 21.6146 19.3557 21.7892 19.3557C22.1177 19.3557 22.3874 19.2212 22.5966 18.9507C22.8062 18.673 22.9111 18.3117 22.9111 17.8642C22.9111 17.4168 22.8119 17.098 22.5742 16.7999C22.3821 16.5588 22.09 16.4229 21.7874 16.4089H21.787ZM22.0304 18.5032C21.9256 18.6527 21.7821 18.7272 21.6006 18.7272C21.405 18.7272 21.2545 18.6531 21.1497 18.5032C21.0449 18.3682 20.9922 18.1668 20.9922 17.8959C20.9922 17.6055 21.0409 17.3919 21.1387 17.2569C21.244 17.1083 21.3909 17.0329 21.5795 17.0329C21.7681 17.0329 21.9256 17.1079 22.0304 17.2569C22.1356 17.4064 22.1878 17.619 22.1878 17.8959C22.1878 18.1523 22.1356 18.3537 22.0304 18.5032Z" fill="#0A0080"/>
+<path d="M27.9149 16.6723C27.6724 16.4831 27.4246 16.3842 26.9987 16.396C26.5662 16.4081 26.2518 16.5328 26.0562 16.8055C25.8606 17.0787 25.7632 17.4354 25.7632 17.8748C25.7632 18.2509 25.8369 18.5539 25.9842 18.7856C26.132 19.0159 26.3088 19.1739 26.5149 19.2583C26.7202 19.3437 26.9281 19.3613 27.1377 19.3121C27.3469 19.262 27.5136 19.1387 27.6373 18.94V19.1202C27.6232 19.3473 27.5702 19.5175 27.4781 19.6313C27.3846 19.7442 27.282 19.8138 27.1684 19.8386C27.0561 19.863 26.9421 19.8494 26.8294 19.7957C26.7158 19.7429 26.632 19.6661 26.5772 19.5672H25.8255C26.0202 20.1696 26.3698 20.4355 26.9996 20.4825C28.0153 20.5579 28.339 19.6724 28.3381 19.1947V17.6933C28.3381 17.197 28.1811 16.8791 27.9158 16.6714L27.9149 16.6723ZM27.6162 18.1471C27.5886 18.3132 27.5443 18.4361 27.482 18.5137C27.3517 18.698 27.1487 18.7634 26.875 18.7111C26.6 18.6573 26.4627 18.3859 26.4627 17.8969C26.4627 17.6698 26.5035 17.4675 26.5864 17.2896C26.6689 17.113 26.8263 17.0236 27.0597 17.0236C27.2311 17.0236 27.3618 17.0877 27.4509 17.2151C27.5403 17.3429 27.5974 17.4883 27.621 17.6517C27.6452 17.8147 27.643 17.98 27.6158 18.1466L27.6162 18.1471Z" fill="#0A0080"/>
+<path d="M25.1527 16.5977C24.9207 16.4772 24.6553 16.4158 24.3566 16.4158C23.8974 16.4158 23.5738 16.539 23.3852 16.7856C23.2668 16.9427 23.2001 17.1441 23.1843 17.3889H23.8707C23.8874 17.2809 23.9211 17.1952 23.9716 17.1324C24.0422 17.047 24.1628 17.0037 24.3325 17.0037C24.4847 17.0037 24.5996 17.0254 24.6781 17.0692C24.7562 17.1125 24.7952 17.192 24.7952 17.3067C24.7952 17.4006 24.7444 17.4701 24.6422 17.5144C24.5852 17.5401 24.4904 17.5614 24.358 17.5785L24.115 17.6088C23.8387 17.6449 23.6286 17.705 23.4874 17.7889C23.2273 17.9429 23.0979 18.1917 23.0979 18.5358C23.0979 18.8009 23.1782 19.0059 23.34 19.1504C23.501 19.2953 23.7058 19.3558 23.9536 19.3676C25.5044 19.4389 25.4869 18.5259 25.5009 18.3362V17.2855C25.5009 16.9486 25.3856 16.7192 25.1536 16.5973L25.1527 16.5977ZM24.7922 18.1922C24.7878 18.4374 24.7194 18.6053 24.5891 18.6979C24.4584 18.7905 24.3154 18.8365 24.1602 18.8365C24.0619 18.8365 23.979 18.8081 23.9102 18.753C23.8417 18.6975 23.8075 18.6072 23.8075 18.4821C23.8075 18.3421 23.8637 18.2387 23.9755 18.1719C24.0422 18.1326 24.1505 18.0992 24.3023 18.0725L24.4645 18.0418C24.5452 18.026 24.6088 18.0093 24.6544 17.9912C24.7014 17.9736 24.747 17.9501 24.7922 17.9208V18.1931V18.1922Z" fill="#0A0080"/>
+<path d="M31.0349 16.8294C30.806 16.5341 30.4586 16.3865 29.9928 16.3865C29.527 16.3865 29.1806 16.5337 28.9521 16.8294C28.7231 17.1243 28.6086 17.4725 28.6086 17.8748C28.6086 18.2771 28.7231 18.6334 28.9521 18.9246C29.1806 19.2145 29.5279 19.3599 29.9928 19.3599C30.4577 19.3599 30.8055 19.2145 31.0349 18.9246C31.2634 18.6334 31.3774 18.2839 31.3774 17.8748C31.3774 17.4657 31.2634 17.1243 31.0349 16.8294ZM30.4678 18.521C30.3569 18.6727 30.1981 18.749 29.9911 18.749C29.7841 18.749 29.6244 18.6727 29.5126 18.521C29.4003 18.3697 29.3446 18.1543 29.3446 17.8748C29.3446 17.5953 29.4003 17.3803 29.5126 17.2295C29.624 17.0787 29.7836 17.0033 29.9911 17.0033C30.1985 17.0033 30.3573 17.0787 30.4678 17.2295C30.5788 17.3803 30.634 17.5953 30.634 17.8748C30.634 18.1543 30.5788 18.3697 30.4678 18.521Z" fill="#0A0080"/>
+</svg>
+        </span>
+        <span class="footer-pay-chip" aria-label="Visa">
+          <svg class="chip-dark" width="46" height="32" viewBox="0 0 46 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="45" height="31" rx="5.5" fill="#272235"/>
+<rect x="0.5" y="0.5" width="45" height="31" rx="5.5" stroke="#454545"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14.21 21.1444H11.4874L9.4457 13.0566C9.3488 12.6845 9.14304 12.3556 8.84037 12.2006C8.08504 11.811 7.25272 11.501 6.34473 11.3446V11.0332H10.7307C11.336 11.0332 11.79 11.501 11.8657 12.0442L12.925 17.8782L15.6463 11.0332H18.2933L14.21 21.1444ZM19.8066 21.1444H17.2353L19.3526 11.0332H21.924L19.8066 21.1444ZM25.2506 13.8343C25.3263 13.2898 25.7803 12.9784 26.3099 12.9784C27.1422 12.9002 28.0489 13.0566 28.8056 13.4448L29.2596 11.2678C28.5029 10.9564 27.6706 10.8 26.9152 10.8C24.4196 10.8 22.6036 12.2006 22.6036 14.1444C22.6036 15.6231 23.8899 16.3995 24.7979 16.8673C25.7803 17.3337 26.1586 17.6451 26.0829 18.1114C26.0829 18.811 25.3263 19.1224 24.5709 19.1224C23.6629 19.1224 22.7549 18.8892 21.9239 18.4997L21.47 20.678C22.3779 21.0662 23.3603 21.2226 24.2683 21.2226C27.0666 21.2994 28.8056 19.9002 28.8056 17.8001C28.8056 15.1553 25.2506 15.0003 25.2506 13.8343V13.8343ZM37.8045 21.1444L35.7628 11.0332H33.5699C33.1159 11.0332 32.6619 11.3446 32.5105 11.811L28.7299 21.1444H31.3769L31.9052 19.667H35.1575L35.4602 21.1444H37.8045ZM33.9482 13.7562L34.7035 17.5669H32.5862L33.9482 13.7562Z" fill="white"/>
+</svg>
+          <svg class="chip-light" width="46" height="32" viewBox="0 0 46 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="45" height="31" rx="5.5" fill="#F5F5F5"/>
+<rect x="0.5" y="0.5" width="45" height="31" rx="5.5" stroke="#D9D9D9"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14.21 21.1444H11.4874L9.4457 13.0566C9.3488 12.6845 9.14304 12.3556 8.84037 12.2006C8.08504 11.811 7.25272 11.501 6.34473 11.3446V11.0332H10.7307C11.336 11.0332 11.79 11.501 11.8657 12.0442L12.925 17.8782L15.6463 11.0332H18.2933L14.21 21.1444ZM19.8066 21.1444H17.2353L19.3526 11.0332H21.924L19.8066 21.1444ZM25.2506 13.8343C25.3263 13.2898 25.7803 12.9784 26.3099 12.9784C27.1422 12.9002 28.0489 13.0566 28.8056 13.4448L29.2596 11.2678C28.5029 10.9564 27.6706 10.8 26.9152 10.8C24.4196 10.8 22.6036 12.2006 22.6036 14.1444C22.6036 15.6231 23.8899 16.3995 24.7979 16.8673C25.7803 17.3337 26.1586 17.6451 26.0829 18.1114C26.0829 18.811 25.3263 19.1224 24.5709 19.1224C23.6629 19.1224 22.7549 18.8892 21.9239 18.4997L21.47 20.678C22.3779 21.0662 23.3603 21.2226 24.2683 21.2226C27.0666 21.2994 28.8056 19.9002 28.8056 17.8001C28.8056 15.1553 25.2506 15.0003 25.2506 13.8343V13.8343ZM37.8045 21.1444L35.7628 11.0332H33.5699C33.1159 11.0332 32.6619 11.3446 32.5105 11.811L28.7299 21.1444H31.3769L31.9052 19.667H35.1575L35.4602 21.1444H37.8045ZM33.9482 13.7562L34.7035 17.5669H32.5862L33.9482 13.7562Z" fill="#172B85"/>
+</svg>
+        </span>
+        <span class="footer-pay-chip" aria-label="Mastercard">
+          <svg class="chip-dark" width="46" height="32" viewBox="0 0 46 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="45" height="31" rx="5.5" fill="#272235"/>
+<rect x="0.5" y="0.5" width="45" height="31" rx="5.5" stroke="#454545"/>
+<path d="M28.522 6.70654C33.472 6.70664 37.4849 10.7065 37.4849 15.6401C37.4847 20.5737 33.4719 24.5727 28.522 24.5728C26.3026 24.5728 24.2729 23.7677 22.7075 22.436C21.1422 23.7674 19.1131 24.5728 16.894 24.5728C11.9441 24.5727 7.93129 20.5737 7.93115 15.6401C7.93115 10.7064 11.944 6.70659 16.894 6.70654C19.113 6.70654 21.1423 7.512 22.7075 8.84326C24.2729 7.51174 26.3028 6.70654 28.522 6.70654Z" fill="#ED0006"/>
+<path d="M28.5215 6.70654C33.4716 6.70654 37.4854 10.7064 37.4854 15.6401C37.4852 20.5738 33.4715 24.5728 28.5215 24.5728C26.3024 24.5727 24.2732 23.7675 22.708 22.436C24.6342 20.7976 25.8573 18.3619 25.8574 15.6401C25.8574 12.9182 24.6344 10.4818 22.708 8.84326C24.2732 7.51193 26.3025 6.70664 28.5215 6.70654Z" fill="#F9A000"/>
+<path d="M22.7073 8.84302C24.634 10.4815 25.8567 12.9177 25.8567 15.6399C25.8567 18.3619 24.6337 20.7973 22.7073 22.4358C20.7813 20.7973 19.5588 18.3615 19.5588 15.6399C19.5588 12.918 20.781 10.4815 22.7073 8.84302Z" fill="#FF5E00"/>
+</svg>
+          <svg class="chip-light" width="46" height="32" viewBox="0 0 46 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="45" height="31" rx="5.5" fill="#F5F5F5"/>
+<rect x="0.5" y="0.5" width="45" height="31" rx="5.5" stroke="#D9D9D9"/>
+<path d="M28.522 6.70654C33.472 6.70664 37.4849 10.7065 37.4849 15.6401C37.4847 20.5737 33.4719 24.5727 28.522 24.5728C26.3026 24.5728 24.2729 23.7677 22.7075 22.436C21.1422 23.7674 19.1131 24.5728 16.894 24.5728C11.9441 24.5727 7.93129 20.5737 7.93115 15.6401C7.93115 10.7064 11.944 6.70659 16.894 6.70654C19.113 6.70654 21.1423 7.512 22.7075 8.84326C24.2729 7.51174 26.3028 6.70654 28.522 6.70654Z" fill="#ED0006"/>
+<path d="M28.5215 6.70654C33.4716 6.70654 37.4854 10.7064 37.4854 15.6401C37.4852 20.5738 33.4715 24.5728 28.5215 24.5728C26.3024 24.5727 24.2732 23.7675 22.708 22.436C24.6342 20.7976 25.8573 18.3619 25.8574 15.6401C25.8574 12.9182 24.6344 10.4818 22.708 8.84326C24.2732 7.51193 26.3025 6.70664 28.5215 6.70654Z" fill="#F9A000"/>
+<path d="M22.7073 8.84302C24.634 10.4815 25.8567 12.9177 25.8567 15.6399C25.8567 18.3619 24.6337 20.7973 22.7073 22.4358C20.7813 20.7973 19.5588 18.3615 19.5588 15.6399C19.5588 12.918 20.781 10.4815 22.7073 8.84302Z" fill="#FF5E00"/>
+</svg>
+        </span>
+        <span class="footer-pay-chip" aria-label="PayPal">
+          <svg class="chip-dark" width="46" height="32" viewBox="0 0 46 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="45" height="31" rx="5.5" fill="#272235"/>
+<rect x="0.5" y="0.5" width="45" height="31" rx="5.5" stroke="#454545"/>
+<path d="M9.31177 11.1667H6.4711C6.27671 11.1667 6.1114 11.3234 6.08108 11.5362L4.93218 19.6138C4.90934 19.7732 5.02065 19.9169 5.16645 19.9169H6.52261C6.717 19.9169 6.88231 19.7603 6.91264 19.547L7.2225 17.3683C7.2524 17.1551 7.41813 16.9985 7.61211 16.9985H8.51137C10.3826 16.9985 11.4625 15.9944 11.7446 14.0045C11.8717 13.134 11.75 12.45 11.3824 11.971C10.9786 11.445 10.2625 11.1667 9.31177 11.1667ZM9.6395 14.1169C9.48415 15.2473 8.70534 15.2473 7.95229 15.2473H7.52363L7.82436 13.1363C7.84222 13.0087 7.94191 12.9147 8.05821 12.9147H8.25467C8.76765 12.9147 9.25155 12.9147 9.50159 13.239C9.65071 13.4325 9.6964 13.7199 9.6395 14.1169Z" fill="white"/>
+<path d="M17.8029 14.0808H16.4425C16.3267 14.0808 16.2266 14.1748 16.2087 14.3024L16.1485 14.7243L16.0534 14.5714C15.7589 14.0974 15.1022 13.939 14.4467 13.939C12.9435 13.939 11.6596 15.2015 11.4096 16.9725C11.2796 17.856 11.4644 18.7007 11.9163 19.2898C12.3309 19.8315 12.924 20.0572 13.6297 20.0572C14.8409 20.0572 15.5126 19.1936 15.5126 19.1936L15.4519 19.6127C15.4291 19.773 15.5404 19.9167 15.6853 19.9167H16.9107C17.1055 19.9167 17.27 19.7601 17.3007 19.5468L18.0359 14.3839C18.0591 14.225 17.9482 14.0808 17.8029 14.0808ZM15.9067 17.0167C15.7755 17.8785 15.1587 18.457 14.372 18.457C13.977 18.457 13.6613 18.3166 13.4586 18.0503C13.2575 17.7859 13.1811 17.4096 13.2451 16.9905C13.3676 16.1361 13.9948 15.5386 14.7695 15.5386C15.1558 15.5386 15.4698 15.681 15.6766 15.9495C15.8839 16.2208 15.9661 16.5994 15.9067 17.0167Z" fill="white"/>
+<path d="M25.0476 14.0808H23.6806C23.5502 14.0808 23.4277 14.1527 23.3537 14.2729L21.4684 17.3525L20.6692 14.3931C20.619 14.2079 20.4649 14.0808 20.2904 14.0808H18.9471C18.7839 14.0808 18.6705 14.2577 18.7224 14.4281L20.2281 19.328L18.8126 21.544C18.7013 21.7186 18.8134 21.9586 19.0057 21.9586H20.371C20.5006 21.9586 20.6219 21.8885 20.6954 21.7706L25.242 14.4931C25.3508 14.3189 25.2391 14.0808 25.0476 14.0808Z" fill="white"/>
+<path d="M29.5732 11.1667H26.7322C26.5382 11.1667 26.3729 11.3234 26.3426 11.5362L25.1937 19.6138C25.1708 19.7732 25.2821 19.9169 25.4271 19.9169H26.885C27.0204 19.9169 27.1363 19.8073 27.1575 19.658L27.4836 17.3683C27.5135 17.1551 27.6792 16.9985 27.8732 16.9985H28.772C30.6436 16.9985 31.7232 15.9944 32.0056 14.0045C32.1331 13.134 32.0106 12.45 31.643 11.971C31.2397 11.445 30.524 11.1667 29.5732 11.1667ZM29.901 14.1169C29.746 15.2473 28.9672 15.2473 28.2138 15.2473H27.7855L28.0867 13.1363C28.1045 13.0087 28.2034 12.9147 28.3201 12.9147H28.5166C29.0291 12.9147 29.5134 12.9147 29.7635 13.239C29.9126 13.4325 29.9579 13.7199 29.901 14.1169Z" fill="white"/>
+<path d="M38.0643 14.0808H36.7048C36.5881 14.0808 36.4888 14.1748 36.4714 14.3024L36.4111 14.7243L36.3156 14.5714C36.0211 14.0974 35.3648 13.939 34.7094 13.939C33.2062 13.939 31.9227 15.2015 31.6727 16.9725C31.5431 17.856 31.7271 18.7007 32.179 19.2898C32.5944 19.8315 33.1867 20.0572 33.8924 20.0572C35.1036 20.0572 35.7752 19.1936 35.7752 19.1936L35.7146 19.6127C35.6917 19.773 35.803 19.9167 35.9488 19.9167H37.1737C37.3677 19.9167 37.533 19.7601 37.5633 19.5468L38.299 14.3839C38.3214 14.225 38.2101 14.0808 38.0643 14.0808ZM36.1681 17.0167C36.0377 17.8785 35.4201 18.457 34.6334 18.457C34.2392 18.457 33.9227 18.3166 33.72 18.0503C33.5189 17.7859 33.4434 17.4096 33.5065 16.9905C33.6299 16.1361 34.2562 15.5386 35.0309 15.5386C35.4172 15.5386 35.7312 15.681 35.938 15.9495C36.1461 16.2208 36.2284 16.5994 36.1681 17.0167Z" fill="white"/>
+<path d="M39.6682 11.3883L38.5023 19.6138C38.4794 19.7731 38.5907 19.9169 38.7357 19.9169H39.9078C40.1026 19.9169 40.268 19.7602 40.2979 19.547L41.4476 11.4698C41.4704 11.3104 41.3591 11.1663 41.2142 11.1663H39.9016C39.7857 11.1667 39.686 11.2607 39.6682 11.3883Z" fill="white"/>
+</svg>
+          <svg class="chip-light" width="46" height="32" viewBox="0 0 46 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="45" height="31" rx="5.5" fill="#F5F5F5"/>
+<rect x="0.5" y="0.5" width="45" height="31" rx="5.5" stroke="#D9D9D9"/>
+<g clip-path="url(#clip0_975_8651)">
+<path d="M18.0626 12.5669H16.0504C15.9127 12.5669 15.7956 12.674 15.7742 12.8196L14.9604 18.3465C14.9442 18.4555 15.023 18.5538 15.1263 18.5538H16.0869C16.2246 18.5538 16.3417 18.4467 16.3632 18.3008L16.5827 16.8101C16.6039 16.6642 16.7212 16.557 16.8586 16.557H17.4956C18.8211 16.557 19.586 15.87 19.7858 14.5085C19.8758 13.9129 19.7896 13.4449 19.5292 13.1171C19.2433 12.7572 18.736 12.5669 18.0626 12.5669ZM18.2947 14.5854C18.1847 15.3588 17.633 15.3588 17.0996 15.3588H16.796L17.009 13.9145C17.0216 13.8272 17.0923 13.7629 17.1746 13.7629H17.3138C17.6772 13.7629 18.0199 13.7629 18.197 13.9848C18.3027 14.1171 18.335 14.3138 18.2947 14.5854Z" fill="#253B80"/>
+<path d="M24.0772 14.5604H23.1136C23.0315 14.5604 22.9606 14.6247 22.948 14.712L22.9053 15.0007L22.8379 14.8961C22.6293 14.5718 22.1642 14.4634 21.6999 14.4634C20.6351 14.4634 19.7257 15.3272 19.5486 16.539C19.4565 17.1434 19.5874 17.7214 19.9075 18.1245C20.2012 18.4951 20.6213 18.6495 21.1212 18.6495C21.9791 18.6495 22.4549 18.0586 22.4549 18.0586L22.4119 18.3454C22.3957 18.4551 22.4746 18.5534 22.5773 18.5534H23.4452C23.5832 18.5534 23.6997 18.4463 23.7215 18.3003L24.2422 14.7678C24.2587 14.6591 24.1801 14.5604 24.0772 14.5604ZM22.7341 16.5692C22.6411 17.1589 22.2042 17.5547 21.6469 17.5547C21.3671 17.5547 21.1435 17.4586 21 17.2764C20.8576 17.0955 20.8034 16.838 20.8487 16.5513C20.9355 15.9667 21.3798 15.5579 21.9285 15.5579C22.2021 15.5579 22.4246 15.6553 22.5711 15.839C22.7179 16.0246 22.7761 16.2837 22.7341 16.5692Z" fill="#253B80"/>
+<path d="M29.2088 14.5605H28.2405C28.1482 14.5605 28.0614 14.6097 28.009 14.692L26.6736 16.7991L26.1075 14.7742C26.0719 14.6475 25.9627 14.5605 25.8392 14.5605H24.8877C24.772 14.5605 24.6917 14.6816 24.7285 14.7982L25.795 18.1508L24.7923 19.6669C24.7135 19.7864 24.7929 19.9506 24.9291 19.9506H25.8962C25.988 19.9506 26.0739 19.9027 26.126 19.822L29.3465 14.8426C29.4236 14.7235 29.3444 14.5605 29.2088 14.5605Z" fill="#253B80"/>
+<path d="M32.4146 12.5669H30.4022C30.2648 12.5669 30.1477 12.674 30.1262 12.8196L29.3124 18.3465C29.2962 18.4555 29.3751 18.5538 29.4778 18.5538H30.5105C30.6064 18.5538 30.6885 18.4788 30.7035 18.3767L30.9344 16.8101C30.9556 16.6642 31.073 16.557 31.2104 16.557H31.8471C33.1728 16.557 33.9375 15.87 34.1376 14.5085C34.2279 13.9129 34.1411 13.4449 33.8807 13.1171C33.595 12.7572 33.0881 12.5669 32.4146 12.5669ZM32.6468 14.5854C32.537 15.3588 31.9854 15.3588 31.4517 15.3588H31.1483L31.3616 13.9145C31.3743 13.8272 31.4443 13.7629 31.527 13.7629H31.6661C32.0292 13.7629 32.3723 13.7629 32.5494 13.9848C32.655 14.1171 32.6871 14.3138 32.6468 14.5854Z" fill="#179BD7"/>
+<path d="M38.4289 14.5604H37.466C37.3833 14.5604 37.313 14.6247 37.3006 14.712L37.258 15.0007L37.1903 14.8961C36.9817 14.5718 36.5168 14.4634 36.0526 14.4634C34.9878 14.4634 34.0787 15.3272 33.9015 16.539C33.8097 17.1434 33.9401 17.7214 34.2602 18.1245C34.5544 18.4951 34.974 18.6495 35.4738 18.6495C36.3318 18.6495 36.8075 18.0586 36.8075 18.0586L36.7646 18.3454C36.7484 18.4551 36.8272 18.5534 36.9305 18.5534H37.7981C37.9355 18.5534 38.0526 18.4463 38.0741 18.3003L38.5952 14.7678C38.6111 14.6591 38.5322 14.5604 38.4289 14.5604ZM37.0858 16.5692C36.9935 17.1589 36.556 17.5547 35.9987 17.5547C35.7195 17.5547 35.4953 17.4586 35.3517 17.2764C35.2093 17.0955 35.1558 16.838 35.2005 16.5513C35.2879 15.9667 35.7316 15.5579 36.2803 15.5579C36.5539 15.5579 36.7763 15.6553 36.9228 15.839C37.0703 16.0246 37.1285 16.2837 37.0858 16.5692Z" fill="#179BD7"/>
+<path d="M39.565 12.7186L38.7392 18.3465C38.723 18.4556 38.8018 18.5539 38.9045 18.5539H39.7348C39.8728 18.5539 39.9899 18.4467 40.0111 18.3008L40.8255 12.7743C40.8416 12.6653 40.7628 12.5667 40.6601 12.5667H39.7304C39.6483 12.567 39.5777 12.6313 39.565 12.7186Z" fill="#179BD7"/>
+<path d="M6.60442 19.6279L6.75829 18.581L6.41553 18.5725H4.77881L5.91625 10.8472C5.91978 10.8238 5.93125 10.8021 5.94802 10.7866C5.96479 10.7712 5.98627 10.7627 6.00863 10.7627H8.76837C9.68456 10.7627 10.3168 10.9669 10.6469 11.37C10.8017 11.5591 10.9003 11.7567 10.9479 11.9741C10.9979 12.2023 10.9988 12.4749 10.95 12.8074L10.9465 12.8317V13.0447L11.1012 13.1386C11.2315 13.2127 11.3351 13.2975 11.4146 13.3945C11.5469 13.5562 11.6326 13.7617 11.6688 14.0053C11.7061 14.2558 11.6938 14.554 11.6326 14.8915C11.562 15.2798 11.4478 15.6179 11.2936 15.8946C11.1518 16.1496 10.9712 16.361 10.7567 16.5249C10.5519 16.6806 10.3086 16.7988 10.0335 16.8744C9.76694 16.9488 9.46302 16.9863 9.12967 16.9863H8.91489C8.76131 16.9863 8.61215 17.0456 8.49505 17.1518C8.37766 17.2602 8.29998 17.4083 8.27615 17.5703L8.25997 17.6645L7.98811 19.5097L7.97576 19.5775C7.97252 19.5989 7.96693 19.6096 7.95869 19.6169C7.95134 19.6235 7.94075 19.6279 7.93045 19.6279H6.60442Z" fill="#253B80"/>
+<path d="M11.2477 12.8562C11.2395 12.9126 11.2301 12.9703 11.2195 13.0295C10.8555 15.0311 9.61042 15.7225 8.02019 15.7225H7.2105C7.01603 15.7225 6.85215 15.8738 6.82185 16.0793L6.4073 18.8954L6.2899 19.6937C6.27019 19.8286 6.36728 19.9503 6.49438 19.9503H7.93045C8.10051 19.9503 8.24497 19.8179 8.27174 19.6383L8.28586 19.5601L8.55625 17.7221L8.57361 17.6213C8.60009 17.441 8.74484 17.3087 8.9149 17.3087H9.12967C10.521 17.3087 11.6102 16.7036 11.9285 14.9526C12.0615 14.2211 11.9927 13.6104 11.6408 13.1808C11.5343 13.0513 11.4022 12.9438 11.2477 12.8562Z" fill="#179BD7"/>
+<path d="M10.8669 12.6936C10.8113 12.6763 10.754 12.6605 10.6951 12.6464C10.636 12.6325 10.5754 12.6202 10.513 12.6095C10.2947 12.5717 10.0555 12.5537 9.79924 12.5537H7.63617C7.58291 12.5537 7.53231 12.5666 7.487 12.59C7.38726 12.6413 7.31312 12.7425 7.29517 12.8663L6.83502 15.9882L6.82178 16.0793C6.85208 15.8738 7.01596 15.7226 7.21044 15.7226H8.02012C9.61035 15.7226 10.8555 15.0308 11.2194 13.0296C11.2303 12.9703 11.2394 12.9127 11.2477 12.8563C11.1556 12.8039 11.0558 12.7592 10.9484 12.7211C10.922 12.7116 10.8946 12.7025 10.8669 12.6936Z" fill="#222D65"/>
+<path d="M7.29514 12.8663C7.31309 12.7424 7.38723 12.6413 7.48697 12.5902C7.53257 12.5669 7.58288 12.554 7.63614 12.554H9.79921C10.0555 12.554 10.2947 12.5719 10.513 12.6098C10.5754 12.6205 10.636 12.6328 10.6951 12.6466C10.7539 12.6608 10.8113 12.6766 10.8669 12.6939C10.8946 12.7027 10.9219 12.7119 10.9487 12.721C11.0561 12.7591 11.1558 12.8042 11.2479 12.8562C11.3562 12.1165 11.247 11.6129 10.8737 11.1569C10.4621 10.6549 9.71918 10.4399 8.76857 10.4399H6.00883C5.81465 10.4399 5.649 10.5912 5.61899 10.797L4.46949 18.6017C4.44684 18.7562 4.55805 18.8955 4.70339 18.8955H6.4072L6.83499 15.9882L7.29514 12.8663Z" fill="#253B80"/>
+</g>
+<defs>
+<clipPath id="clip0_975_8651">
+<rect width="36.4828" height="10.4" fill="white" transform="translate(4.46655 10.4399)"/>
+</clipPath>
+</defs>
+</svg>
+        </span>
+      </div>
+    </div>
+
+    <!-- Footer bottom FULL WIDTH -->
+    <div class="footer-bottom">
+      <p>© 2019 - <span id="footerYear"></span> Glitched Box. Todos los derechos reservados. Información exclusiva de Glitched Box</p>
+    </div>
+
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+    <span class="icon-wrap icon-wrap--24" aria-hidden="true">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 4L4 12L5.41 13.41L11 7.83V20H13V7.83L18.59 13.41L20 12L12 4Z" fill="currentColor"/>
+      </svg>
+    </span>
+  </button>
+
+  <script src="gb-core.js"></script>
+  <script src="my-account.js" defer></script>
+
+
+
+
+
+
+<!-- GLITCHEDBOX CHATBOT WIDGET -->
+<style>
+/* ══════════════════════════════════════
+/* ══════════════════════════════════════
+   VARIABLES — Estética claude.ai + GlitchedBox
+══════════════════════════════════════ */
+/* ── Dark theme (hereda tokens de gb-core.css) ── */
+:root[data-theme="dark"],
+:root:not([data-theme]) {
+  --gb-bg:                var(--color-bg);           /* #141414 */
+  --gb-surface:           var(--color-surface);      /* #1f1f1f */
+  --gb-surface2:          var(--color-surface-2);    /* #262626 */
+  --gb-border:            var(--color-border);       /* rgba(255,255,255,.10) */
+  --gb-text:              var(--color-text);
+  --gb-text-dim:          var(--color-text-secondary);
+  --gb-text-mid:          var(--color-text-muted);
+  --gb-accent:            var(--color-accent);       /* #39FF14 verde neón */
+  --gb-accent-dark:       color-mix(in srgb, var(--color-accent) 75%, #000);
+  --gb-accent2:           var(--danger);             /* #ef4444 */
+  --gb-bubble-user:       var(--color-accent-subtle);
+  --gb-bubble-user-border: var(--color-accent-border);
+  --gb-shadow:            var(--shadow-xl);
+  --gb-glow:              var(--focus-glow);
+  --gb-glow2:             0 0 12px rgba(239,68,68,.3);
+  --gb-radius:            var(--radius-4);           /* 16px */
+}
+
+/* ── Light theme (hereda tokens de gb-core.css) ── */
+:root[data-theme="light"] {
+  --gb-bg:                var(--color-bg);           /* #fcfcfc */
+  --gb-surface:           var(--color-surface);      /* #f5f5f5 */
+  --gb-surface2:          var(--color-surface-2);    /* #f0f0f0 */
+  --gb-border:            var(--color-border);       /* rgba(17,17,17,.12) */
+  --gb-text:              var(--color-text);
+  --gb-text-dim:          var(--color-text-secondary);
+  --gb-text-mid:          var(--color-text-muted);
+  --gb-accent:            var(--color-accent);       /* #FF6B2B naranja */
+  --gb-accent-dark:       color-mix(in srgb, var(--color-accent) 75%, #000);
+  --gb-accent2:           var(--danger);
+  --gb-bubble-user:       var(--color-accent-subtle);
+  --gb-bubble-user-border: var(--color-accent-border);
+  --gb-shadow:            var(--shadow-lg);
+  --gb-glow:              var(--focus-glow);
+  --gb-glow2:             0 0 12px rgba(239,68,68,.2);
+  --gb-radius:            var(--radius-4);
+}
+
+   RESET & BASE
+══════════════════════════════════════ */
+#gb-widget *,
+#gb-widget *::before,
+#gb-widget *::after {
+  box-sizing: border-box;
+  margin: 0; padding: 0;
+}
+
+/* ══════════════════════════════════════
+   FAB — Botón lateral estilo Telcel
+   Pegado a la derecha, a media pantalla.
+   Al hover se expande mostrando texto.
+══════════════════════════════════════ */
+
+/* Contenedor externo — fijo en pantalla */
+#gb-fab-wrap {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-60%);
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  /* Transición de entrada/salida */
+  transition: opacity .25s cubic-bezier(.16,1,.3,1),
+              transform .3s cubic-bezier(.16,1,.3,1);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Cuando el chat está abierto — el botón desaparece */
+#gb-fab-wrap.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-60%) translateX(80px); /* se va hacia la derecha */
+}
+
+/* Pill expandible */
+#gb-fab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--gb-accent);
+  border: none;
+  border-radius: 12px 0 0 12px; /* esquinas izquierda redondeadas, derecha pegada al borde */
+  cursor: pointer;
+  padding: 10px 10px;
+  box-shadow: -4px 0 20px rgba(var(--gb-accent-rgb), .35), -2px 0 40px rgba(0,0,0,.4);
+  overflow: hidden;
+  /* ancho base: solo la imagen */
+  width: 64px;
+  height: auto;
+  min-height: 72px;
+  transition: width .35s cubic-bezier(.34,1.1,.64,1), box-shadow .25s, padding .35s;
+  white-space: nowrap;
+  font-size: 0;
+}
+
+#gb-fab:hover,
+#gb-fab.open {
+  width: 178px;
+  padding: 10px 14px;
+  box-shadow: -6px 0 28px rgba(var(--gb-accent-rgb), .55), -2px 0 50px rgba(0,0,0,.4);
+}
+
+/* Imagen del personaje */
+#gb-fab-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  flex-shrink: 0;
+  /* Pequeño efecto de entrada */
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+  display: block;
+}
+
+/* Estado cerrado: ícono de chat SVG (visible cuando no hay imagen) */
+#gb-fab-icon {
+  width: 28px; height: 28px;
+  fill: #0e0e0e;
+  flex-shrink: 0;
+  display: none; /* se muestra solo si no hay imagen */
+}
+
+#gb-fab:hover #gb-fab-img,
+#gb-fab.open #gb-fab-img {
+  transform: scale(1.08);
+}
+
+/* Texto que aparece al hover */
+#gb-fab-label {
+  font-family: 'Rajdhani', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .4px;
+  color: #0e0e0e;
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  transition: opacity .2s .1s, max-width .3s;
+  text-align: left;
+  line-height: 1.3;
+  padding-left: 0;
+}
+
+#gb-fab:hover #gb-fab-label,
+#gb-fab.open #gb-fab-label {
+  opacity: 1;
+  max-width: 120px;
+  padding-left: 10px;
+}
+
+/* Ícono cerrar — reemplaza la imagen cuando está abierto */
+#gb-fab-close {
+  width: 22px; height: 22px;
+  fill: #0e0e0e;
+  flex-shrink: 0;
+  display: none;
+  position: absolute;
+  top: 8px; right: 8px;
+}
+
+#gb-fab.open #gb-fab-close {
+  display: block;
+}
+
+#gb-fab.open #gb-fab-img {
+  opacity: 0.5;
+}
+
+/* Badge notificación */
+#gb-badge {
+  position: absolute;
+  top: 6px; left: 6px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--gb-accent2);
+  border: 2px solid var(--gb-accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Rajdhani', system-ui, sans-serif;
+  font-size: 10px; font-weight: 700;
+  color: #fff;
+  transition: transform .3s, opacity .3s;
+  pointer-events: none;
+}
+
+#gb-badge.hidden {
+  transform: scale(0);
+  opacity: 0;
+}
+
+/* ══════════════════════════════════════
+
+/* ══════════════════════════════════════
+   WIDGET PRINCIPAL — estilo claude.ai
+══════════════════════════════════════ */
+#gb-widget {
+  position: fixed;
+  top: 50%;
+  right: 72px;
+  transform: translateY(-50%) translateX(16px) scale(.96);
+  width: 380px;
+  height: 600px;
+  max-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  background: var(--gb-surface);
+  border: 1px solid var(--gb-border);
+  border-radius: var(--gb-radius);
+  overflow: hidden;
+  box-shadow: var(--gb-shadow);
+  z-index: 9997;
+  font-family: 'DM Sans', 'Exo 2', system-ui, sans-serif;
+  color: var(--gb-text);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s cubic-bezier(.16,1,.3,1),
+              transform .3s cubic-bezier(.16,1,.3,1);
+}
+
+#gb-widget.open {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(-50%) translateX(0) scale(1);
+}
+
+/* Borde con glow sutil al estar abierto */
+#gb-widget.open {
+  border-color: rgba(255,255,255,.1);
+}
+
+/* ── Header — personaje centrado estilo claude.ai ── */
+#gb-header {
+  background: linear-gradient(180deg, #0e1200 0%, var(--gb-surface2) 100%);
+  border-bottom: 1px solid var(--gb-border);
+  padding: 20px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow ambiental detrás del personaje */
+#gb-header::before {
+  content: '';
+  position: absolute;
+  top: -20px; left: 50%;
+  transform: translateX(-50%);
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,240,0,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Fila de botones arriba (reset + cerrar) */
+#gb-header-actions {
+  position: absolute;
+  top: 10px; right: 10px;
+  display: flex;
+  gap: 4px;
+}
+
+/* Personaje — imagen grande centrada */
+#gb-header-char {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  object-position: bottom;
+  filter: drop-shadow(0 4px 20px rgba(200,240,0,.25));
+  margin-bottom: 10px;
+  animation: gb-float 4s ease-in-out infinite;
+}
+
+/* Fallback emoji si no carga el webp */
+#gb-header-char-fallback {
+  width: 90px; height: 90px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 52px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 4px 20px rgba(200,240,0,.2));
+}
+
+@keyframes gb-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-5px); }
+}
+
+/* Info de nombre y estado — debajo del personaje */
+.gb-header-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.gb-header-name {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  color: var(--gb-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gb-header-name span { color: var(--gb-accent); }
+
+.gb-status-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.gb-status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gb-accent);
+  box-shadow: 0 0 5px rgba(200,240,0,.9);
+  animation: gb-pulse 2.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes gb-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .3; transform: scale(.7); }
+}
+
+.gb-header-sub {
+  font-size: 10px;
+  color: var(--gb-text-dim);
+  letter-spacing: .4px;
+}
+
+.gb-hbtn {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--gb-text-dim);
+  cursor: pointer;
+  font-size: 13px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .15s;
+  flex-shrink: 0;
+}
+.gb-hbtn:hover {
+  background: rgba(255,255,255,.06);
+  border-color: var(--gb-border);
+  color: var(--gb-text);
+}
+
+/* ── Área de mensajes ── */
+#gb-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  scroll-behavior: smooth;
+  background: var(--gb-bg);
+}
+
+#gb-messages::-webkit-scrollbar { width: 3px; }
+#gb-messages::-webkit-scrollbar-track { background: transparent; }
+#gb-messages::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.08);
+  border-radius: 2px;
+}
+
+/* Divisor */
+.gb-divider {
+  text-align: center;
+  font-size: 9px;
+  color: var(--gb-text-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 8px 0;
+  opacity: .5;
+}
+
+/* Filas de mensajes */
+.gb-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  animation: gb-msgin .2s cubic-bezier(.16,1,.3,1) both;
+}
+
+@keyframes gb-msgin {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.gb-row.user { flex-direction: row-reverse; }
+.gb-row.bot  { margin-bottom: 2px; }
+
+/* Avatar — minimalista, solo punto de color */
+.gb-av {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--gb-surface2);
+  border: 1.5px solid rgba(255,255,255,.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  flex-shrink: 0;
+  margin-bottom: 2px;
+}
+.gb-av.bot  { border-color: rgba(200,240,0,.25); }
+.gb-av.user { display: none; } /* como claude.ai — usuario sin avatar */
+
+/* Burbujas — muy limpias */
+.gb-bubble {
+  max-width: 82%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  letter-spacing: .01em;
+}
+
+.gb-bubble.bot {
+  background: transparent;
+  color: var(--gb-text);
+  padding-left: 4px;
+  border-radius: 0;
+  max-width: 90%;
+}
+
+.gb-bubble.user {
+  background: var(--gb-bubble-user);
+  border: 1px solid var(--gb-bubble-user-border);
+  border-radius: 14px 14px 4px 14px;
+  color: var(--gb-text);
+}
+
+/* Quick replies — tarjetas redondeadas estilo claude.ai */
+.gb-qr {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 0 4px 0;
+  width: 100%;
+}
+
+/* Cuando son pocas opciones de navegación (menú principal) — columna completa */
+.gb-qr-btn {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 11px 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.07);
+  background: var(--gb-surface2);
+  color: var(--gb-text);
+  cursor: pointer;
+  transition: all .15s;
+  white-space: normal;
+  letter-spacing: .01em;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Flecha a la derecha */
+.gb-qr-btn::after {
+  content: '›';
+  font-size: 16px;
+  color: var(--gb-text-dim);
+  flex-shrink: 0;
+  transition: transform .15s, color .15s;
+}
+
+/* Botón de "volver" — más pequeño, sin flecha */
+.gb-qr-btn[data-back="true"],
+.gb-qr-btn:has-text("←") {
+  background: transparent;
+  border-color: rgba(255,255,255,.05);
+  color: var(--gb-text-dim);
+  font-size: 11px;
+  padding: 7px 12px;
+  justify-content: flex-start;
+}
+
+.gb-qr-btn:hover {
+  background: rgba(255,255,255,.06);
+  border-color: rgba(200,240,0,.25);
+  color: var(--gb-accent);
+  transform: translateX(2px);
+}
+
+.gb-qr-btn:hover::after {
+  transform: translateX(3px);
+  color: var(--gb-accent);
+}
+
+/* Botones de "← Volver" — estilo diferente, sin flecha */
+.gb-qr-btn.gb-back-btn {
+  background: transparent;
+  border-color: rgba(255,255,255,.04);
+  color: var(--gb-text-dim);
+  font-size: 11px;
+  padding: 7px 12px;
+  max-width: fit-content;
+}
+.gb-qr-btn.gb-back-btn::after { display: none; }
+.gb-qr-btn.gb-back-btn:hover {
+  color: var(--gb-text);
+  border-color: rgba(255,255,255,.1);
+  transform: none;
+}
+
+/* Typing indicator */
+.gb-typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 4px;
+  width: fit-content;
+}
+
+.gb-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--gb-text-dim);
+  animation: gb-bounce .9s ease-in-out infinite;
+}
+.gb-dot:nth-child(2) { animation-delay: .15s; }
+.gb-dot:nth-child(3) { animation-delay: .30s; }
+
+@keyframes gb-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: .3; }
+  30%            { transform: translateY(-5px); opacity: 1; }
+}
+
+/* Highlights en texto */
+#gb-messages .hl  { color: var(--gb-accent); font-weight: 600; }
+#gb-messages .hl2 { color: var(--gb-accent2); font-weight: 600; }
+
+/* ── Formulario de escalación ── */
+.gb-form {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(200,240,0,.15);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  animation: gb-msgin .25s cubic-bezier(.16,1,.3,1) both;
+  margin: 4px 0;
+}
+
+.gb-form-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--gb-accent);
+  text-transform: uppercase;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  margin-bottom: 2px;
+}
+
+.gb-input {
+  width: 100%;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: var(--gb-text);
+  font-family: inherit;
+  font-size: 13px;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.gb-input:focus {
+  border-color: rgba(200,240,0,.4);
+  box-shadow: 0 0 0 2px rgba(200,240,0,.08);
+}
+.gb-input::placeholder { color: var(--gb-text-dim); }
+
+.gb-form select.gb-input {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23484440' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+}
+
+.gb-form-submit {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  padding: 9px 0;
+  border-radius: 8px;
+  border: none;
+  background: var(--gb-accent);
+  color: #0a0a0a;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all .15s;
+  margin-top: 2px;
+}
+.gb-form-submit:hover {
+  filter: brightness(1.08);
+  box-shadow: var(--gb-glow);
+}
+
+.gb-form-note {
+  font-size: 10px;
+  color: var(--gb-text-dim);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ── Barra de input — claude.ai style ── */
+#gb-inputbar {
+  border-top: 1px solid var(--gb-border);
+  padding: 12px 14px;
+  background: var(--gb-surface);
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Wrapper con borde animado al focus */
+#gb-input-wrap {
+  flex: 1;
+  position: relative;
+  border-radius: 12px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.09);
+  transition: border-color .2s, box-shadow .2s;
+}
+
+#gb-input-wrap:focus-within {
+  border-color: rgba(200,240,0,.35);
+  box-shadow: 0 0 0 3px rgba(200,240,0,.07);
+}
+
+#gb-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 14px;
+  color: var(--gb-text);
+  font-family: inherit;
+  font-size: 13.5px;
+  outline: none;
+  resize: none;
+  max-height: 96px;
+  line-height: 1.5;
+  display: block;
+}
+#gb-input::placeholder { color: var(--gb-text-dim); }
+
+#gb-send {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  border: none;
+  background: var(--gb-accent);
+  color: #0a0a0a;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: all .15s;
+  opacity: .9;
+}
+#gb-send:hover {
+  opacity: 1;
+  box-shadow: var(--gb-glow);
+  transform: scale(1.05);
+}
+#gb-send:disabled { opacity: .25; cursor: default; transform: none; }
+
+/* ── Footer minimalista ── */
+#gb-footer {
+  padding: 5px 14px 7px;
+  background: var(--gb-surface);
+  border-top: 1px solid var(--gb-border);
+  text-align: center;
+  font-size: 9px;
+  color: var(--gb-text-dim);
+  letter-spacing: .3px;
+  opacity: .7;
+}
+
+#gb-footer span { color: rgba(200,240,0,.5); }
+
+/* ── Responsive mobile ── */
+@media (max-width: 480px) {
+
+  /* Widget abierto: bottom sheet que ocupa toda la pantalla */
+  #gb-widget {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    border-radius: 0;
+    transform: translateY(24px) scale(.98);
+  }
+  #gb-widget.open {
+    transform: translateY(0) scale(1);
+  }
+
+  /* FAB: derecha, a media pantalla — igual que desktop pero sin texto */
+  #gb-fab-wrap {
+    top: 50%;
+    right: 0;
+    bottom: auto;
+    transform: translateY(-60%);
+    transition: opacity .25s, transform .25s;
+  }
+  #gb-fab-wrap.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-60%) translateX(80px);
+  }
+
+  /* FAB más compacto en mobile, sigue pegado al borde derecho */
+  #gb-fab {
+    border-radius: 10px 0 0 10px !important;
+    width: 44px !important;
+    height: 52px;
+    min-height: 52px;
+    padding: 8px !important;
+    justify-content: center;
+  }
+  #gb-fab:hover {
+    width: 44px !important;
+    padding: 8px !important;
+  }
+  #gb-fab-label { display: none !important; }
+  #gb-fab-img { width: 30px; height: 30px; }
+}
+</style>
+
+<!-- Google Fonts para el widget -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@600;700&family=Exo+2:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- FAB lateral estilo Telcel -->
+<div id="gb-fab-wrap">
+  <button id="gb-fab" onclick="gbToggle()" aria-label="Abrir chat de soporte">
+    <!-- 
+      ILUSTRACIÓN: cambia el src por la ruta de tu .webp
+      Ejemplo: src="assets/img/glitch-bot.webp"
+    -->
+    <img
+      id="gb-fab-img"
+      src="assets/img/glitch-bot.webp"
+      alt="Asistente GlitchedBox"
+      onerror="this.style.display='none'; document.getElementById('gb-fab-icon').style.display='block';"
+    />
+    <!-- Fallback SVG si no carga el webp -->
+    <svg id="gb-fab-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 2H4C2.9 2 2 2.9 2 4v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+    </svg>
+    <!-- Texto que aparece al hover -->
+    <span id="gb-fab-label">¿En qué<br>puedo ayudarte?</span>
+    <!-- Ícono cerrar (cuando está abierto) -->
+    <svg id="gb-fab-close" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+    </svg>
+    <div id="gb-badge">1</div>
+  </button>
+</div>
+
+<!-- Widget principal -->
+<div id="gb-widget" role="dialog" aria-label="Chat de soporte GlitchedBox">
+
+  <!-- Header — personaje centrado -->
+  <div id="gb-header">
+    <!-- Botones arriba a la derecha -->
+    <div id="gb-header-actions">
+      <button class="gb-hbtn" onclick="gbReset()" title="Reiniciar" aria-label="Reiniciar">↺</button>
+      <button class="gb-hbtn" onclick="gbToggle()" title="Cerrar" aria-label="Cerrar">✕</button>
+    </div>
+    <!--
+      PERSONAJE: cambia src por la ruta de tu .webp
+      Ej: src="assets/img/glitch-bot.webp"
+    -->
+    <img
+      id="gb-header-char"
+      src="assets/img/glitch-bot.webp"
+      alt="Asistente GlitchedBox"
+      onerror="this.style.display='none'; document.getElementById('gb-header-char-fallback').style.display='flex';"
+    />
+    <div id="gb-header-char-fallback">🎲</div>
+
+    <div class="gb-header-info">
+      <div class="gb-header-name">Glitched<span>Box</span> Soporte</div>
+      <div class="gb-status-row">
+        <div class="gb-status-dot"></div>
+        <div class="gb-header-sub">EN LÍNEA · RESPUESTA RÁPIDA</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensajes -->
+  <div id="gb-messages" role="log" aria-live="polite"></div>
+
+  <!-- Input -->
+  <div id="gb-inputbar">
+    <div id="gb-input-wrap">
+      <textarea
+        id="gb-input"
+        rows="1"
+        placeholder="Escríbenos tu duda..."
+        maxlength="500"
+        aria-label="Mensaje"
+      ></textarea>
+    </div>
+    <button id="gb-send" onclick="gbSend()" aria-label="Enviar mensaje">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <div id="gb-footer">Soporte oficial · <span>glitchedbox.co</span></div>
+
+</div>
+
+<script>
+(function() {
+'use strict';
+
+/* ══════════════════════════════════════
+   CONFIGURACIÓN — CAMBIAR AQUÍ
+══════════════════════════════════════ */
+const CFG = {
+  emailSoporte:      'soporte@glitchedbox.co',       // PLACEHOLDER_EMAIL_SOPORTE
+  emailPedidos:      'pedidos@glitchedbox.co',        // PLACEHOLDER_EMAIL_PEDIDOS
+  emailCancelaciones:'cancelaciones@glitchedbox.co',  // PLACEHOLDER_EMAIL_CANCELACIONES
+  emailContacto:     'contacto@glitchedbox.co',       // PLACEHOLDER_EMAIL_CONTACTO
+  tiempoRespuesta:   '2–4 horas hábiles',
+  horario:           'Lunes a viernes',
+  // Clases que usa tu sitio para el tema claro (separadas por |)
+  lightClasses:      'light|light-theme|tema-claro',
+  lightAttr:         'light', // valor de data-theme para tema claro
+};
+
+/* ══════════════════════════════════════
+   BASE DE CONOCIMIENTO — FAQ & FLUJOS
+══════════════════════════════════════ */
+const KB = {
+
+  welcome: {
+    text: '¡Hola! 👾 Soy el asistente de <span class="hl">GlitchedBox</span>.\n¿En qué puedo ayudarte?',
+    qr: ['🎲 ¿Qué es un Art Toy?', '📦 Mi pedido', '🚚 Envíos', '💳 Pagos', '🔄 Devoluciones', '👤 Mi cuenta', '🧑‍💻 Hablar con un agente']
+  },
+
+  flujos: {
+
+    /* ── FAQ PRODUCTO ── */
+    'que es un art toy': {
+      text: 'Los <span class="hl">art toys</span> son figuras de colección que combinan arte y diseño. No son simples juguetes: cada pieza es una obra con personalidad, historia y estilo propio.\n\nEn GlitchedBox cada personaje llegó a nuestro mundo por error a través de un "glitch" ✨',
+      qr: ['🧪 ¿De qué material son?', '✨ ¿Son piezas únicas?', '🎨 ¿Hacen personalizados?', '← Menú principal']
+    },
+
+    'de que material son': {
+      text: 'Nuestros art toys están hechos de <span class="hl">resina de alta calidad</span>. Algunos incorporan detalles pintados a mano.\n\nCada figura está cuidada hasta el último píxel para que luzca increíble tanto en vitrina como en tu feed 🖤',
+      qr: ['✨ ¿Son piezas únicas?', '← Menú principal']
+    },
+
+    'son piezas unicas': {
+      text: '¡Sí! Algunas son parte de una <span class="hl">serie limitada</span>, otras tienen detalles pintados a mano o elementos únicos.\n\nNos gusta que cada pieza tenga ese algo especial que la haga irrepetible 🎲',
+      qr: ['🎨 ¿Hacen personalizados?', '📦 Mi pedido', '← Menú principal']
+    },
+
+    'hacen personalizados': {
+      text: 'Por ahora <span class="hl2">no ofrecemos art toys personalizados</span>.\n\nPero quién sabe... si un día abrimos esa opción, lo anunciaremos a lo grande 👀\n\n¡Síguenos en Instagram para enterarte primero!',
+      qr: ['← Menú principal']
+    },
+
+    /* ── PEDIDOS ── */
+    'mi pedido': {
+      text: '¿Qué necesitas saber sobre tu pedido?',
+      qr: ['📍 Rastrear mi pedido', '❌ Cancelar pedido', '📦 Pedido dañado o incorrecto', '← Menú principal']
+    },
+
+    'rastrear mi pedido': {
+      text: 'Una vez procesado tu pedido, recibirás un correo con el <span class="hl">número de guía</span> y un enlace de seguimiento.\n\nSi ya tienes tu número de guía, puedes rastrear tu paquete directamente en el sitio de la paquetería.\n\n¿No recibiste el correo de confirmación?',
+      qr: ['🧑‍💻 Contactar soporte', '← Mi pedido', '← Menú principal']
+    },
+
+    'cancelar pedido': {
+      text: 'Las cancelaciones solo se permiten dentro de las <span class="hl">primeras 2 horas</span> después de realizar la compra, y siempre que el pedido no haya sido procesado o enviado.\n\nSi estás dentro del plazo, escríbenos de inmediato a:\n<span class="hl">cancelaciones@glitchedbox.co</span>',
+      qr: ['🧑‍💻 Contactar soporte', '← Mi pedido', '← Menú principal']
+    },
+
+    'pedido danado o incorrecto': {
+      text: 'Lamentamos que tu figura haya llegado dañada o incorrecta 😔\n\nSi aplica, podemos ofrecerte <span class="hl">reenvío o reemplazo sin costo</span>, según disponibilidad. Si no hay stock disponible, podremos ofrecer un <span class="hl">cupón o reembolso</span>.\n\nPara procesar tu caso necesitamos que nos reportes dentro de las primeras <span class="hl">48 horas</span> posteriores a la entrega:\n\n• 📸 Fotos del empaque exterior e interior\n• 📸 Fotos del daño o producto incorrecto\n• 🧾 Tu número de pedido\n\nCada caso se evalúa individualmente.',
+      qr: ['🧑‍💻 Abrir reporte de daño', '← Mi pedido', '← Menú principal']
+    },
+
+    /* ── ENVÍOS ── */
+    'envios': {
+      text: '🚚 <span class="hl">Envíos GlitchedBox:</span>\n\n• Enviamos a toda la <span class="hl">República Mexicana</span>\n• Actualmente <span class="hl2">no realizamos envíos internacionales</span>\n• Tiempo de entrega: <span class="hl">3 a 7 días hábiles</span>\n• Pedidos procesados: lunes a viernes, 1–3 días hábiles tras confirmar el pago\n• <span class="hl">Envío gratuito</span> en compras ≥ $2,500 MXN',
+      qr: ['📍 Costo de envío', '📅 Tiempos de entrega', '⚠️ Zonas extendidas', '📦 Paquete no entregado', '← Menú principal']
+    },
+
+    'costo de envio': {
+      text: 'El costo de envío se calcula automáticamente al finalizar tu compra, con base en el <span class="hl">peso, destino y tipo de servicio</span>.\n\n✅ <span class="hl">Envío gratis</span> en compras iguales o mayores a <span class="hl">$2,500 MXN</span>.\n\n⚠️ Este beneficio no aplica si tu dirección está en zona extendida.',
+      qr: ['⚠️ Zonas extendidas', '← Envíos', '← Menú principal']
+    },
+
+    'tiempos de entrega': {
+      text: '📅 <span class="hl">Tiempos estimados:</span>\n\n• Entrega: <span class="hl">3 a 7 días hábiles</span>\n• Procesamiento: 1–3 días hábiles (lunes a viernes)\n• Productos bajo pedido: +3 a 4 días hábiles adicionales\n\nUna vez enviado recibirás tu número de guía por correo.',
+      qr: ['← Envíos', '← Menú principal']
+    },
+
+    'zonas extendidas': {
+      text: '⚠️ Algunas direcciones en México pueden ser consideradas <span class="hl">zonas extendidas</span> por la paquetería.\n\nEn esos casos el costo adicional (generalmente entre <span class="hl">$199 y $300 MXN</span>) corre por cuenta del cliente.\n\nSi tu pedido cae en zona extendida, te contactamos antes de enviarlo. El cargo no está incluido en el envío gratuito.',
+      qr: ['← Envíos', '← Menú principal']
+    },
+
+    'paquete no entregado': {
+      text: 'Si tu paquete fue devuelto (dirección incorrecta, ausencia, etc.) nos ponemos en contacto para reprogramar el envío.\n\n⚠️ El <span class="hl">nuevo costo de envío</span> deberá ser cubierto por el cliente en ese caso.\n\nSi crees que hay un problema con tu entrega, contáctanos.',
+      qr: ['🧑‍💻 Contactar soporte', '← Envíos', '← Menú principal']
+    },
+
+    /* ── PAGOS ── */
+    'pagos': {
+      text: '💳 <span class="hl">Métodos de pago aceptados:</span>\n\n• Tarjetas de crédito y débito\n• PayPal\n• MercadoPago\n\nTodos los precios están en <span class="hl">pesos mexicanos (MXN)</span> e incluyen IVA.\n\nNo almacenamos los datos de tu tarjeta.',
+      qr: ['❓ Pago rechazado', '🧑‍💻 Problema con mi pago', '← Menú principal']
+    },
+
+    'pago rechazado': {
+      text: 'Los motivos más comunes de un pago rechazado son:\n\n• Fondos insuficientes\n• Tarjeta bloqueada por el banco\n• Datos incorrectos (CVV, fecha de vencimiento)\n• Límite de compras en línea\n\nIntenta con otra tarjeta o cambia el método de pago. Si el problema persiste, contáctanos.',
+      qr: ['🧑‍💻 Contactar soporte', '← Pagos', '← Menú principal']
+    },
+
+    /* ── DEVOLUCIONES ── */
+    'devoluciones': {
+      text: '🔄 <span class="hl">Política de devoluciones:</span>\n\nTodas las ventas son <span class="hl">finales</span>. No aceptamos devoluciones ni cambios por cambio de opinión, debido a la naturaleza limitada y coleccionable de nuestros productos.\n\n<span class="hl">Excepción:</span> Si tu figura llega dañada o recibiste un producto incorrecto, podemos ofrecer <span class="hl">reenvío, reemplazo, cupón o reembolso</span> según disponibilidad y evaluación del caso 📦',
+      qr: ['📦 Mi figura llegó dañada', '❌ Cancelar pedido', '← Menú principal']
+    },
+
+    'mi figura llego danada': {
+      text: 'Lamentamos que tu figura haya llegado dañada 😔\n\nSegún disponibilidad, podemos ofrecerte <span class="hl">reenvío, reemplazo, cupón o reembolso</span>. Cada caso se evalúa individualmente.\n\nPara procesarlo necesitamos que nos reportes dentro de las primeras <span class="hl">48 horas</span> posteriores a la entrega:\n\n• 📸 Fotos del empaque exterior e interior\n• 📸 Fotos del daño\n• 🧾 Tu número de pedido',
+      qr: ['🧑‍💻 Abrir reporte de daño', '← Menú principal']
+    },
+
+    /* ── PRIVACIDAD ── */
+    'privacidad': {
+      text: '🔒 <span class="hl">Tu privacidad importa:</span>\n\nGlitchedBox cumple con la <span class="hl">Ley Federal de Protección de Datos Personales</span> (LFPDPPP).\n\n• No compartimos ni vendemos tus datos\n• Los pagos se procesan por plataformas seguras (no guardamos datos de tarjeta)\n• Tienes derechos ARCO: Acceso, Rectificación, Cancelación y Oposición\n\nConsulta la política completa en nuestro sitio.',
+      qr: ['⚖️ Propiedad intelectual', '🔞 Edad mínima', '← Menú principal']
+    },
+
+    /* ── PROPIEDAD INTELECTUAL ── */
+    'propiedad intelectual': {
+      text: '⚖️ <span class="hl">Propiedad Intelectual:</span>\n\nTodos los diseños, personajes, imágenes y contenidos de GlitchedBox son de nuestra propiedad exclusiva y están protegidos por la <span class="hl">Ley Federal del Derecho de Autor</span>.\n\nLa marca GlitchedBox está registrada ante el <span class="hl">IMPI</span>.\n\nQueda <span class="hl2">estrictamente prohibido</span> copiar, reproducir, distribuir, revender o crear obras derivadas de nuestros personajes, diseños, imágenes o logotipos sin autorización expresa y por escrito de GlitchedBox.',
+      qr: ['← Menú principal']
+    },
+
+    /* ── EDAD MÍNIMA ── */
+    'edad minima': {
+      text: '🔞 <span class="hl">Edad mínima:</span>\n\nSolo pueden registrarse y realizar compras personas <span class="hl">mayores de 18 años</span>.\n\nAl crear una cuenta o realizar una compra, el usuario declara bajo protesta de decir verdad que cumple con este requisito.',
+      qr: ['← Menú principal']
+    },
+
+    /* ── ESCALACIÓN ── */
+    'abrir reporte de dano': { isEsc: true, escType: 'dano' },
+    'contactar soporte':     { isEsc: true, escType: 'soporte' },
+    'problema con mi pago':  { isEsc: true, escType: 'pago' },
+    'hablar con un agente':  { isEsc: true, escType: 'agente' },
+  }
+};
+
+/* ══════════════════════════════════════
+   MAPA DE KEYWORDS → FLUJO
+══════════════════════════════════════ */
+const KW = [
+  [/art.?toy|que.?es|figura|personaje|coleccion/i,       'que es un art toy'],
+  [/material|resina|hecho|fabricad/i,                    'de que material son'],
+  [/unic[oa]|limitad|especial|irrepetible/i,             'son piezas unicas'],
+  [/personaliz|encarg|custom/i,                          'hacen personalizados'],
+  [/rastrea|seguimiento|guia|tracking|donde.?esta/i,     'rastrear mi pedido'],
+  [/cancel/i,                                            'cancelar pedido'],
+  [/da[ñn]ad|roto|mal.?estado|incorrecto|equivocad|reenvio/i, 'pedido danado o incorrecto'],
+  [/pedido|orden|compra|mi.?paquete/i,                   'mi pedido'],
+  [/costo.?env[ií]o|cu[aá]nto.?cobran|precio.?env[ií]o/i,'costo de envio'],
+  [/tiempo|tarda|d[ií]as|cuando.?llega|demora/i,        'tiempos de entrega'],
+  [/zona.?extendida|cargo.?extra/i,                      'zonas extendidas'],
+  [/no.?entregad|devuelto|volvieron|regresaron/i,        'paquete no entregado'],
+  [/env[ií]o|entrega|paqueter[ií]a|envian|envian|mandan/i,'envios'],
+  [/pago.?rechazad|no.?pas[oó]|declinado|fail/i,        'pago rechazado'],
+  [/pago|cobro|pagar|tarjeta|paypal|mercado.?pago|precio/i,'pagos'],
+  [/devoluci[oó]n|cambio|regresar|reembolso/i,          'devoluciones'],
+  [/da[ñn]ad|roto|llego.?mal/i,                         'mi figura llego danada'],
+  [/privacidad|datos|arco|cookies|gdpr/i,                'privacidad'],
+  [/propiedad.?intelectual|copyright|copiar|diseño|reproduc|impi|marca.?registrada/i, 'propiedad intelectual'],
+  [/edad.?m[ií]nima|18.?a[ñn]os|menor.?edad|mayor.?de.?edad/i, 'edad minima'],
+  [/agente|humano|persona|asesor|soporte/i,              'hablar con un agente'],
+  [/cuenta|registro|registrar|login|inici[ao].?sesi[oó]n|contrase[ñn]a|olvid[eé]|acceso/i, 'mi cuenta'],
+];
+
+/* ══════════════════════════════════════
+   ESTADO
+══════════════════════════════════════ */
+const msgsEl  = document.getElementById('gb-messages');
+const inputEl = document.getElementById('gb-input');
+const fabEl   = document.getElementById('gb-fab');
+const badgeEl = document.getElementById('gb-badge');
+const widgetEl= document.getElementById('gb-widget');
+
+/* ══════════════════════════════════════
+   DETECCIÓN DE TEMA
+══════════════════════════════════════ */
+function detectarTema() {
+  const html   = document.documentElement;
+  const body   = document.body;
+  const clases = CFG.lightClasses.split('|');
+
+  const esClaro =
+    html.getAttribute('data-theme') === CFG.lightAttr ||
+    body.getAttribute('data-theme') === CFG.lightAttr ||
+    clases.some(c => html.classList.contains(c) || body.classList.contains(c));
+
+  if (esClaro) {
+    widgetEl.classList.add('gb-light');
+  } else {
+    widgetEl.classList.remove('gb-light');
+  }
+}
+
+// Observar cambios de tema en tiempo real
+new MutationObserver(detectarTema).observe(document.documentElement, {
+  attributes: true, attributeFilter: ['class', 'data-theme']
+});
+new MutationObserver(detectarTema).observe(document.body, {
+  attributes: true, attributeFilter: ['class', 'data-theme']
+});
+
+/* ══════════════════════════════════════
+   TOGGLE WIDGET
+══════════════════════════════════════ */
+function gbToggle() {
+  const abierto = widgetEl.classList.toggle('open');
+  fabEl.classList.toggle('open', abierto);
+
+  // Ocultar/mostrar el botón lateral según estado del chat
+  const fabWrap = document.getElementById('gb-fab-wrap');
+  if (abierto) {
+    fabWrap.classList.add('hidden');
+    badgeEl.classList.add('hidden');
+    inputEl.focus();
+    detectarTema();
+  } else {
+    // Pequeño delay para que la animación de cierre del chat
+    // termine antes de que aparezca el botón
+    setTimeout(() => fabWrap.classList.remove('hidden'), 150);
+  }
+}
+window.gbToggle = gbToggle;
+
+/* ══════════════════════════════════════
+   HELPERS DOM
+══════════════════════════════════════ */
+function scrollFondo() {
+  setTimeout(() => { msgsEl.scrollTop = msgsEl.scrollHeight; }, 60);
+}
+
+function addBurbuja(html, lado = 'bot') {
+  const row = document.createElement('div');
+  row.className = `gb-row ${lado}`;
+
+  const av = document.createElement('div');
+  av.className = `gb-av ${lado === 'bot' ? 'bot' : 'user'}`;
+  av.textContent = lado === 'bot' ? '🎲' : '👤';
+
+  const bub = document.createElement('div');
+  bub.className = `gb-bubble ${lado}`;
+  bub.innerHTML = html.replace(/\n/g, '<br>');
+
+  if (lado === 'bot') { row.appendChild(av); row.appendChild(bub); }
+  else                { row.appendChild(bub); row.appendChild(av); }
+
+  msgsEl.appendChild(row);
+  scrollFondo();
+  return bub;
+}
+
+function addQR(replies) {
+  const wrap = document.createElement('div');
+  wrap.className = 'gb-qr';
+  replies.forEach(r => {
+    const btn = document.createElement('button');
+    // Botones de "volver" (empiezan con ←) — estilo diferente
+    const isBack = r.startsWith('←') || r.toLowerCase().includes('menú principal');
+    btn.className = 'gb-qr-btn' + (isBack ? ' gb-back-btn' : '');
+    btn.textContent = r;
+    btn.onclick = () => handleQR(r);
+    wrap.appendChild(btn);
+  });
+  msgsEl.appendChild(wrap);
+  scrollFondo();
+}
+
+function showTyping() {
+  const row = document.createElement('div');
+  row.className = 'gb-row bot'; row.id = 'gb-typing';
+  const av = document.createElement('div');
+  av.className = 'gb-av bot'; av.textContent = '🎲';
+  const ind = document.createElement('div');
+  ind.className = 'gb-typing';
+  ind.innerHTML = '<div class="gb-dot"></div><div class="gb-dot"></div><div class="gb-dot"></div>';
+  row.appendChild(av); row.appendChild(ind);
+  msgsEl.appendChild(row);
+  scrollFondo();
+}
+
+function hideTyping() {
+  const t = document.getElementById('gb-typing');
+  if (t) t.remove();
+}
+
+function clearQR() {
+  document.querySelectorAll('.gb-qr').forEach(e => e.remove());
+}
+
+/* ══════════════════════════════════════
+   FORMULARIO DE ESCALACIÓN
+══════════════════════════════════════ */
+function showForm(tipo) {
+  const titulos = {
+    dano:    '📸 REPORTE DE PRODUCTO DAÑADO',
+    soporte: '🧑‍💻 CONTACTAR CON SOPORTE',
+    pago:    '💳 PROBLEMA CON MI PAGO',
+    agente:  '🧑‍💻 HABLAR CON UN AGENTE',
+  };
+  const emailDestino = {
+    dano:    CFG.emailPedidos,
+    soporte: CFG.emailSoporte,
+    pago:    CFG.emailSoporte,
+    agente:  CFG.emailSoporte,
+  };
+
+  const form = document.createElement('div');
+  form.className = 'gb-form';
+  form.id = 'gb-esc-form';
+
+  const necesitaFotos = tipo === 'dano';
+
+  form.innerHTML = `
+    <div class="gb-form-title">${titulos[tipo] || '🧑‍💻 CONTACTAR SOPORTE'}</div>
+    <input class="gb-input" id="gbf-nombre" type="text"  placeholder="Tu nombre completo *" required />
+    <input class="gb-input" id="gbf-email"  type="email" placeholder="Tu correo electrónico *" required />
+    <input class="gb-input" id="gbf-orden"  type="text"  placeholder="Número de pedido (ej: #GB-12345)" />
+    <select class="gb-input" id="gbf-tipo">
+      <option value="">Tipo de problema...</option>
+      <option value="pedido_danado">Pedido dañado / incorrecto</option>
+      <option value="no_llego">Mi pedido no llegó</option>
+      <option value="pago">Problema con el pago</option>
+      <option value="cancelacion">Cancelación de pedido</option>
+      <option value="otro">Otro</option>
+    </select>
+    <textarea class="gb-input" id="gbf-desc" rows="2" placeholder="Descríbenos tu problema brevemente..."></textarea>
+    ${necesitaFotos ? `<p class="gb-form-note">📸 Por favor envía las fotos a <strong>${emailDestino[tipo]}</strong> junto con tu número de pedido para agilizar el proceso.</p>` : ''}
+    <button class="gb-form-submit" onclick="submitForm('${tipo}','${emailDestino[tipo]}')">ENVIAR SOLICITUD →</button>
+    <p class="gb-form-note">Respondemos en ${CFG.tiempoRespuesta} · ${CFG.horario}</p>
+  `;
+
+  msgsEl.appendChild(form);
+  scrollFondo();
+}
+
+function submitForm(tipo, email) {
+  const nombre = document.getElementById('gbf-nombre')?.value.trim();
+  const correo = document.getElementById('gbf-email')?.value.trim();
+  const orden  = document.getElementById('gbf-orden')?.value.trim();
+  const desc   = document.getElementById('gbf-desc')?.value.trim();
+
+  if (!nombre || !correo) {
+    const n = document.getElementById('gbf-nombre');
+    const e = document.getElementById('gbf-email');
+    if (!nombre) n.style.borderColor = 'var(--gb-accent2)';
+    if (!correo) e.style.borderColor = 'var(--gb-accent2)';
+    return;
+  }
+
+  const ticketId = 'GB-' + Math.floor(Math.random() * 90000 + 10000);
+  document.getElementById('gb-esc-form')?.remove();
+
+  showTyping();
+  setTimeout(() => {
+    hideTyping();
+    addBurbuja(
+      `✅ ¡Recibido, <span class="hl">${nombre}</span>!\n\n` +
+      `Tu número de ticket: <span class="hl">${ticketId}</span>\n\n` +
+      `Te responderemos en <span class="hl">${CFG.tiempoRespuesta}</span> al correo <span class="hl">${correo}</span>\n\n` +
+      (tipo === 'dano' ? `Recuerda enviarnos las fotos a <span class="hl">${email}</span> con tu número de ticket. Evaluaremos tu caso y te ofreceremos la mejor solución según disponibilidad 📸` : `Si necesitas atención urgente escríbenos a <span class="hl">${email}</span>`)
+    );
+    addQR(['🏠 Menú principal', '❓ Otra pregunta']);
+  }, 1200);
+}
+window.submitForm = submitForm;
+
+/* ══════════════════════════════════════
+   MOTOR DE FLUJOS
+══════════════════════════════════════ */
+function ejecutarFlujo(key) {
+  const flujo = KB.flujos[key];
+  if (!flujo) return false;
+
+  if (flujo.isEsc) {
+    showTyping();
+    setTimeout(() => {
+      hideTyping();
+      const prefijos = {
+        dano:    'Para reportar tu producto dañado o incorrecto, completa el siguiente formulario. Lo evaluaremos y te contactaremos con la solución:',
+        soporte: 'Con gusto te conectamos con nuestro equipo. Completa el formulario:',
+        pago:    'Vamos a revisar el problema con tu pago. Completa el formulario:',
+        agente:  'Te conectamos con un agente. Completa el formulario:',
+      };
+      addBurbuja(prefijos[flujo.escType] || 'Completa el formulario para continuar:');
+      showForm(flujo.escType);
+    }, 800);
+    return true;
+  }
+
+  showTyping();
+  setTimeout(() => {
+    hideTyping();
+    addBurbuja(flujo.text);
+    if (flujo.qr?.length) addQR(flujo.qr);
+  }, 800);
+  return true;
+}
+
+/* ══════════════════════════════════════
+   MANEJO DE QUICK REPLIES
+══════════════════════════════════════ */
+function handleQR(texto) {
+  clearQR();
+  document.getElementById('gb-esc-form')?.remove();
+
+  const clean = texto.toLowerCase()
+    .replace(/^[^\w\sáéíóúüñ]*\s*/u, '')
+    .replace(/[¿?¡!]/g, '')
+    .trim();
+
+  if (clean === 'menú principal' || clean === '← menú principal') {
+    addBurbuja(KB.welcome.text);
+    addQR(KB.welcome.qr);
+    return;
+  }
+
+  // Mensaje del usuario visible
+  addBurbuja(texto, 'user');
+
+  // Buscar flujo exacto primero
+  const keyClean = clean
+    .replace(/^← /, '')
+    .replace(/[¿?¡!]/g, '')
+    .trim()
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+  // Mapa rápido de etiquetas comunes de botones
+  const BTNMAP = {
+    'que es un art toy':          'que es un art toy',
+    'de que material son':        'de que material son',
+    'hacen personalizados':       'hacen personalizados',
+    'son piezas unicas':          'son piezas unicas',
+    'mi pedido':                  'mi pedido',
+    'rastrear mi pedido':         'rastrear mi pedido',
+    'cancelar pedido':            'cancelar pedido',
+    'pedido danado o incorrecto': 'pedido danado o incorrecto',
+    'envios':                     'envios',
+    'costo de envio':             'costo de envio',
+    'tiempos de entrega':         'tiempos de entrega',
+    'zonas extendidas':           'zonas extendidas',
+    'paquete no entregado':       'paquete no entregado',
+    'pagos':                      'pagos',
+    'pago rechazado':             'pago rechazado',
+    'devoluciones':               'devoluciones',
+    'mi figura llego danada':     'mi figura llego danada',
+    'privacidad':                 'privacidad',
+    'propiedad intelectual':      'propiedad intelectual',
+    'edad minima':                'edad minima',
+    'abrir reporte de dano':      'abrir reporte de dano',
+    'contactar soporte':          'contactar soporte',
+    'problema con mi pago':       'problema con mi pago',
+    'mi cuenta':                  'mi cuenta',
+    'como registrarme':           'como registrarme',
+    'problemas para iniciar sesion': 'problemas para iniciar sesion',
+    'cambiar contrasena':         'cambiar contrasena',
+    'eliminar mi cuenta':         'eliminar mi cuenta',
+    'hablar con un agente':       'hablar con un agente',
+  };
+
+  // Normalizar botón a key de KB
+  const normalized = keyClean.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const found = Object.keys(BTNMAP).find(k =>
+    normalized.includes(k) || k.includes(normalized.substring(0, 10))
+  );
+
+  if (found && ejecutarFlujo(BTNMAP[found])) return;
+
+  // Fallback por keywords
+  const kwMatch = KW.find(([rx]) => rx.test(texto));
+  if (kwMatch && ejecutarFlujo(kwMatch[1])) return;
+
+  fallback(texto);
+}
+
+/* ══════════════════════════════════════
+   TEXTO LIBRE DEL USUARIO
+══════════════════════════════════════ */
+function gbSend() {
+  const texto = inputEl.value.trim();
+  if (!texto) return;
+
+  clearQR();
+  document.getElementById('gb-esc-form')?.remove();
+  addBurbuja(texto, 'user');
+  inputEl.value = '';
+  autoResize();
+
+  const kwMatch = KW.find(([rx]) => rx.test(texto));
+  if (kwMatch && ejecutarFlujo(kwMatch[1])) return;
+
+  fallback(texto);
+}
+window.gbSend = gbSend;
+
+function fallback(texto) {
+  showTyping();
+  setTimeout(() => {
+    hideTyping();
+    addBurbuja(
+      `Hmm, no encontré una respuesta automática para "<span class="hl">${texto.substring(0,40)}${texto.length>40?'...':''}</span>".\n\n¿Te ayudo con algo de esto?`
+    );
+    addQR(['📦 Mi pedido', '🚚 Envíos', '💳 Pagos', '🔄 Devoluciones', '🧑‍💻 Hablar con un agente']);
+  }, 900);
+}
+
+/* ══════════════════════════════════════
+   RESET
+══════════════════════════════════════ */
+function gbReset() {
+  msgsEl.innerHTML = '';
+  const div = document.createElement('div');
+  div.className = 'gb-divider';
+  div.textContent = '— NUEVA CONVERSACIÓN —';
+  msgsEl.appendChild(div);
+  initWelcome();
+}
+window.gbReset = gbReset;
+
+/* ══════════════════════════════════════
+   AUTO-RESIZE TEXTAREA
+══════════════════════════════════════ */
+function autoResize() {
+  inputEl.style.height = 'auto';
+  inputEl.style.height = Math.min(inputEl.scrollHeight, 96) + 'px';
+}
+
+inputEl.addEventListener('input', autoResize);
+inputEl.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    gbSend();
+  }
+});
+
+/* ══════════════════════════════════════
+   INICIO
+══════════════════════════════════════ */
+function initWelcome() {
+  showTyping();
+  setTimeout(() => {
+    hideTyping();
+    addBurbuja(KB.welcome.text);
+    addQR(KB.welcome.qr);
+  }, 700);
+}
+
+// Inicializar al cargar
+detectarTema();
+initWelcome();
+
+})(); // fin IIFE
+
+/* ── Evitar solapamiento FAB vs go-to-top en mobile ──
+   Cuando back-to-top.show aparece, sube el FAB para no chocar.
+   Solo aplica en mobile (≤ 480px). ── */
+(function() {
+  const btt = document.querySelector('.back-to-top');
+  const fab = document.getElementById('gb-fab-wrap');
+  if (!btt || !fab) return;
+
+  const observer = new MutationObserver(() => {
+    if (window.innerWidth > 480) return;
+    if (btt.classList.contains('show')) {
+      // go-to-top visible: subir el FAB por encima (44px botón + 12px gap)
+      fab.style.top = 'calc(50% - 56px)';
+    } else {
+      fab.style.top = '';
+    }
+  });
+
+  observer.observe(btt, { attributes: true, attributeFilter: ['class'] });
+
+  // También ajustar al resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 480) {
+      fab.style.top = '';
+    }
+  });
+})();
+</script>
+</body>
+</html>

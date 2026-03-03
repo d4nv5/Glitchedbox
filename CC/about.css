@@ -1,0 +1,261 @@
+/* ============================================
+   about.css — Glitched Box
+   Usa tokens de gb-core.css. Sin valores hardcodeados.
+   ============================================ */
+
+/* ── Hero / Historia ──────────────────────────────────────── */
+.about-hero {
+  padding: var(--size-11) 0;
+}
+
+.about-hero__title {
+  font-size: var(--h-xl);
+  font-weight: 900;
+  line-height: var(--lh-110);
+  color: var(--color-text);
+  margin: 0 0 var(--size-9);
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--size-11);
+  align-items: center;
+}
+
+.story-text p {
+  font-size: var(--t-rg);
+  color: var(--color-text-secondary);
+  line-height: var(--lh-160);
+  margin-bottom: var(--size-6);
+}
+
+.story-text p:last-child {
+  margin-bottom: 0;
+}
+
+.story-text strong {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.story-text em {
+  color: var(--accent-green);
+  font-style: italic;
+}
+
+[data-theme="light"] .story-text em {
+  color: var(--accent-purple);
+}
+
+.story-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.characters-image {
+  width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+  animation: about-breathe 4s ease-in-out infinite;
+}
+
+@keyframes about-breathe {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.03); }
+}
+
+/* ── Visión ───────────────────────────────────────────────── */
+.vision-section {
+  padding: calc(var(--size-11) + 32px) 0;
+  background: var(--accent-orange);
+}
+
+.vision-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--size-11);
+  align-items: center;
+}
+
+.vision-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.character-single {
+  width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+  animation: about-breathe 4s ease-in-out infinite;
+}
+
+.vision-text__label {
+  display: inline-block;
+  font-size: var(--t-sm);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(0, 0, 0, 0.5);
+  margin-bottom: var(--size-3);
+}
+
+/* ── Misión ───────────────────────────────────────────────── */
+.mission-section {
+  padding: var(--size-11) 0 calc(var(--size-11) + var(--size-7));
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--size-11);
+  align-items: center;
+}
+
+.mission-text__label {
+  display: inline-block;
+  font-size: var(--t-sm);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-purple);
+  margin-bottom: var(--size-3);
+}
+
+.mission-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ── Títulos de sección (Visión & Misión) ─────────────────── */
+/* Replica el estilo editorial de .about-hero__title */
+.about-section__title {
+  font-size: var(--h-xl);
+  font-weight: 900;
+  line-height: var(--lh-110);
+  margin: 0;
+}
+
+/* Hereda el color según el contexto de cada sección */
+.vision-text .about-section__title  { color: #000; }
+.mission-text .about-section__title { color: var(--color-text); }
+
+.vision-text p {
+  font-size: var(--t-rg);
+  line-height: var(--lh-160);
+  color: rgba(0, 0, 0, 0.75);
+  margin-top: var(--size-6);
+}
+
+.mission-text p {
+  font-size: var(--t-rg);
+  line-height: var(--lh-160);
+  color: var(--color-text-secondary);
+  margin-top: var(--size-6);
+}
+
+/* ── Animate on scroll — slide-in direccional ─────────────── */
+
+/* Textos: entran desde su lado natural */
+.about-animate--from-left {
+  opacity: 0;
+  transform: translateX(-48px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+.about-animate--from-right {
+  opacity: 0;
+  transform: translateX(48px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+/* Fallback para elementos sin dirección explícita */
+.about-animate {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.about-animate.is-visible,
+.about-animate--from-left.is-visible,
+.about-animate--from-right.is-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.about-animate--delay-1 { transition-delay: 0.15s; }
+.about-animate--delay-2 { transition-delay: 0.3s; }
+
+/* ── Responsive ───────────────────────────────────────────── */
+
+/* Tablet — 1 columna, texto arriba imagen abajo grande */
+@media (max-width: 64rem) and (min-width: 481px) {
+  .story-grid,
+  .vision-grid,
+  .mission-grid {
+    grid-template-columns: 1fr;
+    gap: var(--size-8);
+  }
+
+  /* Texto siempre primero */
+  .story-text,
+  .vision-text,
+  .mission-text { order: 0; }
+
+  /* Imagen siempre segunda, generosa */
+  .story-image,
+  .vision-image,
+  .mission-image {
+    order: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .characters-image,
+  .character-single {
+    width: 72%;
+    max-height: 380px;
+  }
+
+  .about-hero__title,
+  .about-section__title { font-size: var(--h-lg); }
+}
+
+/* Mobile — 1 columna, texto arriba imagen abajo al 60% */
+@media (max-width: 480px) {
+  .about-hero      { padding: var(--size-9) 0 var(--size-10); }
+  .vision-section  { padding: var(--size-10) 0; }
+  .mission-section { padding: var(--size-10) 0 var(--size-10); }
+
+  .story-grid,
+  .vision-grid,
+  .mission-grid {
+    grid-template-columns: 1fr;
+    gap: var(--size-7);
+  }
+
+  .story-text,
+  .vision-text,
+  .mission-text { order: 0; }
+
+  .story-image,
+  .vision-image,
+  .mission-image {
+    order: 1;
+    padding-bottom: var(--size-8);
+  }
+
+  .characters-image,
+  .character-single {
+    width: 60%;
+    max-height: 260px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .about-hero__title,
+  .about-section__title { font-size: var(--h-md); }
+}
